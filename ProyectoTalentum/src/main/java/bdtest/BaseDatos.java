@@ -5,10 +5,10 @@ import java.sql.DriverManager;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Statement;
- 
+
 /**
- *
- * @author sqlitetutorial.net
+ * @author Carlos Javier Gutiérrez Sánchez
+ * Objeto encargado de la base de datos; Conexión, desconexión y ejecución de consultas.
  */
 public class BaseDatos {
 	
@@ -60,7 +60,7 @@ public class BaseDatos {
     	return rs;
     }
     /**
-     * Prueba de conexión
+     * Prueba de conexión --- TODO: borrar cuando se termine de probar
      */
     public static void main(String[] args) throws SQLException {
     	BaseDatos db = new BaseDatos();
