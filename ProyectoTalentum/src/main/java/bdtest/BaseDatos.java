@@ -61,6 +61,7 @@ public class BaseDatos {
     }
     /**
      * Prueba de conexión --- TODO: borrar cuando se termine de probar
+     * documentación sobre SQLite: http://www.sqlitetutorial.net/sqlite-java
      */
     public static void main(String[] args) throws SQLException {
     	BaseDatos db = new BaseDatos();
