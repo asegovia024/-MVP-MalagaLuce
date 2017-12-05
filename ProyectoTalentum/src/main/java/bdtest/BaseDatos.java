@@ -44,6 +44,7 @@ public class BaseDatos {
 		}
     }
     /**
+     * Método para ejecutar consultas simples
      * @param query - Parámetro de tipo String, que contendrá el valor de la query a ejecutar
      * @return Devuelve un parámetro tipo ResulSet con el resultado de la query
      */
