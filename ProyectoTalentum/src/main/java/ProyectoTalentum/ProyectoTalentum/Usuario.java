@@ -11,6 +11,7 @@ public class Usuario {
 	protected Boolean Super;
 	private int Puntos;
 	private String Fecha;
+	//ID?
 	//array de acciones
 	
 	/**

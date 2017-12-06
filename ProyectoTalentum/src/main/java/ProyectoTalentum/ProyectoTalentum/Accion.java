@@ -9,7 +9,7 @@ import ProyectoTalentum.ProyectoTalentum.Usuario;
 
 
 public class Accion {
-	
+	//ID?
 	private Pair<Double, Double> coordenadas = new Pair<Double, Double>(null, null);
 	 
 	private Date FechaInicio;//Cambiar a string si dan por saco
@@ -36,8 +36,11 @@ public class Accion {
 		FechaInicio = fechaInicio;
 		FotoInicio = fotoInicio;
 		this.grupo = grupo;
+		this.Validada = false;
 	}
 	
-	
+	public void Validar() {
+		this.Validada = true;
+	}
 
 }

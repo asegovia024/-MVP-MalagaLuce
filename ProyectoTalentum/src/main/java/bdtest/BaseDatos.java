@@ -19,7 +19,7 @@ public class BaseDatos {
      * Realiza la conexión a la base de datos SQLite, 
      * @return Devuelve la conexión de tipo Connection 
      */
-    private Connection connect() {
+    public Connection connect() {
         try {            
             // create a connection to the database
         	

@@ -4,6 +4,7 @@ public class Equipo {
 	private String nombre;
 	private String Color;
 	private String Escudo;
+	// ID?
 	
 	
 	/**
