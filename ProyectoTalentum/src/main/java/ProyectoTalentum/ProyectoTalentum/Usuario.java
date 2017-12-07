@@ -23,8 +23,9 @@ public class Usuario {
 	 * @param pass Introducir la contraseña
 	 * @param fecha Introducir la fecha de nacimiento
 	 */
-	public Usuario(int ID, String nombre, String correo, String pass, String fecha) {
+	public Usuario(int id, String nombre, String correo, String pass, String fecha) {
 		super();
+		ID = id;
 		Nombre = nombre;
 		Correo = correo;
 		Pass = pass;
