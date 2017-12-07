@@ -138,8 +138,8 @@ public class Usuario {
 	 * 
 	 * @see Incrementa los puntos del usuario
 	 */
-	public void addPuntos() {
-		Puntos = Puntos+10;
+	public void setPuntos(int Puntos) {
+		this.Puntos = Puntos;
 	}
 	
 	/**
