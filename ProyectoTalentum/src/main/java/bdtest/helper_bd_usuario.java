@@ -30,10 +30,6 @@ public class helper_bd_usuario {
             System.out.println(e.getMessage()); //TODO: cambiar por registro de logs?
         }
 	}
-	
-	
-	
-	
 	public static ArrayList<Usuario> getUsuario() {
 		 BaseDatos bd = new BaseDatos();
 		 String sql = "SELECT * FROM usuario";
@@ -87,5 +83,11 @@ public class helper_bd_usuario {
 		}
 		return usuario;
 	 }
+	
+	
+	
+	
+	
+	
 
 }
