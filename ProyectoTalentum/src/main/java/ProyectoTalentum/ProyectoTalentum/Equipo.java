@@ -1,9 +1,11 @@
 package ProyectoTalentum.ProyectoTalentum;
 
 public class Equipo {
+	private int ID;
 	private String nombre;
 	private String Color;
 	private String Escudo;
+	
 	// ID?
 	
 	
@@ -14,12 +16,27 @@ public class Equipo {
 	 * @param color Introduce el color en formato hexadecimal
 	 * @param escudo Introduce la ruta de la imagen
 	 */
-	public Equipo(String nombre, String color, String escudo) {
+	public Equipo(int ID, String nombre, String color, String escudo) {
 		super();
 		this.nombre = nombre;
 		Color = color;
 		Escudo = escudo;
 	}
+	
+	/**
+	 * @return Devuelve el id del Equipo
+	 */
+	public int getID() {
+		return ID;
+	}
+
+	/**
+	 * @param Modificar el ID del equipo
+	 */
+	public void setID(int iD) {
+		ID = iD;
+	}
+
 	
 	/**
 	 * 
