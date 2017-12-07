@@ -74,7 +74,7 @@ public class helper_bd_equipo {
 	public static Equipo getEquipofromList(int id, ArrayList<Equipo> lista) {
 		 Iterator<Equipo> iterator = lista.iterator();
 		 boolean noencontrado = true;
-		 Equipo equipo;
+		 Equipo equipo = null;
 		while(iterator.hasNext() && noencontrado) {
 			equipo = iterator.next();
 			if(equipo.getID() == id) {
