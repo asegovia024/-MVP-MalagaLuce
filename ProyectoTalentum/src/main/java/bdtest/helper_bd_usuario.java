@@ -63,10 +63,12 @@ public class helper_bd_usuario {
 	               usuario.setPass(password);
 	               usuario.setID(id);
 	               usuario.setTeam();
-	               usuario.setPuntos(puntos);
-	               listausuarios.add(usuario);	*/               
+	               	*/
+	      		// usuario.setPuntos(puntos);
+	      		 listausuarios.add(usuario);
 	               
 	            }
+	            bd.closeConnection();
 	        } catch (SQLException e) {
 	            System.out.println(e.getMessage());
 	        }
@@ -96,7 +98,7 @@ public class helper_bd_usuario {
 			 pstmt.setString(1, correo);
 			 ResultSet rs  = pstmt.executeQuery();
 			 password = rs.getString("password");
-			 if(password == pass){
+			 if(pass.equals(password)){
 				 login_correcto = true;
 			 }
 			 
@@ -105,11 +107,4 @@ public class helper_bd_usuario {
 		 }
 		return login_correcto;
 	}
-	
-	
-	
-	
-	
-	
-
 }
