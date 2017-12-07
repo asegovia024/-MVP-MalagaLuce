@@ -8,9 +8,9 @@ public class SuperUsuario extends Usuario{
 	
 
 
-	public SuperUsuario(int id, String nombre, String correo, String pass, String fecha) {
+	public SuperUsuario(int id, String nombre, String correo, String pass, String fecha, String nick) {
 		
-		super(id, nombre, correo, pass, fecha);
+		super(id, nombre, correo, pass, fecha, nick);
 		
 		this.Super=true;//Combierte el usuario en super usuario
 		

@@ -13,9 +13,11 @@ public class Usuario {
 	protected Boolean Super;
 	private int Puntos;
 	private String Fecha;
+	private String Nick;
 	//ID?
 	//array de acciones
 	
+
 	/**
 	 * 
 	 * @param nombre Introducir el nombre del usuario
@@ -23,7 +25,7 @@ public class Usuario {
 	 * @param pass Introducir la contraseña
 	 * @param fecha Introducir la fecha de nacimiento
 	 */
-	public Usuario(int id, String nombre, String correo, String pass, String fecha) {
+	public Usuario(int id, String nombre, String correo, String pass, String fecha, String nick) {
 		super();
 		ID = id;
 		Nombre = nombre;
@@ -31,6 +33,8 @@ public class Usuario {
 		Pass = pass;
 		Puntos =0;
 		Fecha =fecha;
+		Nick = nick;
+		 
 		
 	}
 	
@@ -151,6 +155,21 @@ public class Usuario {
 	 */
 	public void setFecha(String fecha) {
 		Fecha = fecha;
+	}
+	
+	
+	/**
+	 * @return Devuelve el nick del usuario
+	 */
+	public String getNick() {
+		return Nick;
+	}
+
+	/**
+	 * @param nick Modifica el nick del usuario
+	 */
+	public void setNick(String nick) {
+		Nick = nick;
 	}
 
 
