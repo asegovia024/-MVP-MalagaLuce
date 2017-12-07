@@ -16,7 +16,7 @@ public class helper_bd_equipo {
 	 * @param equipo a insertar
 	 */
 	public static void insert(Equipo equipo) {
-	        String sql = "INSERT INTO warehouses(nombre, color, escudo) VALUES(?,?,?)";
+	        String sql = "INSERT INTO equipo(nombre, color, escudo) VALUES(?,?,?)";
 	        BaseDatos bd = new BaseDatos(); //se crea el objeto de la bd     
 	        try (Connection conn = bd.connect();
 		         PreparedStatement pstmt = conn.prepareStatement(sql)) {
