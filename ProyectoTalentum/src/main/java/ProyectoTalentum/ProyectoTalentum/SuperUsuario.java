@@ -31,8 +31,8 @@ public class SuperUsuario extends Usuario{
 	 * @param escudo Introduce la ruta de la imagen
 	 * @return devuelve true en caso de que se haya realizado correctamente
 	 */
-	public  boolean CrearEquipo(String nombre, String color, String escudo){	
-		Equipo equipo = new Equipo(nombre, color, escudo); //este equipo hay que guardarlo juego en la BBDD
+	public  boolean CrearEquipo(int id ,String nombre, String color, String escudo){	
+		Equipo equipo = new Equipo(id, nombre, color, escudo); //este equipo hay que guardarlo juego en la BBDD
 		return true;
 	}
 	
