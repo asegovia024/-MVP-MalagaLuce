@@ -54,9 +54,11 @@ public class Login extends JFrame  {
        // add the panel to this frame
        add(newPanel);
         
+       
        pack();
        setLocationRelativeTo(null);
    }
 	
 
 }
+//key of google//AIzaSyAYWbV_Op779NEsbTlYYGyTKwQcfFHYKnQ
