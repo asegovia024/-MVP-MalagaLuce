@@ -4,6 +4,8 @@ import ProyectoTalentum.ProyectoTalentum.Equipo;
 
 public class Usuario {
 	
+
+	private int ID;
 	private String Nombre;
 	private String Correo;
 	private String Pass;
@@ -21,7 +23,7 @@ public class Usuario {
 	 * @param pass Introducir la contraseña
 	 * @param fecha Introducir la fecha de nacimiento
 	 */
-	public Usuario(String nombre, String correo, String pass, String fecha) {
+	public Usuario(int ID, String nombre, String correo, String pass, String fecha) {
 		super();
 		Nombre = nombre;
 		Correo = correo;
@@ -29,6 +31,21 @@ public class Usuario {
 		Puntos =0;
 		Fecha =fecha;
 		
+	}
+	
+	/**
+	 * @return Devuelve el ID del usuario
+	 */
+	public int getID() {
+		return ID;
+	}
+
+
+	/**
+	 * @param Modifica el ID del usuario
+	 */
+	public void setID(int iD) {
+		ID = iD;
 	}
 	
 	
