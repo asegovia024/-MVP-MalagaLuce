@@ -66,7 +66,7 @@ public class Usuario {
 	 * @return Obtiene la contraseña,funcion privada para el logeo
 	 */
 	
-	private String getPass() {
+	public String getPass() {
 		return Pass;
 	}
 	/**
