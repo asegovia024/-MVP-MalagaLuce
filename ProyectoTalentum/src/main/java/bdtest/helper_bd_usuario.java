@@ -32,13 +32,14 @@ public class helper_bd_usuario {
 	}
 	public static ArrayList<Usuario> getUsuario() {
 		 BaseDatos bd = new BaseDatos();
-		 String sql = "SELECT * FROM usuario";
-		 String nombre = "";
+		 String sql      = "SELECT * FROM usuario";
+		 String nombre   = "";
 		 String password = "";
-		 String correo = "";
-		 int puntos = 0;
-		 int team = 0;
-		 int id = 0;
+		 String correo   = "";
+		 String nick     = "";
+		 int puntos      = 0;
+		 int team        = 0;
+		 int id          = 0;
 		// Usuario usuario = new Usuario(id, nombre, correo, password, correo); // TODO: Añadir ID a las clases
 		 ArrayList <Usuario> listausuarios = new ArrayList<Usuario>();
 		 try (Connection conn = bd.connect();
@@ -52,10 +53,10 @@ public class helper_bd_usuario {
 	               nombre   = rs.getString("nombre");
 	               password = rs.getString("password");
 	               correo   = rs.getString("correo");
+	               nick     = rs.getString("nick");
 	               
 	               
-	               
-	      		 Usuario usuario = new Usuario(id, nombre, correo, password, correo); // TODO: Añadir ID a las clases
+	      		 Usuario usuario = new Usuario(id, nombre, correo, password, correo, nick); // TODO: Añadir ID a las clases
 
 	             /*  usuario.setNombre(nombre);
 	               usuario.setCorreo(correo);
@@ -83,6 +84,27 @@ public class helper_bd_usuario {
 		}
 		return usuario;
 	 }
+	public static boolean login(String correo, String pass){
+		String sql = "SELECT password FROM usuario WHERE correo = ?";
+		BaseDatos bd = new BaseDatos();
+		boolean login_correcto = false;
+		String password = "";
+		 try (Connection conn = bd.connect();
+	          Statement stmt  = conn.createStatement();
+			  PreparedStatement pstmt = conn.prepareStatement(sql)){
+			 
+			 pstmt.setString(1, correo);
+			 ResultSet rs  = pstmt.executeQuery();
+			 password = rs.getString("password");
+			 if(password == pass){
+				 login_correcto = true;
+			 }
+			 
+		 } catch (SQLException e) {
+			 System.out.println(e.getMessage());
+		 }
+		return login_correcto;
+	}
 	
 	
 	
