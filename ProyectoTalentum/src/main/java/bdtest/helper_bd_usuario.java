@@ -21,13 +21,19 @@ public class helper_bd_usuario {
 	            pstmt.setString(2, usuario.getPass());
 	            pstmt.setString(3, usuario.getCorreo());
 	            pstmt.setInt(4, usuario.getPuntos());
-	            pstmt.setInt(5, usuario.getTeam());
+	          //  pstmt.setInt(5, usuario.getTeam());
+	            pstmt.setInt(5, usuario.getTeam().getID());
+
 	            pstmt.executeUpdate(); 
 	            bd.closeConnection();
         } catch (SQLException e) {
             System.out.println(e.getMessage()); //TODO: cambiar por registro de logs?
         }
 	}
+	
+	
+	
+	
 	public static ArrayList<Usuario> getUsuario() {
 		 BaseDatos bd = new BaseDatos();
 		 String sql = "SELECT * FROM usuario";
@@ -37,7 +43,7 @@ public class helper_bd_usuario {
 		 int puntos = 0;
 		 int team = 0;
 		 int id = 0;
-		 Usuario usuario = new Usuario(nombre, correo, password, correo); // TODO: Añadir ID a las clases
+		// Usuario usuario = new Usuario(id, nombre, correo, password, correo); // TODO: Añadir ID a las clases
 		 ArrayList <Usuario> listausuarios = new ArrayList<Usuario>();
 		 try (Connection conn = bd.connect();
 	             Statement stmt  = conn.createStatement();
@@ -50,13 +56,18 @@ public class helper_bd_usuario {
 	               nombre   = rs.getString("nombre");
 	               password = rs.getString("password");
 	               correo   = rs.getString("correo");
-	               usuario.setNombre(nombre);
+	               
+	               
+	               
+	      		 Usuario usuario = new Usuario(id, nombre, correo, password, correo); // TODO: Añadir ID a las clases
+
+	             /*  usuario.setNombre(nombre);
 	               usuario.setCorreo(correo);
 	               usuario.setPass(password);
 	               usuario.setID(id);
-	               usuario.setTeam(team);
+	               usuario.setTeam();
 	               usuario.setPuntos(puntos);
-	               listausuarios.add(usuario);	               
+	               listausuarios.add(usuario);	*/               
 	               
 	            }
 	        } catch (SQLException e) {
@@ -67,7 +78,7 @@ public class helper_bd_usuario {
 	public static Usuario getUsuariofromList(int id, ArrayList<Usuario> lista) {
 		 Iterator<Usuario> iterator = lista.iterator();
 		 boolean noencontrado = true;
-		 Usuario usuario;
+		 Usuario usuario = null;
 		while(iterator.hasNext() && noencontrado) {
 			usuario = iterator.next();
 			if(usuario.getID() == id) {
