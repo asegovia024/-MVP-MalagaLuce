@@ -19,7 +19,7 @@ public class SuperUsuario extends Usuario{
 	 * @return devuelve true en caso de que se haya realizado correctamente
 	 */
 	public  boolean Validar(Accion accionAvalidar){
-		accionAvalidar.Validar(); //cambia el estado de una accion a validado
+		accionAvalidar.Validar(); //cambia el estado de una accion a validado asdf 
 		
 		return true;
 	}
