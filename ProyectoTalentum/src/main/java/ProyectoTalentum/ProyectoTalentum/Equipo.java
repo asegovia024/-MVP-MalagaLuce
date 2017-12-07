@@ -6,7 +6,7 @@ public class Equipo {
 	private String Color;
 	private String Escudo;
 	
-	// ID?
+	// ID? no esta
 	
 	
 	/**
