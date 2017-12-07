@@ -51,7 +51,7 @@ public class BaseDatos {
     public ResultSet Query(String query){
     	ResultSet rs = null;
     	try {
-    		Connection conn = this.connect();
+    		Connection conn = this.conn;
             Statement stmt  = conn.createStatement();
             rs              = stmt.executeQuery(query);
            
