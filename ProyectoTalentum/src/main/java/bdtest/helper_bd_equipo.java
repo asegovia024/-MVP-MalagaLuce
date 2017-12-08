@@ -16,9 +16,9 @@ public class helper_bd_equipo {
 	 * @param equipo a insertar
 	 */
 	public static void insert(Equipo equipo) {
-	        String sql = "INSERT INTO equipo(nombre, color, escudo) VALUES(?,?,?)";
-	        BaseDatos bd = new BaseDatos(); //se crea el objeto de la bd     
-	        try (Connection conn = bd.connect();
+	        String sql   = "INSERT INTO equipo(nombre, color, escudo) VALUES(?,?,?)";
+	        BaseDatos bd = BaseDatos.createInstanceOfBD();     
+	        try (Connection conn = bd.getConnection();
 		         PreparedStatement pstmt = conn.prepareStatement(sql)) {
 	        		//se prepara el statment
 		            pstmt.setString(1, equipo.getNombre());
@@ -36,15 +36,15 @@ public class helper_bd_equipo {
 	 * @return ArrayList<Equipo>
 	 */
 	public static ArrayList<Equipo> getEquipo() {
-		 BaseDatos bd = new BaseDatos();
-		 String sql = "SELECT * FROM equipo";
+		 BaseDatos bd  = BaseDatos.createInstanceOfBD(); 
+		 String sql    = "SELECT * FROM equipo";
 		 String escudo = "";
 		 String nombre = "";
-		 String color = "";
-		 int id = 0;
-		 Equipo equipo = new Equipo(id, nombre, color, escudo); // TODO: Añadir ID a las clases
+		 String color  = "";
+		 int id        = 0;
+		 Equipo equipo = new Equipo(id, nombre, color, escudo);
 		 ArrayList <Equipo> listaequipos = new ArrayList<Equipo>();
-		 try (Connection conn = bd.connect();
+		 try (Connection conn = bd.getConnection();
 	             Statement stmt  = conn.createStatement();
 				 ResultSet rs = bd.Query(sql);){
 	            
@@ -58,6 +58,7 @@ public class helper_bd_equipo {
 	               equipo.setNombre(nombre);
 	               equipo.setID(id);
 	               listaequipos.add(equipo);
+	               bd.closeConnection();
 	            }
 	        } catch (SQLException e) {
 	            System.out.println(e.getMessage());

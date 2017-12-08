@@ -14,8 +14,8 @@ import ProyectoTalentum.ProyectoTalentum.Usuario;
 public class helper_bd_usuario {
 	public static void insert(Usuario usuario){
 		String sql = "INSERT INTO usuario(nombre, password, correo, puntos, eID) VALUES(?,?,?,?,?)";
-        BaseDatos bd = new BaseDatos();
-        try (Connection conn = bd.connect();
+        BaseDatos bd = BaseDatos.createInstanceOfBD();
+        try (Connection conn = bd.getConnection();
 	         PreparedStatement pstmt = conn.prepareStatement(sql)) {
 	            pstmt.setString(1, usuario.getNombre());
 	            pstmt.setString(2, usuario.getPass());
@@ -31,7 +31,7 @@ public class helper_bd_usuario {
         }
 	}
 	public static ArrayList<Usuario> getUsuario() {
-		 BaseDatos bd = new BaseDatos();
+		 BaseDatos bd = BaseDatos.createInstanceOfBD(); 
 		 String sql      = "SELECT * FROM usuario";
 		 String nombre   = "";
 		 String password = "";
@@ -40,9 +40,9 @@ public class helper_bd_usuario {
 		 int puntos      = 0;
 		 int team        = 0;
 		 int id          = 0;
-		// Usuario usuario = new Usuario(id, nombre, correo, password, correo); // TODO: Añadir ID a las clases
+		// Usuario usuario = new Usuario(id, nombre, correo, password, correo);
 		 ArrayList <Usuario> listausuarios = new ArrayList<Usuario>();
-		 try (Connection conn = bd.connect();
+		 try (Connection conn = bd.getConnection();
 	             Statement stmt  = conn.createStatement();
 				 ResultSet rs = bd.Query(sql);){
 	            
@@ -56,7 +56,7 @@ public class helper_bd_usuario {
 	               nick     = rs.getString("nick");
 	               
 	               
-	      		 Usuario usuario = new Usuario(id, nombre, correo, password, correo, nick); // TODO: Añadir ID a las clases
+	      		 Usuario usuario = new Usuario(id, nombre, correo, password, correo, nick);
 
 	             /*  usuario.setNombre(nombre);
 	               usuario.setCorreo(correo);
@@ -88,10 +88,10 @@ public class helper_bd_usuario {
 	 }
 	public static boolean login(String correo, String pass){
 		String sql = "SELECT password FROM usuario WHERE correo = ?";
-		BaseDatos bd = new BaseDatos();
+		BaseDatos bd = BaseDatos.createInstanceOfBD(); 
 		boolean login_correcto = false;
 		String password = "";
-		 try (Connection conn = bd.connect();
+		 try (Connection conn = bd.getConnection();
 	          Statement stmt  = conn.createStatement();
 			  PreparedStatement pstmt = conn.prepareStatement(sql)){
 			 
@@ -105,6 +105,7 @@ public class helper_bd_usuario {
 		 } catch (SQLException e) {
 			 System.out.println(e.getMessage());
 		 }
+		 bd.closeConnection();
 		return login_correcto;
 	}
 }

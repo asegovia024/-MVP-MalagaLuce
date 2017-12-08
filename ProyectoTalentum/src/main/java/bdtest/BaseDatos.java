@@ -13,14 +13,12 @@ import java.sql.Statement;
 public class BaseDatos {
 	
 	//Esta variable constante almacena la ruta de la base de datos SQLite
-	private final String URL_DEFAULT = "jdbc:sqlite:C:/workspace/db/proyecto.s3db";
-	Connection conn = null;
-    /**
-     * Realiza la conexión a la base de datos SQLite, 
-     * @return Devuelve la conexión de tipo Connection 
-     */
-    public Connection connect() {
-        try {            
+	private static final String URL_DEFAULT = "jdbc:sqlite:C:/workspace/db/proyecto.s3db";
+	private Connection conn = null;
+	private static BaseDatos bd;
+	
+	private BaseDatos(){
+		try {            
             // create a connection to the database
         	
             conn = DriverManager.getConnection(URL_DEFAULT);
@@ -29,7 +27,24 @@ public class BaseDatos {
         } catch (SQLException e) {
             System.out.println(e.getMessage());
         }
-        return conn;
+	}
+	 public static BaseDatos createInstanceOfBD() {
+	        if (bd == null){
+	            bd = new BaseDatos();
+	        }
+	        else{
+	            //no conecta
+	        }
+	        
+	        return bd;
+	 }
+	 
+    /**
+     * Realiza la conexión a la base de datos SQLite, 
+     * @return Devuelve la conexión de tipo Connection 
+     */
+    public Connection getConnection() {
+        return this.conn;
     }
     
     /**
