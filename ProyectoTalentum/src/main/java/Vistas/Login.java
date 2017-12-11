@@ -1,9 +1,14 @@
 package Vistas;
 import java.awt.GridBagConstraints;
+
+import ProyectoTalentum.ProyectoTalentum.ControladorUser;
+import bdtest.helper_bd_usuario;
+
 import java.awt.GridBagLayout;
 import java.awt.Insets;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.security.NoSuchAlgorithmException;
 
 import javax.swing.*;
 import javax.xml.bind.Marshaller.Listener;
@@ -57,7 +62,21 @@ public class Login extends JFrame  {
 			@Override
 			public void actionPerformed(ActionEvent arg0) {
 				//funcion de login
+			
+				try {
+					
+					if(helper_bd_usuario.login(textUsername.getText(), ControladorUser.encripta(labelPassword.getText()))){
+						//carga otra vista o haz algo impresionante 
+					}
+					
+					
+				} catch (NoSuchAlgorithmException e) {
+					// TODO Auto-generated catch block
+					e.printStackTrace();
+				}
 				
+				
+
 			}
 		});
        

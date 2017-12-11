@@ -7,7 +7,7 @@ import java.security.NoSuchAlgorithmException;
 
 public class ControladorUser {
 	
-	public String encripta(String pass) throws NoSuchAlgorithmException  {
+	public static String encripta(String pass) throws NoSuchAlgorithmException  {
 	
 		
 		MessageDigest sha256=MessageDigest.getInstance("SHA-256");
@@ -27,7 +27,7 @@ public class ControladorUser {
 		    sb.append(String.format("%02x", digest[i]));
 		}
 		
-		 String hash=sb.toString(); //2bb80d5...527a25b
+		// String hash=sb.toString(); //2bb80d5...527a25b
 		 
 		 
 		return sb.toString();
