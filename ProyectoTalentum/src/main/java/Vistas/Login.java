@@ -34,13 +34,16 @@ public class Login extends JFrame  {
        constraints.gridx = 1;
        newPanel.add(textUsername, constraints);
         
+       
        constraints.gridx = 0;
        constraints.gridy = 1;     
        newPanel.add(labelPassword, constraints);
         
+       
        constraints.gridx = 1;
        newPanel.add(fieldPassword, constraints);
         
+       
        constraints.gridx = 0;
        constraints.gridy = 2;
        constraints.gridwidth = 2;
