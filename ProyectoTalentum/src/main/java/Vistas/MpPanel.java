@@ -1,32 +1,54 @@
 package Vistas;
+import java.awt.*;
 
-import ProyectoTalentum.ProyectoTalentum.MapImgEnJpanel;
+import javax.swing.*;
 
-public class MpPanel extends javax.swing.JFrame {
-    
-    public MpPanel() {
-        initComponents();
-        this.setLocationRelativeTo(null); // Centrar pantalla 
-    }
-                            
-    private void initComponents() {} // Codigo generado automaticamente.                        
+import java.awt.event.*;
 
-    private void jButtonIniciarActionPerformed(java.awt.event.ActionEvent evt) {
-    	MapImgEnJpanel im = new MapImgEnJpanel(jPanel1);
-        jPanel1.add(im).repaint();
-    }                                              
+ 
 
-    public static void main(String args[]) {
-        java.awt.EventQueue.invokeLater(new Runnable() {
-            public void run() {
-                new MpPanel().setVisible(true);
-            }
-        });
-    }
+public class MpPanel extends JFrame
 
-    // Variables declaration - do not modify                     
-    private javax.swing.JButton jButtonIniciar;
-    private javax.swing.JPanel jPanel1;
-    // End of variables declaration                   
+{
+
+
+	ImageIcon imagen = new ImageIcon("src/resources/mapa.png");//soporta al menos .jpg y .png
+
+	//LAS IMAGENES, SE DEBEN COLOCAR DENTRO DE COMPONENTES
+
+
+	JLabel etiqueta = new JLabel(imagen);
+
+	public MpPanel()
+
+	{
+		
+
+
+
+		super("Muestra de Imagen en JAVA...");
+
+ 		//AGREGAMOS LA ETIQUETA QUE CONTIENE LA IMAGEN AL FRAME
+
+		getContentPane().add(etiqueta);
+
+		//ESTABLECEMOS EL TAMAÑO DEL Jpanel
+		
+		Toolkit pantalla = Toolkit.getDefaultToolkit(); //Coge los datos de la pantalla
+        Dimension pantallaD = pantalla.getScreenSize(); //Coge la resolución y la divide en 2 variables
+        int width = pantallaD.width;
+        int height = pantallaD.height;
+        this.setSize(new Dimension(width/2, height/2));
+        setPreferredSize(new Dimension(width/2, height/2)); //El tamaño de la ventana es 1/4 de la resolución
+        setLocationRelativeTo(null); //Pone la ventana en el centro
+        setResizable(false); //No cambiar el tamaño de la ventana
+        pack();
+        setVisible(true);
+        
+        
+
+	}
+
+
 
 }

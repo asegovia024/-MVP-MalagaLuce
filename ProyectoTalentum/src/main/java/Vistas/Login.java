@@ -27,7 +27,6 @@ public class Login extends JFrame  {
    public Login() {
        super("JPanel Demo Program");
        
-   
         
        // create a new panel with GridBagLayout manager
        JPanel newPanel = new JPanel(new GridBagLayout());
