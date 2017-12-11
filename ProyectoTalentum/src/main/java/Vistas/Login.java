@@ -1,9 +1,17 @@
 package Vistas;
 import java.awt.GridBagConstraints;
+
+import ProyectoTalentum.ProyectoTalentum.ControladorUser;
+import bdtest.helper_bd_usuario;
+
 import java.awt.GridBagLayout;
 import java.awt.Insets;
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
+import java.security.NoSuchAlgorithmException;
 
 import javax.swing.*;
+import javax.xml.bind.Marshaller.Listener;
 
 
 
@@ -18,6 +26,7 @@ public class Login extends JFrame  {
     
    public Login() {
        super("JPanel Demo Program");
+       
         
        // create a new panel with GridBagLayout manager
        JPanel newPanel = new JPanel(new GridBagLayout());
@@ -46,14 +55,41 @@ public class Login extends JFrame  {
        constraints.gridwidth = 2;
        constraints.anchor = GridBagConstraints.CENTER;
        newPanel.add(buttonLogin, constraints);
-        
+       
+        buttonLogin.addActionListener(new ActionListener() {
+			
+			@Override
+			public void actionPerformed(ActionEvent arg0) {
+				//funcion de login
+			
+				try {
+					
+					if(helper_bd_usuario.login(textUsername.getText(), ControladorUser.encripta(labelPassword.getText()))){
+						//carga otra vista o haz algo impresionante 
+					}
+					
+					
+				} catch (NoSuchAlgorithmException e) {
+					// TODO Auto-generated catch block
+					e.printStackTrace();
+				}
+				
+				
+
+			}
+		});
+       
+      
        // set border for the panel
+       
        newPanel.setBorder(BorderFactory.createTitledBorder(
                BorderFactory.createEtchedBorder(), "Login Panel"));
         
        // add the panel to this frame
        add(newPanel);
         
+       
+
        
        pack();
        setLocationRelativeTo(null);
