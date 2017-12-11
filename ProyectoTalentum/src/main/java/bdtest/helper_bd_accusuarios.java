@@ -34,7 +34,6 @@ public class helper_bd_accusuarios {
 		}
 		return count;
 	}
-<<<<<<< HEAD
 	public static int CountbyID(int id){
 		BaseDatos bd = BaseDatos.createInstanceOfBD();
 		String sql   = "SELECT count(*) FROM accusuarios where aID ="+ id;
@@ -49,8 +48,6 @@ public class helper_bd_accusuarios {
 		}
 		return count;
 	}
-=======
->>>>>>> d3e04532cc3137ceb069ffd453271a7dd3e02591
 	public static int[][] getAcciones(){
 		BaseDatos bd = BaseDatos.createInstanceOfBD(); 
 		 String sql      = "SELECT * FROM accusuarios";
@@ -75,7 +72,6 @@ public class helper_bd_accusuarios {
 	        }
 		 return acciones;
 	}
-<<<<<<< HEAD
 	public static int[] getAccionesbyID(int id){
 		BaseDatos bd    = BaseDatos.createInstanceOfBD(); 
 		 String sql     = "SELECT * FROM accusuarios WHERE aID ="+ id;
@@ -98,6 +94,4 @@ public class helper_bd_accusuarios {
 	        }
 		 return acciones;
 	}
-=======
->>>>>>> d3e04532cc3137ceb069ffd453271a7dd3e02591
 }
