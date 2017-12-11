@@ -2,8 +2,11 @@ package Vistas;
 import java.awt.GridBagConstraints;
 import java.awt.GridBagLayout;
 import java.awt.Insets;
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
 
 import javax.swing.*;
+import javax.xml.bind.Marshaller.Listener;
 
 
 
@@ -18,6 +21,8 @@ public class Login extends JFrame  {
     
    public Login() {
        super("JPanel Demo Program");
+       
+   
         
        // create a new panel with GridBagLayout manager
        JPanel newPanel = new JPanel(new GridBagLayout());
@@ -46,14 +51,27 @@ public class Login extends JFrame  {
        constraints.gridwidth = 2;
        constraints.anchor = GridBagConstraints.CENTER;
        newPanel.add(buttonLogin, constraints);
-        
+       
+        buttonLogin.addActionListener(new ActionListener() {
+			
+			@Override
+			public void actionPerformed(ActionEvent arg0) {
+				//funcion de login
+				
+			}
+		});
+       
+      
        // set border for the panel
+       
        newPanel.setBorder(BorderFactory.createTitledBorder(
                BorderFactory.createEtchedBorder(), "Login Panel"));
         
        // add the panel to this frame
        add(newPanel);
         
+       
+
        
        pack();
        setLocationRelativeTo(null);
