@@ -32,13 +32,7 @@ public class MpPanel extends JFrame
 
 		getContentPane().add(etiqueta);
 
- 
-		
-		
-
-		//ESTABLECEMOS EL TAMAÑO DEL FRAME
-
-		
+		//ESTABLECEMOS EL TAMAÑO DEL Jpanel
 		
 		Toolkit pantalla = Toolkit.getDefaultToolkit(); //Coge los datos de la pantalla
         Dimension pantallaD = pantalla.getScreenSize(); //Coge la resolución y la divide en 2 variables
