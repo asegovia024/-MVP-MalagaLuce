@@ -11,6 +11,15 @@ public class testbd {
 	//		System.out.println("Login incorrecto");
 		//}
 		//System.out.println(helper_db_accusuarios.Count());
+		int auid = 0;
+		int aid = 0;
+		for(int[] acciones : ){
+			aid++;
+			for(int accion : acciones){
+				auid++;
+				System.out.println(accion);
+			}
+		}
 	}
 
 }

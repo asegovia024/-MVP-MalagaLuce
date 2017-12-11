@@ -6,7 +6,7 @@ import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Statement;
 
-public class helper_db_accusuarios {
+public class helper_bd_accusuarios {
 	public static void insert(int uID, int aID) {
         String sql   = "INSERT INTO accusuarios(uID, aID) VALUES (?,?)";
         BaseDatos bd = BaseDatos.createInstanceOfBD();    
@@ -34,20 +34,23 @@ public class helper_db_accusuarios {
 		}
 		return count;
 	}
-	public static int[] getAcciones(){
+	public static int[][] getAcciones(){
 		BaseDatos bd = BaseDatos.createInstanceOfBD(); 
 		 String sql      = "SELECT * FROM accusuarios";
-		 int uID = 0;
-		 int aID = 0;
-		 int[] acciones = {0}; //TODO: terminar este método
+		 int uID  = 0;
+		 int aID  = 0;
+		 int auID = 0;
+		 int[][] acciones = new int[Count()+1][10]; //TODO: terminar este método
+		 
 		 try (Connection conn = bd.getConnection();
 	             Statement stmt  = conn.createStatement();
 				 ResultSet rs = bd.Query(sql);){
 	            
 	            while (rs.next()) {
 	               uID           = rs.getInt("uID");
-	               aID           = rs.getInt("eID");
-	               acciones[aID] = uID;	               
+	               aID           = rs.getInt("aID");
+	               auID          = rs.getInt("auID");
+	               acciones[auID][aID] = uID;	               
 	            }
 	            bd.closeConnection();
 	        } catch (SQLException e) {

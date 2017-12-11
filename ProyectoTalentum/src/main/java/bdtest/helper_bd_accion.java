@@ -14,7 +14,7 @@ import org.javatuples.Pair;
 import ProyectoTalentum.ProyectoTalentum.Accion;
 import ProyectoTalentum.ProyectoTalentum.Usuario;
 
-public class helper_db_accion {
+public class helper_bd_accion {
 	public static void insert(Accion accion) {
         String sql   = "INSERT INTO accion(coordenadas, foto_inicio, foto_fin, fecha_inicio, fecha_fin, validado) VALUES(?,?,?,?,?,?)";
         BaseDatos bd = BaseDatos.createInstanceOfBD();     
