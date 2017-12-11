@@ -34,6 +34,23 @@ public class helper_bd_accusuarios {
 		}
 		return count;
 	}
+<<<<<<< HEAD
+	public static int CountbyID(int id){
+		BaseDatos bd = BaseDatos.createInstanceOfBD();
+		String sql   = "SELECT count(*) FROM accusuarios where aID ="+ id;
+		ResultSet rs = bd.Query(sql);
+		int count = 0;
+		try {
+				count = rs.getInt(1);
+			
+		} catch (SQLException e) {
+			System.out.println(e.getMessage());
+			e.printStackTrace();
+		}
+		return count;
+	}
+=======
+>>>>>>> d3e04532cc3137ceb069ffd453271a7dd3e02591
 	public static int[][] getAcciones(){
 		BaseDatos bd = BaseDatos.createInstanceOfBD(); 
 		 String sql      = "SELECT * FROM accusuarios";
@@ -58,4 +75,29 @@ public class helper_bd_accusuarios {
 	        }
 		 return acciones;
 	}
+<<<<<<< HEAD
+	public static int[] getAccionesbyID(int id){
+		BaseDatos bd    = BaseDatos.createInstanceOfBD(); 
+		 String sql     = "SELECT * FROM accusuarios WHERE aID ="+ id;
+		 int uID        = 0;
+		 int cont       = 0;
+		 int[] acciones = new int[CountbyID(id)];
+		 
+		 try (Connection conn = bd.getConnection();
+	             Statement stmt  = conn.createStatement();
+				 ResultSet rs = bd.Query(sql);){
+	            
+	            while (rs.next()) {
+	               uID            = rs.getInt("uID");
+	               acciones[cont] = uID;	
+	               cont++;
+	            }
+	            bd.closeConnection();
+	        } catch (SQLException e) {
+	            System.out.println(e.getMessage());
+	        }
+		 return acciones;
+	}
+=======
+>>>>>>> d3e04532cc3137ceb069ffd453271a7dd3e02591
 }
