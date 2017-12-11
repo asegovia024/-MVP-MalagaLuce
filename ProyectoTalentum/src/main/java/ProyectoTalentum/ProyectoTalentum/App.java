@@ -27,6 +27,7 @@ public class App {
             @Override
             public void run() {
             	new Vistas.Login().setVisible(true);
+            	new Vistas.MpPanel().setVisible(true);
             }
         });
     }

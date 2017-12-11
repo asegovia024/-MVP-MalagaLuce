@@ -49,33 +49,6 @@ public class MpPanel extends JFrame
 
 	}
 
-	public static void main(String H[])
-
-	{
-
-		MpPanel p = new MpPanel();
-
-		p.show();
-
- 
-
-		//COLOCAMOS EL CODIGO QUE PERMITE CERRAR LA VENTANA
-
-		p.addWindowListener(new WindowAdapter()
-
-		{
-
-			public void windowClosing(WindowEvent evt)
-
-			{
-
-				System.exit(0);
-
-			}
-
-		});
-
-	}//FIN DEL MAIN
 
 
-}//FIN DE NUESTRA CLASE
+}
