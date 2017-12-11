@@ -1,29 +1,32 @@
 package Vistas;
 
+import ProyectoTalentum.ProyectoTalentum.MapImgEnJpanel;
 
-import java.awt.Graphics;
-import javax.swing.ImageIcon;
-import javax.swing.JPanel;
+public class MpPanel extends javax.swing.JFrame {
+    
+    public MpPanel() {
+        initComponents();
+        this.setLocationRelativeTo(null); // Centrar pantalla 
+    }
+                            
+    private void initComponents() {} // Codigo generado automaticamente.                        
 
-public class MpPanel {
-	extends javax.swing.JPanel {
-	    int x, y;
+    private void jButtonIniciarActionPerformed(java.awt.event.ActionEvent evt) {
+    	MapImgEnJpanel im = new MapImgEnJpanel(jPanel1);
+        jPanel1.add(im).repaint();
+    }                                              
 
-	    public Imagen(JPanel jPanel1) {
-	        this.x = jPanel1.getWidth();
-	        this.y = jPanel1.getHeight();
-	        this.setSize(x, y);
-	    }
+    public static void main(String args[]) {
+        java.awt.EventQueue.invokeLater(new Runnable() {
+            public void run() {
+                new MpPanel().setVisible(true);
+            }
+        });
+    }
 
-	    @Override
-	    public void paint(Graphics g) {
-	        ImageIcon Img = new ImageIcon(getClass().getResource("/Images/imagen1.png"));
-	        g.drawImage(Img.getImage(), 0, 0, x, y, null);
-	    }    
-
-	}
-
-
-
+    // Variables declaration - do not modify                     
+    private javax.swing.JButton jButtonIniciar;
+    private javax.swing.JPanel jPanel1;
+    // End of variables declaration                   
 
 }
