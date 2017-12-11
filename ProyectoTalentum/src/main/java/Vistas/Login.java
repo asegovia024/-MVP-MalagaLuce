@@ -63,14 +63,18 @@ public class Login extends JFrame  {
 				//funcion de login
 			
 				try {
-					
+					JLabel jlabel = null;
+
 					if(helper_bd_usuario.login(textUsername.getText(), ControladorUser.encripta(labelPassword.getText()))){
 						//carga otra vista o haz algo impresionante 
+						 System.out.print("si se ha podido loggear por la seguridad");
 					}
 					
 					
 				} catch (NoSuchAlgorithmException e) {
 					// TODO Auto-generated catch block
+					 System.out.print("no se ha podido loggear por la seguridad");
+
 					e.printStackTrace();
 				}
 				

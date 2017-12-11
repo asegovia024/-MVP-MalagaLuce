@@ -4,11 +4,14 @@ package ProyectoTalentum.ProyectoTalentum;
 import java.awt.GridBagConstraints;
 import java.awt.GridBagLayout;
 import java.awt.Insets;
+import java.awt.event.WindowAdapter;
+import java.awt.event.WindowEvent;
 import java.security.NoSuchAlgorithmException;
 
 import javax.swing.*;
 
 import ProyectoTalentum.ProyectoTalentum.ControladorUser;
+import Vistas.MpPanel;
 
 
 public class App {
@@ -32,8 +35,26 @@ public class App {
             @Override
             public void run() {
             	new Vistas.Login().setVisible(true);
-            	new Vistas.MpPanel().setVisible(true);
+            	new Vistas.MpPanel().setVisible(false);
             }
         });
+        
+		//COLOCAMOS EL CODIGO QUE PERMITE CERRAR LA VENTANA
+		MpPanel p = new MpPanel();
+
+		p.show();
+		p.addWindowListener(new WindowAdapter()
+
+		{
+
+			public void windowClosing(WindowEvent evt)
+
+			{
+
+				System.exit(0);
+
+			}
+
+		});
     }
 }
