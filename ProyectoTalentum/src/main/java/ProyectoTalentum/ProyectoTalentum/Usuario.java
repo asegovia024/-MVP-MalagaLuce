@@ -30,11 +30,10 @@ public class Usuario {
 		ID = id;
 		Nombre = nombre;
 		Correo = correo;
-		Pass = pass;
-		Puntos =0;
-		Fecha =fecha;
-		Nick = nick;
-		 
+		Pass   = pass;
+		Puntos = 0;
+		Fecha  = fecha;
+		Nick   = nick;	 
 		
 	}
 	

@@ -7,8 +7,6 @@ import java.sql.SQLException;
 import java.sql.Statement;
 import java.util.ArrayList;
 import java.util.Iterator;
-
-import ProyectoTalentum.ProyectoTalentum.Equipo;
 import ProyectoTalentum.ProyectoTalentum.Usuario;
 
 public class helper_bd_usuario {
@@ -21,7 +19,7 @@ public class helper_bd_usuario {
 	            pstmt.setString(2, usuario.getPass());
 	            pstmt.setString(3, usuario.getCorreo());
 	            pstmt.setInt(4, usuario.getPuntos());
-	          //  pstmt.setInt(5, usuario.getTeam());
+	          //pstmt.setInt(5, usuario.getTeam());
 	            pstmt.setInt(5, usuario.getTeam().getID());
 
 	            pstmt.executeUpdate(); 
