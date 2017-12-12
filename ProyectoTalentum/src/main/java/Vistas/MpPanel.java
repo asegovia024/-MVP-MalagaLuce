@@ -10,27 +10,13 @@ import java.awt.event.*;
 public class MpPanel extends JFrame
 
 {
-
-
-	ImageIcon imagen = new ImageIcon("src/resources/mapa.png");//soporta al menos .jpg y .png
-
-	//LAS IMAGENES, SE DEBEN COLOCAR DENTRO DE COMPONENTES
-
-
-	JLabel etiqueta = new JLabel(imagen);
-
+	
 	public MpPanel()
 
 	{
-		
-
-
-
 		super("Muestra de Imagen en JAVA...");
-
- 		//AGREGAMOS LA ETIQUETA QUE CONTIENE LA IMAGEN AL FRAME
-
-		getContentPane().add(etiqueta);
+		//SE AÑADE LA IMAGEN AL PANEL
+		getContentPane().add(new panelMap());
 
 		//ESTABLECEMOS EL TAMAÑO DEL Jpanel
 		

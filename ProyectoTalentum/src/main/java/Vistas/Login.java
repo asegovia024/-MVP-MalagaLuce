@@ -78,12 +78,7 @@ public class Login extends JFrame  {
 					
 
 
-PointerInfo a = MouseInfo.getPointerInfo();
-Point b = a.getLocation();
-int x = (int) b.getX();
-int y = (int) b.getY();
-System.out.print(y + "y ");
-System.out.print(x + " x ");
+
 
 
 
