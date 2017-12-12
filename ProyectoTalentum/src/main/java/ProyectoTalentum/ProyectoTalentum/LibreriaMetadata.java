@@ -26,15 +26,28 @@ import com.drew.imaging.ImageProcessingException;
 import com.drew.imaging.jpeg.JpegMetadataReader;
 import com.drew.imaging.jpeg.JpegProcessingException;
 import com.drew.imaging.jpeg.JpegSegmentMetadataReader;
+import com.drew.lang.GeoLocation;
 import com.drew.metadata.Directory;
 import com.drew.metadata.Metadata;
 import com.drew.metadata.Tag;
 import com.drew.metadata.exif.ExifReader;
+import com.drew.metadata.exif.ExifSubIFDDirectory;
+import com.drew.metadata.exif.GpsDirectory;
 import com.drew.metadata.iptc.IptcReader;
 
 import java.io.File;
 import java.io.IOException;
+import java.time.LocalDate;
+import java.time.LocalDateTime;
+import java.time.ZoneId;
 import java.util.Arrays;
+import java.util.Date;
+
+
+import java.time.format.DateTimeFormatter ;
+
+
+
 
 /**
  * Showcases the most popular ways of using the metadata-extractor library.
@@ -48,70 +61,29 @@ public class LibreriaMetadata
     public static void main(String[] args)
     {
         File file = new File("src/resources/prueba.jpg");
-
-        // There are multiple ways to get a Metadata object for a file
-
         //
-        // SCENARIO 1: UNKNOWN FILE TYPE
-        //
-        // This is the most generic approach.  It will transparently determine the file type and invoke the appropriate
-        // readers.  In most cases, this is the most appropriate usage.  This will handle JPEG, TIFF, GIF, BMP and RAW
-        // (CRW/CR2/NEF/RW2/ORF) files and extract whatever metadata is available and understood.
+        // UNKNOWN FILE TYPE
         //
         try {
             Metadata metadata = ImageMetadataReader.readMetadata(file);
 
-            print(metadata, "Using ImageMetadataReader");
+         //   print(metadata, "Using ImageMetadataReader");
+            printDate(metadata);
+            printGPS(metadata);
         } catch (ImageProcessingException e) {
             print(e);
         } catch (IOException e) {
             print(e);
         }
 
-        //
-        // SCENARIO 2: SPECIFIC FILE TYPE
-        //
-        // If you know the file to be a JPEG, you may invoke the JpegMetadataReader, rather than the generic reader
-        // used in approach 1.  Similarly, if you knew the file to be a TIFF/RAW image you might use TiffMetadataReader,
-        // PngMetadataReader for PNG files, BmpMetadataReader for BMP files, or GifMetadataReader for GIF files.
-        //
-        // Using the specific reader offers a very, very slight performance improvement.
-        //
-        try {
-            Metadata metadata = JpegMetadataReader.readMetadata(file);
-
-            print(metadata, "Using JpegMetadataReader");
-        } catch (JpegProcessingException e) {
-            print(e);
-        } catch (IOException e) {
-            print(e);
-        }
-
-        //
-        // APPROACH 3: SPECIFIC METADATA TYPE
-        //
-        // If you only wish to read a subset of the supported metadata types, you can do this by
-        // passing the set of readers to use.
-        //
-        // This currently only applies to JPEG file processing.
-        //
-        try {
-            // We are only interested in handling
-            Iterable<JpegSegmentMetadataReader> readers = Arrays.asList(new ExifReader(), new IptcReader());
-
-            Metadata metadata = JpegMetadataReader.readMetadata(file, readers);
-
-            print(metadata, "Using JpegMetadataReader for Exif and IPTC only");
-        } catch (JpegProcessingException e) {
-            print(e);
-        } catch (IOException e) {
-            print(e);
-        }
     }
 
     /**
      * Write all extracted values to stdout.
      */
+    
+    
+    
     private static void print(Metadata metadata, String method)
     {
         System.out.println();
@@ -140,6 +112,36 @@ public class LibreriaMetadata
                 System.err.println("ERROR: " + error);
             }
         }
+    }
+    
+    private static void printDate(Metadata metadata)
+    {
+    	
+    	// obtain the Exif directory
+    	ExifSubIFDDirectory directory
+    	    = metadata.getFirstDirectoryOfType(ExifSubIFDDirectory.class);
+
+    	// query the tag's value
+    	Date date = directory.getDate(ExifSubIFDDirectory.TAG_DATETIME_ORIGINAL);
+    	
+    	LocalDateTime date2 = date.toInstant().atZone(ZoneId.systemDefault()).toLocalDateTime();
+        System.out.println(date2.format(DateTimeFormatter.ISO_WEEK_DATE ));
+
+    	
+    }
+    
+    private static void printGPS(Metadata metadata)
+    {
+    	
+    	// obtain the Exif directory
+    	
+    	GpsDirectory directory = metadata.getFirstDirectoryOfType(GpsDirectory.class);
+    	
+    	GeoLocation gpsPrueba = directory.getGeoLocation();
+    	// query the tag's value
+        System.out.println(gpsPrueba);
+
+    	
     }
 
     private static void print(Exception exception)

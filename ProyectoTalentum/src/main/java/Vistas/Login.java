@@ -1,9 +1,20 @@
 package Vistas;
 import java.awt.GridBagConstraints;
+
+import ProyectoTalentum.ProyectoTalentum.ControladorUser;
+import bdtest.helper_bd_usuario;
+
 import java.awt.GridBagLayout;
 import java.awt.Insets;
+import java.awt.MouseInfo;
+import java.awt.Point;
+import java.awt.PointerInfo;
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
+import java.security.NoSuchAlgorithmException;
 
 import javax.swing.*;
+import javax.xml.bind.Marshaller.Listener;
 
 
 
@@ -18,6 +29,7 @@ public class Login extends JFrame  {
     
    public Login() {
        super("JPanel Demo Program");
+       
         
        // create a new panel with GridBagLayout manager
        JPanel newPanel = new JPanel(new GridBagLayout());
@@ -49,14 +61,73 @@ public class Login extends JFrame  {
        constraints.gridwidth = 2;
        constraints.anchor = GridBagConstraints.CENTER;
        newPanel.add(buttonLogin, constraints);
-        
+       
+        buttonLogin.addActionListener(new ActionListener() {
+			
+			@Override
+			public void actionPerformed(ActionEvent arg0) {
+				//funcion de login
+				
+				//Bucle
+			
+				try {
+					JLabel jlabel = null;
+					char[] arrayC = fieldPassword.getPassword();
+					String pass = new String(arrayC);
+					
+					
+
+
+PointerInfo a = MouseInfo.getPointerInfo();
+Point b = a.getLocation();
+int x = (int) b.getX();
+int y = (int) b.getY();
+System.out.print(y + "y ");
+System.out.print(x + " x ");
+
+
+
+					if(helper_bd_usuario.login(textUsername.getText(), ControladorUser.encripta(pass))){
+						//carga otra vista o haz algo impresionante 
+						 System.out.print("si se ha podido loggear ");
+						 
+							new Vistas.MpPanel().setVisible(true);
+							setVisible(false);
+						 
+						 
+					}else{
+						setVisible(true);
+
+						
+						 System.out.print("no se ha podido loggear"); //muestra que no logea
+					}
+					
+					
+					 
+				} catch (NoSuchAlgorithmException e) {
+					// TODO Auto-generated catch block
+					 System.out.print("no se ha podido loggear por la seguridad");
+
+					e.printStackTrace();
+				}
+				
+			
+				
+
+			}
+		});
+       
+      
        // set border for the panel
+       
        newPanel.setBorder(BorderFactory.createTitledBorder(
                BorderFactory.createEtchedBorder(), "Login Panel"));
         
        // add the panel to this frame
        add(newPanel);
         
+       
+
        
        pack();
        setLocationRelativeTo(null);

@@ -2,6 +2,7 @@ package bdtest;
 
 import java.sql.Connection;
 import java.sql.DriverManager;
+import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Statement;
@@ -14,10 +15,14 @@ public class BaseDatos {
 	
 	//Esta variable constante almacena la ruta de la base de datos SQLite
 	private static final String URL_DEFAULT = "jdbc:sqlite:C:/workspace/db/proyecto.s3db";
+	
+	//Conexion extra
+	//private static final String URL_DEFAULT = "jdbc:sqlite:C:/workspace/db/proyecto.s3db";
+
 	private Connection conn = null;
 	private static BaseDatos bd;
 	
-	private BaseDatos(){
+	public BaseDatos(){
 		try {            
             // create a connection to the database
         	
@@ -28,17 +33,7 @@ public class BaseDatos {
             System.out.println(e.getMessage());
         }
 	}
-	 public static BaseDatos createInstanceOfBD() {
-	        if (bd == null){
-	            bd = new BaseDatos();
-	        }
-	        else{
-	            //no conecta
-	        }
-	        
-	        return bd;
-	 }
-	 
+	
     /**
      * Realiza la conexión a la base de datos SQLite, 
      * @return Devuelve la conexión de tipo Connection 
