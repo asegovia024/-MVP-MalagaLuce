@@ -9,7 +9,7 @@ import java.sql.Statement;
 public class helper_bd_accusuarios {
 	public static void insert(int uID, int aID) {
         String sql   = "INSERT INTO accusuarios(uID, aID) VALUES (?,?)";
-        BaseDatos bd = BaseDatos.createInstanceOfBD();    
+        BaseDatos bd = new BaseDatos();    
         try (Connection conn = bd.getConnection();
 	         PreparedStatement pstmt = conn.prepareStatement(sql)) {
 	            pstmt.setInt(1, uID);
@@ -21,7 +21,7 @@ public class helper_bd_accusuarios {
         }
     }
 	public static int Count(){
-		BaseDatos bd = BaseDatos.createInstanceOfBD();
+		BaseDatos bd = new BaseDatos();
 		String sql   = "SELECT count(*) FROM accusuarios";
 		ResultSet rs = bd.Query(sql);
 		int count = 0;
@@ -35,7 +35,7 @@ public class helper_bd_accusuarios {
 		return count;
 	}
 	public static int CountbyID(int id){
-		BaseDatos bd = BaseDatos.createInstanceOfBD();
+		BaseDatos bd = new BaseDatos();
 		String sql   = "SELECT count(*) FROM accusuarios where aID ="+ id;
 		ResultSet rs = bd.Query(sql);
 		int count = 0;
@@ -49,7 +49,7 @@ public class helper_bd_accusuarios {
 		return count;
 	}
 	public static int[][] getAcciones(){
-		BaseDatos bd = BaseDatos.createInstanceOfBD(); 
+		BaseDatos bd = new BaseDatos(); 
 		 String sql      = "SELECT * FROM accusuarios";
 		 int uID  = 0;
 		 int aID  = 0;
@@ -73,7 +73,7 @@ public class helper_bd_accusuarios {
 		 return acciones;
 	}
 	public static int[] getAccionesbyID(int id){
-		BaseDatos bd    = BaseDatos.createInstanceOfBD(); 
+		BaseDatos bd    = new BaseDatos(); 
 		 String sql     = "SELECT * FROM accusuarios WHERE aID ="+ id;
 		 int uID        = 0;
 		 int cont       = 0;

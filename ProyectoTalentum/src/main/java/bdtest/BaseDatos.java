@@ -22,7 +22,7 @@ public class BaseDatos {
 	private Connection conn = null;
 	private static BaseDatos bd;
 	
-	private BaseDatos(){
+	public BaseDatos(){
 		try {            
             // create a connection to the database
         	
@@ -33,17 +33,7 @@ public class BaseDatos {
             System.out.println(e.getMessage());
         }
 	}
-	 public static BaseDatos createInstanceOfBD() {
-	        if (bd == null){
-	            bd = new BaseDatos();
-	        }
-	        else{
-	            //no conecta
-	        }
-	        
-	        return bd;
-	 }
-	 
+	
     /**
      * Realiza la conexión a la base de datos SQLite, 
      * @return Devuelve la conexión de tipo Connection 

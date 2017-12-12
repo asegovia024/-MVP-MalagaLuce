@@ -17,7 +17,7 @@ public class helper_bd_equipo {
 	 */
 	public static void insert(Equipo equipo) {
 	        String sql   = "INSERT INTO equipo(nombre, color, escudo) VALUES(?,?,?)";
-	        BaseDatos bd = BaseDatos.createInstanceOfBD();     
+	        BaseDatos bd = new BaseDatos();     
 	        try (Connection conn = bd.getConnection();
 		         PreparedStatement pstmt = conn.prepareStatement(sql)) {
 	        		//se prepara el statment
@@ -36,7 +36,7 @@ public class helper_bd_equipo {
 	 * @return ArrayList<Equipo>
 	 */
 	public static ArrayList<Equipo> getEquipo() {
-		 BaseDatos bd  = BaseDatos.createInstanceOfBD(); 
+		 BaseDatos bd  = new BaseDatos(); 
 		 String sql    = "SELECT * FROM equipo";
 		 String escudo = "";
 		 String nombre = "";

@@ -12,7 +12,7 @@ import ProyectoTalentum.ProyectoTalentum.Usuario;
 public class helper_bd_usuario {
 	public static void insert(Usuario usuario){
 		String sql = "INSERT INTO usuario(nombre, password, correo, puntos, eID) VALUES(?,?,?,?,?)";
-        BaseDatos bd = BaseDatos.createInstanceOfBD();
+        BaseDatos bd = new BaseDatos();
         try (Connection conn = bd.getConnection();
 	         PreparedStatement pstmt = conn.prepareStatement(sql)) {
 	            pstmt.setString(1, usuario.getNombre());
@@ -29,7 +29,7 @@ public class helper_bd_usuario {
         }
 	}
 	public static ArrayList<Usuario> getUsuario() {
-		 BaseDatos bd = BaseDatos.createInstanceOfBD(); 
+		 BaseDatos bd = new BaseDatos(); 
 		 String sql      = "SELECT * FROM usuario";
 		 String nombre   = "";
 		 String password = "";
@@ -88,7 +88,7 @@ public class helper_bd_usuario {
 	
 	public static boolean login(String correo, String pass){
 		String sql = "SELECT password FROM usuario WHERE correo = ?";
-		BaseDatos bd = BaseDatos.createInstanceOfBD(); 
+		BaseDatos bd = new BaseDatos(); 
 		boolean login_correcto = false;
 		String password = "";
 		

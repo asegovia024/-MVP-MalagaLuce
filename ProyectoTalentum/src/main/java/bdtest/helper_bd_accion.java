@@ -17,7 +17,7 @@ import ProyectoTalentum.ProyectoTalentum.Usuario;
 public class helper_bd_accion {
 	public static void insert(Accion accion) {
         String sql   = "INSERT INTO accion(coordenadas, foto_inicio, foto_fin, fecha_inicio, fecha_fin, validado) VALUES(?,?,?,?,?,?)";
-        BaseDatos bd = BaseDatos.createInstanceOfBD();     
+        BaseDatos bd = new BaseDatos();     
         try (Connection conn = bd.getConnection();
 	         PreparedStatement pstmt = conn.prepareStatement(sql)) {
         		//se prepara el statment
@@ -36,7 +36,7 @@ public class helper_bd_accion {
     }
 	
 public static ArrayList<Accion> getAccion() {
-	BaseDatos bd      = BaseDatos.createInstanceOfBD(); 
+	BaseDatos bd      = new BaseDatos();
 	String sql        = "SELECT * FROM accion";
 	int id            = 0;
 	String FechaInicio  = "";
