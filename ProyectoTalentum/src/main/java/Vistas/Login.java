@@ -72,7 +72,7 @@ public class Login extends JFrame  {
 						 System.out.print("si se ha podido loggear ");
 						 
 					}else{
-						 System.out.print("no se ha podido loggear");
+						 System.out.print("no se ha podido loggear"); //muestra que no logea
 					}
 					
 					
