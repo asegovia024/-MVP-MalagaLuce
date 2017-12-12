@@ -84,14 +84,19 @@ public class helper_bd_usuario {
 		}
 		return usuario;
 	 }
+	
+	
 	public static boolean login(String correo, String pass){
 		String sql = "SELECT password FROM usuario WHERE correo = ?";
 		BaseDatos bd = BaseDatos.createInstanceOfBD(); 
 		boolean login_correcto = false;
 		String password = "";
+		
+		
 		 try (Connection conn = bd.getConnection();
 	          Statement stmt  = conn.createStatement();
 			  PreparedStatement pstmt = conn.prepareStatement(sql)){
+			 
 			 
 			 pstmt.setString(1, correo);
 			 ResultSet rs  = pstmt.executeQuery();
@@ -101,8 +106,14 @@ public class helper_bd_usuario {
 			 }
 			 
 		 } catch (SQLException e) {
-			 System.out.println(e.getMessage());
+			 System.out.println("Tu puta madre");
 		 }
+		
+		
+		
+	
+		 
+		 
 		 bd.closeConnection();
 		return login_correcto;
 	}

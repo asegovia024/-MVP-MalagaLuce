@@ -65,9 +65,9 @@ public class Login extends JFrame  {
 				try {
 					JLabel jlabel = null;
 
-					if(helper_bd_usuario.login(textUsername.getText(), ControladorUser.encripta(labelPassword.getText()))){
+					if(helper_bd_usuario.login(textUsername.getText(), ControladorUser.encripta(fieldPassword.getText()))){
 						//carga otra vista o haz algo impresionante 
-						 System.out.print("si se ha podido loggear por la seguridad");
+						 System.out.print("si se ha podido loggear ");
 					}
 					
 					
@@ -78,6 +78,8 @@ public class Login extends JFrame  {
 					e.printStackTrace();
 				}
 				
+				new Vistas.MpPanel().setVisible(true);
+				setVisible(false);
 				
 
 			}

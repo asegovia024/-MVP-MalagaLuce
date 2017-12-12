@@ -43,7 +43,7 @@ public class MpPanel extends JFrame
         setLocationRelativeTo(null); //Pone la ventana en el centro
         setResizable(false); //No cambiar el tamaño de la ventana
         pack();
-        setVisible(true);
+        setVisible(false);
         
         
 
