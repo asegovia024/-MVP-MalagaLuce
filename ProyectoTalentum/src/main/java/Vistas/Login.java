@@ -64,10 +64,15 @@ public class Login extends JFrame  {
 			
 				try {
 					JLabel jlabel = null;
+					char[] arrayC = fieldPassword.getPassword();
+					String pass = new String(arrayC);
 
-					if(helper_bd_usuario.login(textUsername.getText(), ControladorUser.encripta(fieldPassword.getText()))){
+					if(helper_bd_usuario.login(textUsername.getText(), ControladorUser.encripta(pass))){
 						//carga otra vista o haz algo impresionante 
 						 System.out.print("si se ha podido loggear ");
+						 
+					}else{
+						 System.out.print("no se ha podido loggear");
 					}
 					
 					
