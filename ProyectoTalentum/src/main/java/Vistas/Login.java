@@ -71,6 +71,7 @@ public class Login extends JFrame  {
 					}
 					
 					
+					
 				} catch (NoSuchAlgorithmException e) {
 					// TODO Auto-generated catch block
 					 System.out.print("no se ha podido loggear por la seguridad");
