@@ -6,6 +6,9 @@ import bdtest.helper_bd_usuario;
 
 import java.awt.GridBagLayout;
 import java.awt.Insets;
+import java.awt.MouseInfo;
+import java.awt.Point;
+import java.awt.PointerInfo;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.security.NoSuchAlgorithmException;
@@ -68,6 +71,18 @@ public class Login extends JFrame  {
 					JLabel jlabel = null;
 					char[] arrayC = fieldPassword.getPassword();
 					String pass = new String(arrayC);
+					
+					
+
+
+PointerInfo a = MouseInfo.getPointerInfo();
+Point b = a.getLocation();
+int x = (int) b.getX();
+int y = (int) b.getY();
+System.out.print(y + "y ");
+System.out.print(x + " x ");
+
+
 
 					if(helper_bd_usuario.login(textUsername.getText(), ControladorUser.encripta(pass))){
 						//carga otra vista o haz algo impresionante 

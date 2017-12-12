@@ -37,8 +37,17 @@ import com.drew.metadata.iptc.IptcReader;
 
 import java.io.File;
 import java.io.IOException;
+import java.time.LocalDate;
+import java.time.LocalDateTime;
+import java.time.ZoneId;
 import java.util.Arrays;
 import java.util.Date;
+
+
+import java.time.format.DateTimeFormatter ;
+
+
+
 
 /**
  * Showcases the most popular ways of using the metadata-extractor library.
@@ -113,9 +122,10 @@ public class LibreriaMetadata
     	    = metadata.getFirstDirectoryOfType(ExifSubIFDDirectory.class);
 
     	// query the tag's value
-    	Date date
-    	    = directory.getDate(ExifSubIFDDirectory.TAG_DATETIME_ORIGINAL);
-        System.out.println(date);
+    	Date date = directory.getDate(ExifSubIFDDirectory.TAG_DATETIME_ORIGINAL);
+    	
+    	LocalDateTime date2 = date.toInstant().atZone(ZoneId.systemDefault()).toLocalDateTime();
+        System.out.println(date2.format(DateTimeFormatter.ISO_WEEK_DATE ));
 
     	
     }
