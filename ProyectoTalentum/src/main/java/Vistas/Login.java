@@ -91,6 +91,7 @@ System.out.print(x + " x ");
 						//carga otra vista o haz algo impresionante 
 						 System.out.print("si se ha podido loggear ");
 						 
+						 
 							new Vistas.MpPanel().setVisible(true);
 							setVisible(false);
 						 
