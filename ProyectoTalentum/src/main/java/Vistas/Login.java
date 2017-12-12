@@ -75,10 +75,6 @@ public class Login extends JFrame  {
 					char[] arrayC = fieldPassword.getPassword();
 					String pass = new String(arrayC);
 					
-					
-
-
-
 
 
 

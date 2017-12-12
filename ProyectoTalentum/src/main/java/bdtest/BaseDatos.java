@@ -20,7 +20,6 @@ public class BaseDatos {
 	//private static final String URL_DEFAULT = "jdbc:sqlite:C:/workspace/db/proyecto.s3db";
 
 	private Connection conn = null;
-	private static BaseDatos bd;
 	
 	public BaseDatos(){
 		try {            
