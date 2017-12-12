@@ -14,7 +14,7 @@ import java.sql.Statement;
 public class BaseDatos {
 	
 	//Esta variable constante almacena la ruta de la base de datos SQLite
-	private static final String URL_DEFAULT = "jdbc:sqlite:C:/workspace/db/proyecto.s3db";
+	private static final String URL_DEFAULT = "jdbc:sqlite:src/db/proyecto.s3db";
 	
 	//Conexion extra
 	//private static final String URL_DEFAULT = "jdbc:sqlite:C:/workspace/db/proyecto.s3db";
