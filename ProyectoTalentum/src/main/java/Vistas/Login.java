@@ -61,6 +61,8 @@ public class Login extends JFrame  {
 			@Override
 			public void actionPerformed(ActionEvent arg0) {
 				//funcion de login
+				
+				//Bucle
 			
 				try {
 					JLabel jlabel = null;
@@ -71,12 +73,19 @@ public class Login extends JFrame  {
 						//carga otra vista o haz algo impresionante 
 						 System.out.print("si se ha podido loggear ");
 						 
+							new Vistas.MpPanel().setVisible(true);
+							setVisible(false);
+						 
+						 
 					}else{
+						setVisible(true);
+
+						
 						 System.out.print("no se ha podido loggear"); //muestra que no logea
 					}
 					
 					
-					
+					 
 				} catch (NoSuchAlgorithmException e) {
 					// TODO Auto-generated catch block
 					 System.out.print("no se ha podido loggear por la seguridad");
@@ -84,8 +93,7 @@ public class Login extends JFrame  {
 					e.printStackTrace();
 				}
 				
-				new Vistas.MpPanel().setVisible(true);
-				setVisible(false);
+			
 				
 
 			}

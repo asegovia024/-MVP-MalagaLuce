@@ -29,7 +29,7 @@ public class ControladorUser {
 		
 		// String hash=sb.toString(); //2bb80d5...527a25b
 		 
-		 
+		//System.out.print(sb.toString());
 		return sb.toString();
 		
 		
