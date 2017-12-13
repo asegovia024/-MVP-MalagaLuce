@@ -2,7 +2,7 @@ package Vistas;
 import java.awt.*;
 
 import javax.swing.*;
-
+import javaxt.io.Image;
  
 
 public class MpPanel extends JFrame
@@ -106,9 +106,11 @@ public class MpPanel extends JFrame
 	}
 	
 	private void generarFotoUsuario() {
+		Image imagen = new Image("src/resources/user/user1.png");
+		imagen.resize(72, 72, true);
 		this.fotousuario = new JPanel();
-		JLabel texto = new JLabel("Foto usuario aqui");
-		fotousuario.add(texto);
+		JLabel etiqueta = new JLabel(new ImageIcon(imagen.getImage()));
+		this.fotousuario.add(etiqueta);
 		
 	}
 	private void generarBotonesSuperior() {

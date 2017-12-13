@@ -117,6 +117,36 @@ public class helper_bd_usuario {
 	        }
 		 return listausuarios;
 	 }
+	public static Usuario getUsuarioByCorreo(String correo) {
+		 BaseDatos bd = new BaseDatos(); 
+		 String sql      = "SELECT * FROM usuario WHERE correo = ?";
+		 String nombre   = "";
+		 String password = "";
+		 String nick     = "";
+		 int puntos      = 0;
+		 int team        = 0;
+		 int id          = 0;
+		 Usuario usuario = null;
+		 try (Connection conn = bd.getConnection();
+	             Statement stmt  = conn.createStatement();
+				 PreparedStatement pstmt = conn.prepareStatement(sql)){
+				 pstmt.setString(1, correo);
+				 ResultSet rs  = pstmt.executeQuery();
+	               id       = rs.getInt("uID");
+	               team     = rs.getInt("eID");
+	               puntos   = rs.getInt("puntos");
+	               nombre   = rs.getString("nombre");
+	               password = rs.getString("password");
+	               correo   = rs.getString("correo");
+	               nick     = rs.getString("nick");	                              
+	      		   usuario = new Usuario(id, nombre, correo, password, correo, nick);
+	      		   usuario.setPuntos(puntos);
+	            bd.closeConnection();
+	        } catch (SQLException e) {
+	            System.out.println(e.getMessage());
+	        }
+		 return usuario;
+	 }
 	public static Usuario getUsuariofromList(int id, ArrayList<Usuario> lista) {
 		 Iterator<Usuario> iterator = lista.iterator();
 		 boolean noencontrado = true;
@@ -141,23 +171,16 @@ public class helper_bd_usuario {
 		 try (Connection conn = bd.getConnection();
 	          Statement stmt  = conn.createStatement();
 			  PreparedStatement pstmt = conn.prepareStatement(sql)){
-			 
-			 
-			 pstmt.setString(1, correo);
-			 ResultSet rs  = pstmt.executeQuery();
-			 password = rs.getString("password");
-			 if(pass.equals(password)){
-				 login_correcto = true;
+				 pstmt.setString(1, correo);
+				 ResultSet rs  = pstmt.executeQuery();
+				 password = rs.getString("password");
+				 if(pass.equals(password)){
+					 login_correcto = true;
 			 }
 			 
 		 } catch (SQLException e) {
-			 System.out.println("Tu puta madre");
-		 }
-		
-		
-		
-	
-		 
+			 
+		 } 
 		 
 		 bd.closeConnection();
 		return login_correcto;
