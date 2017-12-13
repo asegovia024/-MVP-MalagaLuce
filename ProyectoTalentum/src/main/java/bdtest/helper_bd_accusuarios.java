@@ -14,10 +14,11 @@ public class helper_bd_accusuarios {
 	         PreparedStatement pstmt = conn.prepareStatement(sql)) {
 	            pstmt.setInt(1, uID);
 	            pstmt.setInt(2, aID);
-	            pstmt.executeUpdate(); 
-	            bd.closeConnection();
+	            pstmt.executeUpdate();
         } catch (SQLException e) {
             System.out.println(e.getMessage());
+        } finally {
+        	bd.closeConnection();
         }
     }
 	/**
@@ -34,7 +35,9 @@ public class helper_bd_accusuarios {
 		} catch (SQLException e) {
 			System.out.println(e.getMessage());
 			e.printStackTrace();
-		}
+		} finally {
+        	bd.closeConnection();
+        }
 		return count;
 	}
 	public static int CountbyID(int id){
@@ -48,7 +51,9 @@ public class helper_bd_accusuarios {
 		} catch (SQLException e) {
 			System.out.println(e.getMessage());
 			e.printStackTrace();
-		}
+		} finally {
+        	bd.closeConnection();
+        }
 		return count;
 	}
 	/**
@@ -71,9 +76,10 @@ public class helper_bd_accusuarios {
 	               acciones[cont] = uID;	
 	               cont++;
 	            }
-	            bd.closeConnection();
 	        } catch (SQLException e) {
 	            System.out.println(e.getMessage());
+	        } finally {
+	        	bd.closeConnection();
 	        }
 		 return acciones;
 	}

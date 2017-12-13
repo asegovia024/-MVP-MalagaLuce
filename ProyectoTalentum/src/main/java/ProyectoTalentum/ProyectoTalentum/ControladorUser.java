@@ -34,5 +34,13 @@ public class ControladorUser {
 		
 		
 	}
+	public static boolean esAdmin(Usuario usuario) {
+		if(usuario.getSuper()){
+			return true;
+		}
+		else {
+			return false;
+		}
+	}
 
 }

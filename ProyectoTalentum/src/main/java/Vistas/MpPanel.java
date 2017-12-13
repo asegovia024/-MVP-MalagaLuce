@@ -5,6 +5,7 @@ import java.awt.event.ActionListener;
 
 import javax.swing.*;
 
+import ProyectoTalentum.ProyectoTalentum.ControladorUser;
 import ProyectoTalentum.ProyectoTalentum.Usuario;
 import javaxt.io.Image;
  
@@ -22,6 +23,7 @@ public class MpPanel extends Framebase
 	JPanel botonessuperior;
 	JButton validar;
 	JButton ranking;
+	Usuario usuario;
 	public MpPanel()
 
 	{
@@ -35,6 +37,7 @@ public class MpPanel extends Framebase
 
 	{
 		super("Muestra de Imagen en JAVA...");
+		this.usuario = usuario;
         generarFrame();
         
 
@@ -106,12 +109,18 @@ public class MpPanel extends Framebase
 		this.getContentPane().add(botonessuperior, constraints);
 	}
 	private void generarBotonesIzq() {
-		this.botonesizq = new JPanel(new GridLayout(0,1));
-		this.validar = new JButton("Validar");
+		
+		if(ControladorUser.esAdmin(this.usuario)) {
+			this.botonesizq = new JPanel(new GridLayout(0,1));
+			this.validar = new JButton("Validar");
+			botonesizq.add(validar);
+		}
+		else {
+			this.botonesizq = new JPanel();
+		}
 		this.ranking = new JButton("ranking");
 		llamadabotonranking();
 		botonesizq.add(ranking);
-		botonesizq.add(validar);
 	}
 	
 	private void generarFotoUsuario() {

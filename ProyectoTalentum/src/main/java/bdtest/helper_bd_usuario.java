@@ -21,11 +21,11 @@ public class helper_bd_usuario {
 	            pstmt.setInt(4, usuario.getPuntos());
 	          //pstmt.setInt(5, usuario.getTeam());
 	            pstmt.setInt(5, usuario.getTeam().getID());
-
 	            pstmt.executeUpdate(); 
-	            bd.closeConnection();
         } catch (SQLException e) {
             System.out.println(e.getMessage()); //TODO: cambiar por registro de logs?
+        } finally {
+        	bd.closeConnection();
         }
 	}
 	public static ArrayList<Usuario> getUsuario() {
@@ -35,6 +35,7 @@ public class helper_bd_usuario {
 		 String password = "";
 		 String correo   = "";
 		 String nick     = "";
+		 int Super       = 0;
 		 int puntos      = 0;
 		 int team        = 0;
 		 int id          = 0;
@@ -52,10 +53,13 @@ public class helper_bd_usuario {
 	               password = rs.getString("password");
 	               correo   = rs.getString("correo");
 	               nick     = rs.getString("nick");
+	               Super    = rs.getInt("super");
 	               
 	               
 	      		 Usuario usuario = new Usuario(id, nombre, correo, password, correo, nick);
 	      		 usuario.setPuntos(puntos);
+	      		if(Super == 1)
+		      		   usuario.setSuper(true);
 
 	             /*  usuario.setNombre(nombre);
 	               usuario.setCorreo(correo);
@@ -67,10 +71,11 @@ public class helper_bd_usuario {
 	      		 listausuarios.add(usuario);
 	               
 	            }
-	            bd.closeConnection();
 	        } catch (SQLException e) {
 	            System.out.println(e.getMessage());
-	        }
+	        }finally {
+	        	bd.closeConnection();
+	        } 
 		 return listausuarios;
 	 }
 	public static ArrayList<Usuario> getRanking() {
@@ -80,6 +85,7 @@ public class helper_bd_usuario {
 		 String password = "";
 		 String correo   = "";
 		 String nick     = "";
+		 int Super       = 0;
 		 int puntos      = 0;
 		 int team        = 0;
 		 int id          = 0;
@@ -97,10 +103,13 @@ public class helper_bd_usuario {
 	               password = rs.getString("password");
 	               correo   = rs.getString("correo");
 	               nick     = rs.getString("nick");
-	               
+	               Super    = rs.getInt("super");
 	               
 	      		 Usuario usuario = new Usuario(id, nombre, correo, password, correo, nick);
 	      		 usuario.setPuntos(puntos);
+	      		if(Super == 1)
+		      		   usuario.setSuper(true);
+	      		 
 	             /*  usuario.setNombre(nombre);
 	               usuario.setCorreo(correo);
 	               usuario.setPass(password);
@@ -111,9 +120,10 @@ public class helper_bd_usuario {
 	      		 listausuarios.add(usuario);
 	               
 	            }
-	            bd.closeConnection();
 	        } catch (SQLException e) {
 	            System.out.println(e.getMessage());
+	        } finally {
+	        	bd.closeConnection();
 	        }
 		 return listausuarios;
 	 }
@@ -123,6 +133,7 @@ public class helper_bd_usuario {
 		 String nombre   = "";
 		 String password = "";
 		 String nick     = "";
+		 int Super   = 0;
 		 int puntos      = 0;
 		 int team        = 0;
 		 int id          = 0;
@@ -138,12 +149,16 @@ public class helper_bd_usuario {
 	               nombre   = rs.getString("nombre");
 	               password = rs.getString("password");
 	               correo   = rs.getString("correo");
-	               nick     = rs.getString("nick");	                              
+	               nick     = rs.getString("nick");	         
+	               Super    = rs.getInt("super");
 	      		   usuario = new Usuario(id, nombre, correo, password, correo, nick);
 	      		   usuario.setPuntos(puntos);
-	            bd.closeConnection();
+	      		   if(Super == 1)
+	      		   usuario.setSuper(true);
 	        } catch (SQLException e) {
 	            System.out.println(e.getMessage());
+	        } finally {
+	        	bd.closeConnection();
 	        }
 		 return usuario;
 	 }
@@ -180,9 +195,9 @@ public class helper_bd_usuario {
 			 
 		 } catch (SQLException e) {
 			 
-		 } 
-		 
-		 bd.closeConnection();
+		 } finally {
+	        	bd.closeConnection();
+	        }
 		return login_correcto;
 	}
 }
