@@ -3,13 +3,15 @@ import java.awt.*;
 
 import javax.swing.*;
 
-import java.awt.event.*;
-
  
 
 public class MpPanel extends JFrame
 
 {
+	/**
+	 * 
+	 */
+	private static final long serialVersionUID = 1L;
 	panelMap mapa;
 	JPanel botonesizq;
 	JPanel fotousuario;
@@ -35,14 +37,14 @@ public class MpPanel extends JFrame
         Dimension pantallaD = pantalla.getScreenSize(); //Coge la resolución y la divide en 2 variables
         int width = pantallaD.width;
         int height = pantallaD.height;
-        this.setSize(new Dimension(width/2, height/2));
-        setPreferredSize(new Dimension(width/2, height/2)); //El tamaño de la ventana es 1/4 de la resolución
+        this.setSize(new Dimension(height/2, width/2));
+        setPreferredSize(new Dimension(height/2, width/2)); //El tamaño de la ventana es 1/4 de la resolución
         setLocationRelativeTo(null); //Pone la ventana en el centro
         setResizable(false); //No cambiar el tamaño de la ventana
         pack();
         setVisible(false);
 	}
-	private void colocarMapa() {
+	/*private void colocarMapa() {
 		this.mapa = new panelMap();
 		GridBagConstraints constraints = new GridBagConstraints();
 		constraints.gridx = 1;
@@ -51,9 +53,22 @@ public class MpPanel extends JFrame
 		constraints.gridwidth= 2;
 		this.getContentPane().add (mapa, constraints);
 		
+	}*/
+	private void colocarMapa() {
+		//JLabel mapal = new JLabel("mapa aqui");
+		this.mapa = new panelMap();
+		GridBagConstraints constraints = new GridBagConstraints();
+		constraints.gridx = 1;
+		constraints.gridy = 1;
+		constraints.gridheight = 1;
+		constraints.gridwidth= 2;
+		constraints.weighty = 1;
+		constraints.weightx = 1;
+		constraints.fill = GridBagConstraints.BOTH;
+		this.getContentPane().add (mapa, constraints);
+		
 	}
-	private void colocarBotonesIzq() {
-		this.botonesizq = new JPanel(new GridLayout(1, 0));
+	private void colocarBotonesIzq() {		
 		GridBagConstraints constraints = new GridBagConstraints();
 		constraints.gridx = 0;
 		constraints.gridy = 1;
@@ -68,19 +83,22 @@ public class MpPanel extends JFrame
 		constraints.gridy = 0;
 		constraints.gridheight = 1;
 		constraints.gridwidth = 1;
+		constraints.fill = GridBagConstraints.BOTH;
 		generarFotoUsuario();
 		this.getContentPane().add(fotousuario, constraints);
 	}
 	private void colocarBotonesSuperior() {
 		GridBagConstraints constraints = new GridBagConstraints();
-		constraints.gridx = 0;      //columna donde empieza
-		constraints.gridy = 1;      //fila donde empieza
+		constraints.gridx = 1;      //columna donde empieza
+		constraints.gridy = 0;      //fila donde empieza
 		constraints.gridheight = 1; //ocupa filas
 		constraints.gridwidth = 2;  //ocupa columnas
+		constraints.weightx = 1;
 		generarBotonesSuperior();
 		this.getContentPane().add(botonessuperior, constraints);
 	}
 	private void generarBotonesIzq() {
+		this.botonesizq = new JPanel(new GridLayout(0,1));
 		this.validar = new JButton("Validar");
 		this.ranking = new JButton("ranking");
 		botonesizq.add(ranking);
@@ -94,7 +112,7 @@ public class MpPanel extends JFrame
 		
 	}
 	private void generarBotonesSuperior() {
-		this.botonessuperior = new JPanel(new GridLayout(0, 3));
+		this.botonessuperior = new JPanel(new GridLayout(0,3));
 		JButton opciones = new JButton("Configuración");
 		JButton boton1 = new JButton("boton 1");
 		JButton boton2 = new JButton("boton 2");
