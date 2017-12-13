@@ -2,6 +2,7 @@ package Vistas;
 import java.awt.GridBagConstraints;
 
 import ProyectoTalentum.ProyectoTalentum.ControladorUser;
+import ProyectoTalentum.ProyectoTalentum.Usuario;
 import bdtest.helper_bd_usuario;
 
 import java.awt.GridBagLayout;
@@ -77,13 +78,15 @@ public class Login extends JFrame  {
 					
 
 
-
-					if(helper_bd_usuario.login(textUsername.getText(), ControladorUser.encripta(pass))){
+					String correo = textUsername.getText();
+					String password = ControladorUser.encripta(pass);
+					
+					if(helper_bd_usuario.login(correo, password)){
 						//carga otra vista o haz algo impresionante 
 						 System.out.print("si se ha podido loggear ");
 						 
-						 
-							new Vistas.MpPanel().setVisible(true);
+						 	Usuario usuarioLogeado = helper_bd_usuario.getUsuarioByCorreo(correo);
+							new Vistas.MpPanel(usuarioLogeado).setVisible(true);
 							setVisible(false);
 						 
 						 

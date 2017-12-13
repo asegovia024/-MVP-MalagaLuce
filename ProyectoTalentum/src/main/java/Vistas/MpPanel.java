@@ -2,6 +2,8 @@ package Vistas;
 import java.awt.*;
 
 import javax.swing.*;
+
+import ProyectoTalentum.ProyectoTalentum.Usuario;
 import javaxt.io.Image;
  
 
@@ -19,6 +21,15 @@ public class MpPanel extends JFrame
 	JButton validar;
 	JButton ranking;
 	public MpPanel()
+
+	{
+		super("Muestra de Imagen en JAVA...");
+        generarFrame();
+        
+
+	}
+	
+	public MpPanel(Usuario usuario)
 
 	{
 		super("Muestra de Imagen en JAVA...");
