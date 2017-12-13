@@ -55,7 +55,52 @@ public class helper_bd_usuario {
 	               
 	               
 	      		 Usuario usuario = new Usuario(id, nombre, correo, password, correo, nick);
+	      		 usuario.setPuntos(puntos);
 
+	             /*  usuario.setNombre(nombre);
+	               usuario.setCorreo(correo);
+	               usuario.setPass(password);
+	               usuario.setID(id);
+	               usuario.setTeam();
+	               	*/
+	      		// usuario.setPuntos(puntos);
+	      		 listausuarios.add(usuario);
+	               
+	            }
+	            bd.closeConnection();
+	        } catch (SQLException e) {
+	            System.out.println(e.getMessage());
+	        }
+		 return listausuarios;
+	 }
+	public static ArrayList<Usuario> getRanking() {
+		 BaseDatos bd = new BaseDatos(); 
+		 String sql      = "SELECT * FROM usuario ORDER BY puntos LIMIT = 5";
+		 String nombre   = "";
+		 String password = "";
+		 String correo   = "";
+		 String nick     = "";
+		 int puntos      = 0;
+		 int team        = 0;
+		 int id          = 0;
+		// Usuario usuario = new Usuario(id, nombre, correo, password, correo);
+		 ArrayList <Usuario> listausuarios = new ArrayList<Usuario>();
+		 try (Connection conn = bd.getConnection();
+	             Statement stmt  = conn.createStatement();
+				 ResultSet rs = bd.Query(sql);){
+	            
+	            while (rs.next()) {
+	               id       = rs.getInt("uID");
+	               team     = rs.getInt("eID");
+	               puntos   = rs.getInt("puntos");
+	               nombre   = rs.getString("nombre");
+	               password = rs.getString("password");
+	               correo   = rs.getString("correo");
+	               nick     = rs.getString("nick");
+	               
+	               
+	      		 Usuario usuario = new Usuario(id, nombre, correo, password, correo, nick);
+	      		 usuario.setPuntos(puntos);
 	             /*  usuario.setNombre(nombre);
 	               usuario.setCorreo(correo);
 	               usuario.setPass(password);
