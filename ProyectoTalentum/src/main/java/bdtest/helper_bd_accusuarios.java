@@ -20,6 +20,9 @@ public class helper_bd_accusuarios {
             System.out.println(e.getMessage());
         }
     }
+	/**
+	 * @return Devuelve el número de acciones realizadas por usuario hay en la BBDD
+	 */
 	public static int Count(){
 		BaseDatos bd = new BaseDatos();
 		String sql   = "SELECT count(*) FROM accusuarios";
@@ -48,30 +51,10 @@ public class helper_bd_accusuarios {
 		}
 		return count;
 	}
-	public static int[][] getAcciones(){
-		BaseDatos bd = new BaseDatos(); 
-		 String sql      = "SELECT * FROM accusuarios";
-		 int uID  = 0;
-		 int aID  = 0;
-		 int auID = 0;
-		 int[][] acciones = new int[Count()+1][10]; //TODO: terminar este método
-		 
-		 try (Connection conn = bd.getConnection();
-	             Statement stmt  = conn.createStatement();
-				 ResultSet rs = bd.Query(sql);){
-	            
-	            while (rs.next()) {
-	               uID           = rs.getInt("uID");
-	               aID           = rs.getInt("aID");
-	               auID          = rs.getInt("auID");
-	               acciones[auID][aID] = uID;	               
-	            }
-	            bd.closeConnection();
-	        } catch (SQLException e) {
-	            System.out.println(e.getMessage());
-	        }
-		 return acciones;
-	}
+	/**
+	 * @param id
+	 * @return Devuelve la lista de usuarios que ha realizado una acción
+	 */
 	public static int[] getAccionesbyID(int id){
 		BaseDatos bd    = new BaseDatos(); 
 		 String sql     = "SELECT * FROM accusuarios WHERE aID ="+ id;

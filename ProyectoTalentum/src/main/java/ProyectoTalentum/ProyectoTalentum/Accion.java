@@ -12,7 +12,7 @@ public class Accion {
 
 	private int id;
 	//private Pair<Double, Double> coordenadas = new Pair<Double, Double>(null, null);
-	private Pair<String,String> coordenadas = new Pair<>(null, null);
+	private Pair<Integer,Integer> coordenadas = new Pair<>(null, null);
 	//private Date FechaInicio;//Cambiar a string si dan por saco
 	//private Date FechaFin;
 	private String FechaInicio;
@@ -31,7 +31,7 @@ public class Accion {
 	 * @param fotoInicio
 	 * @param grupo
 	 */
-	public Accion(int id, Pair<String, String> coordenadas, String fechaInicio,
+	public Accion(int id, Pair<Integer,Integer> coordenadas, String fechaInicio,
 			String fotoInicio, Usuario[] grupo) {
 		super();
 		
@@ -49,7 +49,7 @@ public class Accion {
 	 * @param fechaInicio
 	 * @param fotoInicio
 	 */
-	public Accion(int id, Pair<String, String> coordenadas,
+	public Accion(int id, Pair<Integer,Integer> coordenadas,
 			String fechaInicio, String fotoInicio) {
 		super();		
 		this.id=id;
@@ -63,19 +63,19 @@ public class Accion {
 		this.Validada = true;
 	}
 
-	public int getId() {
+	public int getID() {
 		return id;
 	}
 
-	public void setId(int id) {
+	public void setID(int id) {
 		this.id = id;
 	}
 
-	public Pair<String, String> getCoordenadas() {
+	public Pair<Integer,Integer> getCoordenadas() {
 		return coordenadas;
 	}
 
-	public void setCoordenadas(Pair<String, String> coordenadas) {
+	public void setCoordenadas(Pair<Integer,Integer> coordenadas) {
 		this.coordenadas = coordenadas;
 	}
 
