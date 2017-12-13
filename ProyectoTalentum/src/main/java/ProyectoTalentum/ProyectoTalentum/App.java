@@ -34,7 +34,8 @@ public class App {
         SwingUtilities.invokeLater(new Runnable() {
             @Override
             public void run() {
-            	new Vistas.Login().setVisible(true);
+            	//new Vistas.Login().setVisible(true);
+            	new Vistas.Ranking().setVisible(true);
             	//new Vistas.MpPanel().setVisible(false);
             }
         });
