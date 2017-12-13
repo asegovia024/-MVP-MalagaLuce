@@ -28,7 +28,7 @@ public class SelectorArchivos {
 		    File selectedFile = jFileChooser.getSelectedFile();
 		    
 		    javaxt.io.File file = new javaxt.io.File(selectedFile);
-		    javaxt.io.Directory dir = new javaxt.io.Directory("C:\\workspace\\ProyectoTalentum\\src\\resources/");
+		    javaxt.io.Directory dir = new javaxt.io.Directory("src\\resources/");
 		    file.copyTo(dir, true); //true to overwrite any existing file
 		    
 		    System.out.println("Selected file: " + selectedFile.getAbsolutePath());
