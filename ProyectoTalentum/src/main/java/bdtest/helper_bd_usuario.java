@@ -75,7 +75,7 @@ public class helper_bd_usuario {
 	 }
 	public static ArrayList<Usuario> getRanking() {
 		 BaseDatos bd = new BaseDatos(); 
-		 String sql      = "SELECT * FROM usuario ORDER BY puntos LIMIT = 5";
+		 String sql      = "SELECT * FROM usuario ORDER BY puntos DESC LIMIT 0,5";
 		 String nombre   = "";
 		 String password = "";
 		 String correo   = "";
