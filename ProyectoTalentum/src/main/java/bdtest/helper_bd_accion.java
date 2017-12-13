@@ -27,10 +27,11 @@ public class helper_bd_accion {
 	            pstmt.setString(5, accion.getFechaInicio());
 	            pstmt.setString(6, accion.getFechaInicio()); //TODO: Cambiar for fecha fin
 	            pstmt.setBoolean(7, accion.isValidada());
-	            pstmt.executeUpdate(); 
-	            bd.closeConnection();
+	            pstmt.executeUpdate(); 	         
         } catch (SQLException e) {
             System.out.println(e.getMessage());
+        } finally {
+        	bd.closeConnection();
         }
     }
 	
@@ -62,10 +63,11 @@ public static ArrayList<Accion> getAccion() {
                accion = new Accion(id, coordenadas,  FechaInicio,
            			FotoInicio);
                listaacciones.add(accion);
-               bd.closeConnection();
             }
         } catch (SQLException e) {
             System.out.println(e.getMessage());
+        } finally {
+        	bd.closeConnection();
         }
 	 return listaacciones;
  }

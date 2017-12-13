@@ -21,11 +21,11 @@ public class helper_bd_usuario {
 	            pstmt.setInt(4, usuario.getPuntos());
 	          //pstmt.setInt(5, usuario.getTeam());
 	            pstmt.setInt(5, usuario.getTeam().getID());
-
 	            pstmt.executeUpdate(); 
-	            bd.closeConnection();
         } catch (SQLException e) {
             System.out.println(e.getMessage()); //TODO: cambiar por registro de logs?
+        } finally {
+        	bd.closeConnection();
         }
 	}
 	public static ArrayList<Usuario> getUsuario() {
@@ -67,10 +67,11 @@ public class helper_bd_usuario {
 	      		 listausuarios.add(usuario);
 	               
 	            }
-	            bd.closeConnection();
 	        } catch (SQLException e) {
 	            System.out.println(e.getMessage());
-	        }
+	        }finally {
+	        	bd.closeConnection();
+	        } 
 		 return listausuarios;
 	 }
 	public static ArrayList<Usuario> getRanking() {
@@ -111,9 +112,10 @@ public class helper_bd_usuario {
 	      		 listausuarios.add(usuario);
 	               
 	            }
-	            bd.closeConnection();
 	        } catch (SQLException e) {
 	            System.out.println(e.getMessage());
+	        } finally {
+	        	bd.closeConnection();
 	        }
 		 return listausuarios;
 	 }
@@ -141,9 +143,10 @@ public class helper_bd_usuario {
 	               nick     = rs.getString("nick");	                              
 	      		   usuario = new Usuario(id, nombre, correo, password, correo, nick);
 	      		   usuario.setPuntos(puntos);
-	            bd.closeConnection();
 	        } catch (SQLException e) {
 	            System.out.println(e.getMessage());
+	        } finally {
+	        	bd.closeConnection();
 	        }
 		 return usuario;
 	 }
@@ -180,9 +183,9 @@ public class helper_bd_usuario {
 			 
 		 } catch (SQLException e) {
 			 
-		 } 
-		 
-		 bd.closeConnection();
+		 } finally {
+	        	bd.closeConnection();
+	        }
 		return login_correcto;
 	}
 }

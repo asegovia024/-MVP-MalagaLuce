@@ -25,10 +25,11 @@ public class helper_bd_equipo {
 		            pstmt.setString(2, equipo.getColor());
 		            pstmt.setString(3, equipo.getEscudo());
 		            //se ejecuta
-		            pstmt.executeUpdate(); 
-		            bd.closeConnection();
+		            pstmt.executeUpdate();
 	        } catch (SQLException e) {
 	            System.out.println(e.getMessage());
+	        } finally {
+	        	bd.closeConnection();
 	        }
 	    }
 	 /**
@@ -58,10 +59,11 @@ public class helper_bd_equipo {
 	               equipo.setNombre(nombre);
 	               equipo.setID(id);
 	               listaequipos.add(equipo);
-	               bd.closeConnection();
 	            }
 	        } catch (SQLException e) {
 	            System.out.println(e.getMessage());
+	        } finally {
+	        	bd.closeConnection();
 	        }
 		 return listaequipos;
 	 }
