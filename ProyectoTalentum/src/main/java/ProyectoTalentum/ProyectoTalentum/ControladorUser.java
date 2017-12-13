@@ -16,7 +16,7 @@ public class ControladorUser {
 			sha256.update(pass.getBytes("UTF-8"));
 			
 		} catch (UnsupportedEncodingException e) {
-			// TODO Auto-generated catch block
+			
 			e.printStackTrace();
 		}
 		

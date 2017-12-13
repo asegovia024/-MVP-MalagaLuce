@@ -75,21 +75,13 @@ public class Login extends JFrame  {
 					char[] arrayC = fieldPassword.getPassword();
 					String pass = new String(arrayC);
 					
-					
-
-
-PointerInfo a = MouseInfo.getPointerInfo();
-Point b = a.getLocation();
-int x = (int) b.getX();
-int y = (int) b.getY();
-System.out.print(y + "y ");
-System.out.print(x + " x ");
 
 
 
 					if(helper_bd_usuario.login(textUsername.getText(), ControladorUser.encripta(pass))){
 						//carga otra vista o haz algo impresionante 
 						 System.out.print("si se ha podido loggear ");
+						 
 						 
 							new Vistas.MpPanel().setVisible(true);
 							setVisible(false);

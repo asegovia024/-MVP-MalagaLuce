@@ -17,7 +17,6 @@
 		</attributes>
 	</classpathentry>
 	<classpathentry kind="lib" path="lib/sqlite-jdbc-3.21.0.jar"/>
-	<classpathentry kind="lib" path="lib/jBrowser(sumirbd.mobi).jar"/>
-	<classpathentry kind="lib" path="lib/jxbrowser-win32-6.17.jar"/>
+	<classpathentry kind="lib" path="lib/javaxt-core.jar"/>
 	<classpathentry kind="output" path="target/classes"/>
 </classpath>
