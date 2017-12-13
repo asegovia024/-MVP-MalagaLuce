@@ -35,6 +35,7 @@ public class App {
             @Override
             public void run() {
             	new Vistas.Login().setVisible(true);
+            	//new Vistas.Ranking().setVisible(true);
             	//new Vistas.MpPanel().setVisible(false);
             }
         });
