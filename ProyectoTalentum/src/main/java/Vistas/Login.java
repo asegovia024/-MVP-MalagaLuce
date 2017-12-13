@@ -5,11 +5,13 @@ import ProyectoTalentum.ProyectoTalentum.ControladorUser;
 import ProyectoTalentum.ProyectoTalentum.Usuario;
 import bdtest.helper_bd_usuario;
 
+import java.awt.Dimension;
 import java.awt.GridBagLayout;
 import java.awt.Insets;
 import java.awt.MouseInfo;
 import java.awt.Point;
 import java.awt.PointerInfo;
+import java.awt.Toolkit;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.security.NoSuchAlgorithmException;
@@ -19,7 +21,7 @@ import javax.xml.bind.Marshaller.Listener;
 
 
 
-public class Login extends JFrame  {
+public class Login extends Framebase  {
 	
 	private static final long serialVersionUID = 1L;
 	private JLabel labelUsername = new JLabel("Usuario: ");
@@ -31,7 +33,11 @@ public class Login extends JFrame  {
    public Login() {
        super("JPanel Demo Program");
        
-        
+   
+       
+       
+       
+       
        // create a new panel with GridBagLayout manager
        JPanel newPanel = new JPanel(new GridBagLayout());
         

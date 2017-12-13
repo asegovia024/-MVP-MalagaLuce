@@ -1,5 +1,7 @@
 package Vistas;
 import java.awt.*;
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
 
 import javax.swing.*;
 
@@ -7,7 +9,7 @@ import ProyectoTalentum.ProyectoTalentum.Usuario;
 import javaxt.io.Image;
  
 
-public class MpPanel extends JFrame
+public class MpPanel extends Framebase
 
 {
 	/**
@@ -44,16 +46,11 @@ public class MpPanel extends JFrame
 		colocarBotonesIzq();
 		colocarBotonesSuperior();
 		colocarFotoUsuario();
-		Toolkit pantalla = Toolkit.getDefaultToolkit(); //Coge los datos de la pantalla
-        Dimension pantallaD = pantalla.getScreenSize(); //Coge la resolución y la divide en 2 variables
-        int width = pantallaD.width;
-        int height = pantallaD.height;
-        this.setSize(new Dimension(height/2, width/2));
-        setPreferredSize(new Dimension(height/2, width/2)); //El tamaño de la ventana es 1/4 de la resolución
-        setLocationRelativeTo(null); //Pone la ventana en el centro
-        setResizable(false); //No cambiar el tamaño de la ventana
+		
         pack();
         setVisible(false);
+        
+        
 	}
 	/*private void colocarMapa() {
 		this.mapa = new panelMap();
@@ -112,6 +109,7 @@ public class MpPanel extends JFrame
 		this.botonesizq = new JPanel(new GridLayout(0,1));
 		this.validar = new JButton("Validar");
 		this.ranking = new JButton("ranking");
+		llamadabotonranking();
 		botonesizq.add(ranking);
 		botonesizq.add(validar);
 	}
@@ -132,6 +130,19 @@ public class MpPanel extends JFrame
 		botonessuperior.add(opciones);
 		botonessuperior.add(boton2);
 		botonessuperior.add(boton1);
+	}
+	
+	private void llamadabotonranking(){
+		ranking.addActionListener(new ActionListener() {
+			
+			@Override
+			public void actionPerformed(ActionEvent arg0) {
+				// TODO Auto-generated method stub
+				new Vistas.Ranking().setVisible(true);
+				setVisible(false);
+				
+			}
+		});
 	}
 
 
