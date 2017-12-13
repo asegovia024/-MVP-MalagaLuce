@@ -69,7 +69,7 @@ public static ArrayList<Accion> getAccion() {
         }
 	 return listaacciones;
  }
-	public static Accion getUsuariofromList(int id, ArrayList<Accion> lista) {
+	public static Accion getAccionFromList(int id, ArrayList<Accion> lista) {
 		 Iterator<Accion> iterator = lista.iterator();
 		 boolean noencontrado = true;
 		 Accion accion = null;
@@ -81,5 +81,13 @@ public static ArrayList<Accion> getAccion() {
 		}
 		return accion;
 	}
+	public static Accion getAccionFromList(Accion accion, ArrayList<Accion> lista) {
+		Accion res = null;
+			if(lista.contains(accion)) {
+				res = accion;
+			}
+		return res;
+	}
+	
 
 }
