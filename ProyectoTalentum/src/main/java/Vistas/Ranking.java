@@ -3,11 +3,15 @@ package Vistas;
 
 import java.awt.BorderLayout;
 import java.awt.Dimension;
+import java.awt.FlowLayout;
+import java.awt.GridBagConstraints;
+import java.awt.GridBagLayout;
 import java.awt.GridLayout;
 import java.awt.HeadlessException;
 import java.awt.Toolkit;
 import java.util.ArrayList;
 
+import javax.swing.BoxLayout;
 import javax.swing.JButton;
 import javax.swing.JFrame;
 import javax.swing.JLabel;
@@ -25,38 +29,40 @@ public class Ranking extends Framebase {
 	private JLabel labelTabla1;
 	JTable mitabla;
 	JPanel mibarra;
-	 ArrayList <Usuario> Rank = new ArrayList();
+	ArrayList <Usuario> Rank;
 	 JButton botonCancelar;
 
 	 public Ranking()  {
 		super("Ranking");
 		
-		Rank= helper_bd_usuario.getRanking();
+		Rank = helper_bd_usuario.getRanking();
 		 
-        
-        
 		botonCancelar = new JButton();
 		botonCancelar.setText("Cancelar");
-
         
 		labelTabla1 = new JLabel();
-		labelTabla1.setBounds(40, 300, 400, 130);
+		//labelTabla1.setBounds(40, 300, 400, 130);
         
-        
-		mibarra = new JPanel(new GridLayout(0,1));
-		mibarra.setBounds(40, 300, 400, 130);
+		mibarra = new JPanel(new GridBagLayout());
+		GridBagConstraints constraints = new GridBagConstraints();
+		constraints.gridx = 0;
+		constraints.gridy = 0;
+		constraints.gridheight = 2;
+		constraints.gridwidth= 2;
+		constraints.fill = GridBagConstraints.BOTH;
+		//mibarra.setBounds(40, 300, 400, 130);
 		mostrarDatosUsandoLogica();// mostramos la tabla
 		
+		mibarra.add(mitabla, constraints);
+		constraints.gridy = 3;
+		constraints.gridx = 1;
+		constraints.gridheight = 1;
+		constraints.gridwidth= 1;
+		constraints.anchor = GridBagConstraints.CENTER;
+		constraints.fill = GridBagConstraints.EAST;
+		mibarra.add(botonCancelar, constraints);
 		
-		mibarra.add(mitabla);
-
-		
-		mibarra.add(botonCancelar);
-		
-		add(mibarra);
-
-
-		
+		add(mibarra);		
 		
 	}
 
@@ -71,7 +77,7 @@ private void mostrarDatosUsandoLogica(){
 
 		mitabla = new JTable(info, columnNames);
 		mitabla.setEnabled(false);
-		mitabla.setAutoResizeMode(JTable.AUTO_RESIZE_OFF);
+		//mitabla.setAutoResizeMode(JTable.AUTO_RESIZE_OFF);
 		//mibarra.setViewportView(mitabla);
 }
 

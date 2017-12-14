@@ -19,6 +19,7 @@ public abstract class Framebase  extends JFrame {
 	       setPreferredSize(new Dimension(height/2, width/2)); //El tamaño de la ventana es 1/4 de la resolución
 	       setLocationRelativeTo(null); //Pone la ventana en el centro
 	       setResizable(false); //No cambiar el tamaño de la ventana	
+	       setDefaultCloseOperation(EXIT_ON_CLOSE);
 	       }
 	
 }
