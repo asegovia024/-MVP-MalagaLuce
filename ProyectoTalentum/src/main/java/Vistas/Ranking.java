@@ -3,6 +3,8 @@ package Vistas;
 import java.awt.GridBagConstraints;
 import java.awt.GridBagLayout;
 import java.awt.GridLayout;
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
 import java.util.ArrayList;
 import javax.swing.JButton;
 import javax.swing.JLabel;
@@ -23,14 +25,15 @@ public class Ranking extends Framebase {
 	JPanel mibarra;
 	ArrayList <Usuario> Rank;
 	 JButton botonCancelar;
-
-	 public Ranking()  {
+	Usuario usuario;
+	 public Ranking(Usuario usuario)  {
 		super("Ranking");
 		
 		Rank = helper_bd_usuario.getRanking();
-		 
+		this.usuario = usuario;
 		botonCancelar = new JButton();
 		botonCancelar.setText("Cancelar");
+		botonvolver ();
 		//labelTabla1.setBounds(40, 300, 400, 130);
         
 
@@ -96,6 +99,19 @@ private String[][] obtieneMariz(){
 	
 	
 	
+}
+private void botonvolver () {
+	ActionListener action = new ActionListener() {
+		
+		@Override
+		public void actionPerformed(ActionEvent e) {
+			new Vistas.MpPanel(usuario).setVisible(true);
+			dispose();
+			
+		}
+		
+	};
+	botonCancelar.addActionListener(action);
 }
 
 

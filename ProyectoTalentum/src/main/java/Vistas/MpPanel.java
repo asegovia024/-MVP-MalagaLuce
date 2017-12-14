@@ -113,6 +113,7 @@ public class MpPanel extends Framebase
 		if(ControladorUser.esAdmin(this.usuario)) {
 			this.botonesizq = new JPanel(new GridLayout(0,1));
 			this.validar = new JButton("Validar");
+			llamadabotonvalidar();
 			botonesizq.add(validar);
 		}
 		else {
@@ -147,7 +148,7 @@ public class MpPanel extends Framebase
 			@Override
 			public void actionPerformed(ActionEvent arg0) {
 				// TODO Auto-generated method stub
-				new Vistas.Ranking().setVisible(true);
+				new Vistas.Ranking(usuario).setVisible(true);
 				setVisible(false);
 				
 			}
