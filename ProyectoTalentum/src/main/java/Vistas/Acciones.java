@@ -19,30 +19,38 @@ import ProyectoTalentum.ProyectoTalentum.Accion;
 import ProyectoTalentum.ProyectoTalentum.Usuario;
 import bdtest.helper_bd_accion;
 
-public class Acciones extends Framebase {
+public class Acciones extends ScrollBase {
 	
 	private JLabel labelTabla1;
 	JTable mitabla;
 	JPanel miPanel;
 	 ArrayList <Accion> Acc = new ArrayList();
 	 JButton botonCancelar;
+	 
+	 JButton BValidar,BCancelar;
+
 	
 	public Acciones() {
 		super("Listado de acciones");
 		// TODO Auto-generated constructor stub
 		
-	Acc=helper_bd_accion.getAccion();
+		
+		Acc=helper_bd_accion.getAccion();
 	
     
 	
-
+/*
 		labelTabla1 = new JLabel();	
 		miPanel = new JPanel(new GridLayout(0,1));
 
 		botonCancelar = new JButton();
 		botonCancelar.setText("Cancelar");
 		
+		BValidar = new JButton();
+		BValidar.setText("Validar");
 		
+		BCancelar = new JButton();
+		BCancelar.setText("Cancelar");
 		
 		miPanel.add(mitabla);
 
@@ -50,6 +58,7 @@ public class Acciones extends Framebase {
 		miPanel.add(botonCancelar);
 		
 		add(miPanel);
+		*/
 	
 	}
 

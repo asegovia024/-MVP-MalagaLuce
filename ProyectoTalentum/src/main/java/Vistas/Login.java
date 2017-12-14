@@ -41,6 +41,7 @@ public class Login extends Framebase  {
        // create a new panel with GridBagLayout manager
        JPanel newPanel = new JPanel(new GridBagLayout());
         
+       
        GridBagConstraints constraints = new GridBagConstraints();
        constraints.anchor = GridBagConstraints.WEST;
        constraints.insets = new Insets(10, 10, 10, 10);
@@ -53,6 +54,7 @@ public class Login extends Framebase  {
        constraints.gridx = 1;
        newPanel.add(textUsername, constraints);
         
+      
        
        constraints.gridx = 0;
        constraints.gridy = 1;     
