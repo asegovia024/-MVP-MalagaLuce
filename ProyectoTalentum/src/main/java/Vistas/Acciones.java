@@ -24,6 +24,7 @@ import javax.swing.JScrollPane;
 import javax.swing.JTable;
 import javax.swing.SpringLayout.Constraints;
 import javax.swing.border.Border;
+import javax.swing.border.TitledBorder;
 import javax.swing.table.DefaultTableModel;
 
 import javaxt.io.Image;
@@ -56,7 +57,7 @@ public class Acciones extends Framebase {
 		scroll = new JScrollPane(miPanel);
 		scroll.setVerticalScrollBarPolicy(JScrollPane.VERTICAL_SCROLLBAR_ALWAYS);
 		
-		panelp = new JPanel(new GridLayout(0,1));
+		panelp = new JPanel(new GridBagLayout());
 		
 		
 		Acc=helper_bd_accion.getAccion();
@@ -69,7 +70,9 @@ public class Acciones extends Framebase {
 		panelp.add(scroll);
 		Bvolver = new JButton("Volver");
 		botonvolver();
-		panelp.add(Bvolver);
+		panelp.add(Bvolver, new GridBagConstraints(0, 5, 1, 1, 0.0, 0.0,
+				GridBagConstraints.CENTER, GridBagConstraints.BOTH,
+				new Insets(0, 0, 0, 0), 0, 0));
 		add(panelp);
 		
 		
@@ -82,19 +85,23 @@ public class Acciones extends Framebase {
 	private void CrearPanel(Accion a ){
 
 		miPanel = new JPanel(new GridBagLayout());
-
+		miPanel.setBorder(new TitledBorder("Accion "+ a.getID()));
 		//miPanel.setBackground(Color.LIGHT_GRAY);
 		
 		//Fecha
-		JLabel fechalabel =new JLabel("Fecha: ");
-		GridBagConstraints constraints = Generaconstraints(0, 0, 1, 1, GridBagConstraints.NONE);
-		miPanel.add(fechalabel,constraints);
+		JLabel fechalabel =new JLabel("Fecha: " + a.getFechaInicio());
+		//GridBagConstraints constraints = Generaconstraints(0, 0, 1, 1, GridBagConstraints.NONE);
+		miPanel.add(fechalabel, new GridBagConstraints(0, 0, 1, 1, 0.0, 0.0,
+				GridBagConstraints.CENTER, GridBagConstraints.BOTH,
+				new Insets(0, 0, 5, 5), 0, 0));
 		
 		
-		JLabel fechalabel2 =new JLabel(a.getFechaInicio());
-		GridBagConstraints constraintsf = Generaconstraints(1, 0, 1, 1, GridBagConstraints.NONE);
-		miPanel.add(fechalabel2, constraintsf);
-		
+		/*JLabel fechalabel2 =new JLabel(a.getFechaInicio());
+	//	GridBagConstraints constraintsf = Generaconstraints(1, 0, 1, 1, GridBagConstraints.NONE);
+		miPanel.add(fechalabel2, new GridBagConstraints(1, 0, 1, 1, 0.0, 0.0,
+				GridBagConstraints.CENTER, GridBagConstraints.BOTH,
+				new Insets(0, 0, 5, 5), 0, 0));
+		*/
 		//Foto
 		Image imagen = new Image("src/resources/Penguins.jpg"); //a.getFotoInicio()
 		imagen.resize(120, 120, true);
@@ -104,12 +111,14 @@ public class Acciones extends Framebase {
 		this.fotoAcc.add(etiqueta);
 		
 		fotoAcc.setBackground(Color.LIGHT_GRAY);
-		GridBagConstraints constraints2 = Generaconstraints(0, 1, 1, 2, GridBagConstraints.BOTH);
-		constraints2.anchor = GridBagConstraints.CENTER;
-		miPanel.add(fotoAcc,constraints2);
+		//GridBagConstraints constraints2 = Generaconstraints(0, 1, 1, 2, GridBagConstraints.BOTH);
+		//constraints2.anchor = GridBagConstraints.CENTER;
+		miPanel.add(fotoAcc,new GridBagConstraints(0, 2, 1, 1, 0.0, 0.0,
+				GridBagConstraints.CENTER, GridBagConstraints.BOTH,
+				new Insets(0, 0, 0, 5), 0, 0));
 		
 		
-		JPanel panelbotones = new JPanel();
+		JPanel panelbotones = new JPanel(new GridBagLayout());
 		
 		BValidar = new JButton();
 		BValidar.setText("Validar");
@@ -118,15 +127,17 @@ public class Acciones extends Framebase {
 		BCancelar.setText("Cancelar");
 
 		
-		panelbotones.add(BValidar);
-		panelbotones.add(BCancelar);
+		panelbotones.add(BValidar, new GridBagConstraints(0, 0, 1, 1, 0.0, 0.0,
+				GridBagConstraints.CENTER, GridBagConstraints.BOTH,
+				new Insets(0, 0, 5, 0), 0, 0));
+		panelbotones.add(BCancelar, new GridBagConstraints(0, 1, 1, 1, 0.0, 0.0,
+				GridBagConstraints.CENTER, GridBagConstraints.BOTH,
+				new Insets(0, 0, 0, 0), 0, 0));
+				
 		
-		GridBagConstraints constraints3 = Generaconstraints(2, 1, 2, 1, GridBagConstraints.NONE);
-		constraints3.anchor = GridBagConstraints.ABOVE_BASELINE_TRAILING;
-
-		
-		
-		miPanel.add(panelbotones,constraints3);
+		miPanel.add(panelbotones,new GridBagConstraints(1, 2, 1, 1, 0.0, 0.0,
+				GridBagConstraints.CENTER, GridBagConstraints.BOTH,
+				new Insets(0, 0, 0, 5), 0, 0));
 		
 		scroll.getViewport().add(miPanel);
 		//scroll.add(miPanel);

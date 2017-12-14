@@ -3,6 +3,7 @@ package Vistas;
 import java.awt.GridBagConstraints;
 import java.awt.GridBagLayout;
 import java.awt.GridLayout;
+import java.awt.Insets;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.util.ArrayList;
@@ -24,7 +25,7 @@ public class Ranking extends Framebase {
 	JTable mitabla;
 	JPanel mibarra;
 	ArrayList <Usuario> Rank;
-	 JButton botonCancelar;
+	JButton botonCancelar;
 	Usuario usuario;
 	
 	
@@ -34,35 +35,21 @@ public class Ranking extends Framebase {
 		Rank = helper_bd_usuario.getRanking();
 		this.usuario = usuario;
 		botonCancelar = new JButton();
-		botonCancelar.setText("Cancelar");
+		botonCancelar.setText("Volver");
 		botonvolver ();
 		//labelTabla1.setBounds(40, 300, 400, 130);
         
 
-		mibarra = new JPanel(new GridBagLayout());
-		GridBagConstraints constraints = new GridBagConstraints();
-		constraints.gridx = 0;
-		constraints.gridy = 0;
-		constraints.gridheight = 2;
-		constraints.gridwidth= 2;
-		constraints.fill = GridBagConstraints.BOTH;
-		//mibarra.setBounds(40, 300, 400, 130);
-
-        
-		mibarra = new JPanel(new GridLayout(0,1));
-		mibarra.setBounds(40, 300, 400, 130);
-		
+		mibarra = new JPanel(new GridBagLayout()); 		
 
 		mostrarDatosUsandoLogica();// mostramos la tabla
 		
-		mibarra.add(mitabla, constraints);
-		constraints.gridy = 3;
-		constraints.gridx = 1;
-		constraints.gridheight = 1;
-		constraints.gridwidth= 1;
-		constraints.anchor = GridBagConstraints.CENTER;
-		constraints.fill = GridBagConstraints.EAST;
-		mibarra.add(botonCancelar, constraints);
+		mibarra.add(mitabla, new GridBagConstraints(0, 0, 1, 3, 0.0, 0.0,
+				GridBagConstraints.CENTER, GridBagConstraints.BOTH,
+				new Insets(0, 0, 5, 0), 0, 0));
+		mibarra.add(botonCancelar, new GridBagConstraints(0, 5, 1, 1, 0.0, 0.0,
+				GridBagConstraints.CENTER, GridBagConstraints.BOTH,
+				new Insets(0, 0, 0, 0), 0, 0) );
 		
 		add(mibarra);		
 		
