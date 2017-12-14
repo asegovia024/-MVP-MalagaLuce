@@ -1,24 +1,13 @@
 package Vistas;
 
-
-import java.awt.BorderLayout;
-import java.awt.Dimension;
-import java.awt.FlowLayout;
 import java.awt.GridBagConstraints;
 import java.awt.GridBagLayout;
 import java.awt.GridLayout;
-import java.awt.HeadlessException;
-import java.awt.Toolkit;
 import java.util.ArrayList;
-
-import javax.swing.BoxLayout;
 import javax.swing.JButton;
-import javax.swing.JFrame;
 import javax.swing.JLabel;
 import javax.swing.JPanel;
-import javax.swing.JScrollPane;
 import javax.swing.JTable;
-import javax.swing.table.DefaultTableModel;
 
 import ProyectoTalentum.ProyectoTalentum.Usuario;
 import bdtest.helper_bd_usuario;
@@ -26,7 +15,10 @@ import bdtest.helper_bd_usuario;
 
 public class Ranking extends Framebase {
 	
-	private JLabel labelTabla1;
+	/**
+	 * 
+	 */
+	private static final long serialVersionUID = 1L;
 	JTable mitabla;
 	JPanel mibarra;
 	ArrayList <Usuario> Rank;
@@ -39,10 +31,9 @@ public class Ranking extends Framebase {
 		 
 		botonCancelar = new JButton();
 		botonCancelar.setText("Cancelar");
-        
-		labelTabla1 = new JLabel();
 		//labelTabla1.setBounds(40, 300, 400, 130);
         
+
 		mibarra = new JPanel(new GridBagLayout());
 		GridBagConstraints constraints = new GridBagConstraints();
 		constraints.gridx = 0;
@@ -51,6 +42,12 @@ public class Ranking extends Framebase {
 		constraints.gridwidth= 2;
 		constraints.fill = GridBagConstraints.BOTH;
 		//mibarra.setBounds(40, 300, 400, 130);
+
+        
+		mibarra = new JPanel(new GridLayout(0,1));
+		mibarra.setBounds(40, 300, 400, 130);
+		
+
 		mostrarDatosUsandoLogica();// mostramos la tabla
 		
 		mibarra.add(mitabla, constraints);
