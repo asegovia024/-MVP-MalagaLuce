@@ -55,9 +55,7 @@ public class Ranking extends Framebase {
 		
 		add(mibarra);
 
-		
-		
-		
+
 		
 		
 	}
@@ -87,7 +85,7 @@ private String[][] obtieneMariz(){
 	
 	
 	for (int x = 0; x < Rank.size(); x++) {
-		informacion[x][0] = Integer.toString(x) ;
+		informacion[x][0] = Integer.toString(x+1) ;
 		informacion[x][1] = Rank.get(x).getNick();
 		informacion[x][2] = Integer.toString(Rank.get(x).getPuntos());
 	}
