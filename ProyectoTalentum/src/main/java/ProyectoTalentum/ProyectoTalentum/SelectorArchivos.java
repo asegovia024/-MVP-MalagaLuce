@@ -40,6 +40,28 @@ public class SelectorArchivos {
 		
 	}
 	
+	public boolean subirFotoPerfil(){
+		
+		JFileChooser jFileChooser = new JFileChooser();
+		jFileChooser.setCurrentDirectory(new File("/User"));
+		
+		int result = jFileChooser.showOpenDialog(new JFrame());
+	
+	
+		if (result == JFileChooser.APPROVE_OPTION) {
+		    File selectedFile = jFileChooser.getSelectedFile();
+		    javaxt.io.File file = new javaxt.io.File(selectedFile);
+		    file.rename("user1.png");
+		    javaxt.io.Directory dir = new javaxt.io.Directory("src\\resources\\user/");
+		    file.copyTo(dir, true); //true to overwrite any existing file
+		  
+		    return true;
+		    
+		}else {
+		return false;
+		}
+		
+	}
 	
 
 
