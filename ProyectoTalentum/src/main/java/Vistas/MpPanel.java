@@ -153,6 +153,16 @@ public class MpPanel extends Framebase
 			}
 		});
 	}
-
+private void llamadabotonvalidar() {
+	validar.addActionListener(new ActionListener() {
+		
+		@Override
+		public void actionPerformed(ActionEvent e) {
+			new Vistas.Acciones().setVisible(true);
+			setVisible(false);
+			
+		}
+	});
+}
 
 }
