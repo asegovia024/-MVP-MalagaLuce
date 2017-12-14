@@ -16,7 +16,7 @@ import javaxt.io.Directory;
 public class SelectorArchivos {
 
 	
-	public SelectorArchivos(){
+	public boolean subirFoto(){
 		
 		JFileChooser jFileChooser = new JFileChooser();
 		jFileChooser.setCurrentDirectory(new File("/User"));
@@ -32,11 +32,15 @@ public class SelectorArchivos {
 		    file.copyTo(dir, true); //true to overwrite any existing file
 		    
 		    System.out.println("Selected file: " + selectedFile.getAbsolutePath());
+		    return true;
+		    
+		}else {
+		return false;
 		}
+		
 	}
 	
 	
-	public static void main(String[] args) {
-		new SelectorArchivos();
-	}
+
+
 }

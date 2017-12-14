@@ -43,6 +43,7 @@ public class Ranking extends Framebase {
 		labelTabla1 = new JLabel();
 		//labelTabla1.setBounds(40, 300, 400, 130);
         
+
 		mibarra = new JPanel(new GridBagLayout());
 		GridBagConstraints constraints = new GridBagConstraints();
 		constraints.gridx = 0;
@@ -51,6 +52,12 @@ public class Ranking extends Framebase {
 		constraints.gridwidth= 2;
 		constraints.fill = GridBagConstraints.BOTH;
 		//mibarra.setBounds(40, 300, 400, 130);
+
+        
+		mibarra = new JPanel(new GridLayout(0,1));
+		mibarra.setBounds(40, 300, 400, 130);
+		
+
 		mostrarDatosUsandoLogica();// mostramos la tabla
 		
 		mibarra.add(mitabla, constraints);

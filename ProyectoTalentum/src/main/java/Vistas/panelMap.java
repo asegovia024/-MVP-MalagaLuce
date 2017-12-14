@@ -12,6 +12,8 @@ import javax.swing.ImageIcon;
 import javax.swing.JLabel;
 import javax.swing.JPanel;
 
+import ProyectoTalentum.ProyectoTalentum.SelectorArchivos;
+
 public class panelMap extends JPanel implements MouseListener{
 	/**
 	 * 
@@ -48,8 +50,14 @@ public class panelMap extends JPanel implements MouseListener{
 			int y = e.getY();
 			System.out.print(y + " y ");
 			System.out.print(x + " x ");
-			Graphics g = getGraphics();
+			
+		   SelectorArchivos subirFoto =  new ProyectoTalentum.ProyectoTalentum.SelectorArchivos();//Abre el selector de foto al pincahr en el mapa
+		    
+		   
+		   if (subirFoto.subirFoto()) {
+		    Graphics g = getGraphics();
 			g.drawImage(iconoMapa.getImage(), x, y, null);
+		   }
 		
 		}
 	}
