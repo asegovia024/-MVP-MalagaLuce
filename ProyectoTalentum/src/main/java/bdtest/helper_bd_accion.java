@@ -52,7 +52,7 @@ public static ArrayList<Accion> getAccion() {
 			 ResultSet rs = bd.Query(sql);){
             
             while (rs.next()) {
-               id = rs.getInt("eID");
+               id = rs.getInt("aID");
                FechaInicio = rs.getString("fecha_inicio");
                FechaFin    = rs.getString("fecha_fin");
                FotoInicio  = rs.getString("foto_inicio");
