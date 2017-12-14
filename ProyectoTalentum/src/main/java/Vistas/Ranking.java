@@ -45,6 +45,7 @@ public class Ranking extends Framebase {
         
 		mibarra = new JPanel(new GridLayout(0,1));
 		mibarra.setBounds(40, 300, 400, 130);
+		
 		mostrarDatosUsandoLogica();// mostramos la tabla
 		
 		
