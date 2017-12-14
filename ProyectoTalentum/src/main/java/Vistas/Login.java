@@ -18,10 +18,12 @@ import java.security.NoSuchAlgorithmException;
 
 import javax.swing.*;
 import javax.xml.bind.Marshaller.Listener;
-
+import javax.xml.bind.annotation.XmlElementDecl.GLOBAL;
+import ProyectoTalentum.ProyectoTalentum.Usuario;
 
 
 public class Login extends Framebase  {
+	
 	
 	private static final long serialVersionUID = 1L;
 	private JLabel labelUsername = new JLabel("Usuario: ");

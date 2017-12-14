@@ -159,7 +159,7 @@ private void llamadabotonvalidar() {
 		
 		@Override
 		public void actionPerformed(ActionEvent e) {
-			new Vistas.Acciones().setVisible(true);
+			new Vistas.Acciones(usuario).setVisible(true);
 			setVisible(false);
 			
 		}

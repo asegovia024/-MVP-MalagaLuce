@@ -26,6 +26,8 @@ public class Ranking extends Framebase {
 	ArrayList <Usuario> Rank;
 	 JButton botonCancelar;
 	Usuario usuario;
+	
+	
 	 public Ranking(Usuario usuario)  {
 		super("Ranking");
 		
