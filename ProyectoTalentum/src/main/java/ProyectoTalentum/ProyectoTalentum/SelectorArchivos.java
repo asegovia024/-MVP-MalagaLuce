@@ -16,27 +16,29 @@ import javaxt.io.Directory;
 public class SelectorArchivos {
 
 	
-	public boolean subirFoto(){
+	public File subirFoto(){
 		
 		JFileChooser jFileChooser = new JFileChooser();
 		jFileChooser.setCurrentDirectory(new File("/User"));
 		
+			
 		int result = jFileChooser.showOpenDialog(new JFrame());
-	
+		File selectedFile=null;
 	
 		if (result == JFileChooser.APPROVE_OPTION) {
-		    File selectedFile = jFileChooser.getSelectedFile();
+			
+		     selectedFile = jFileChooser.getSelectedFile();
 		    
 		    javaxt.io.File file = new javaxt.io.File(selectedFile);
 		    javaxt.io.Directory dir = new javaxt.io.Directory("src\\resources/");
 		    file.copyTo(dir, true); //true to overwrite any existing file
 		    
 		    System.out.println("Selected file: " + selectedFile.getAbsolutePath());
-		    return true;
-		    
-		}else {
-		return false;
 		}
+		
+		
+		    return selectedFile;
+	
 		
 	}
 	
