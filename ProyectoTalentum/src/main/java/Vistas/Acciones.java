@@ -1,31 +1,21 @@
 package Vistas;
 
-import java.awt.BorderLayout;
 import java.awt.Color;
-import java.awt.Component;
 import java.awt.Dimension;
-import java.awt.Graphics;
 import java.awt.GridBagConstraints;
 import java.awt.GridBagLayout;
 import java.awt.GridLayout;
-import java.awt.HeadlessException;
 import java.awt.Insets;
-import java.awt.Toolkit;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.util.ArrayList;
 
 import javax.swing.ImageIcon;
 import javax.swing.JButton;
-import javax.swing.JFrame;
 import javax.swing.JLabel;
 import javax.swing.JPanel;
 import javax.swing.JScrollPane;
-import javax.swing.JTable;
-import javax.swing.SpringLayout.Constraints;
-import javax.swing.border.Border;
 import javax.swing.border.TitledBorder;
-import javax.swing.table.DefaultTableModel;
 
 import javaxt.io.Image;
 import ProyectoTalentum.ProyectoTalentum.Accion;
@@ -45,7 +35,7 @@ public class Acciones extends Framebase {
 	 Usuario usuario;
 	// ScrollBase scroll;
 	 JScrollPane scroll;
-	 JPanel panelp;
+	 JPanel panelp, panelscroll;
 	 
 	 
 	 
@@ -54,19 +44,26 @@ public class Acciones extends Framebase {
 		// TODO Auto-generated constructor stub
 		this.usuario=usuario;
 		//scroll = new ScrollBase();
-		scroll = new JScrollPane(miPanel);
+		scroll = new JScrollPane();
 		scroll.setVerticalScrollBarPolicy(JScrollPane.VERTICAL_SCROLLBAR_ALWAYS);
 		
 		panelp = new JPanel(new GridBagLayout());
-		
-		
 		Acc=helper_bd_accion.getAccion();
-	
+		Dimension dimensionscroll = new Dimension();
+		dimensionscroll.setSize(this.getSize().getHeight()/2, this.getSize().getWidth()/2);
+		scroll.setPreferredSize(dimensionscroll);
+		int contvalidadas = 0;
+		for (int i=0;i<Acc.size();i++){
+			if(!Acc.get(i).isValidada())
+				contvalidadas++;	
+		}
+
+		panelscroll = new JPanel(new GridLayout(contvalidadas, 1));
 		for (int i=0;i<Acc.size();i++){
 			if(!Acc.get(i).isValidada())
 				CrearPanel(Acc.get(i));	
 		}
-		
+		scroll.getViewport().add(panelscroll);
 		panelp.add(scroll);
 		Bvolver = new JButton("Volver");
 		botonvolver();
@@ -138,8 +135,8 @@ public class Acciones extends Framebase {
 		miPanel.add(panelbotones,new GridBagConstraints(1, 2, 1, 1, 0.0, 0.0,
 				GridBagConstraints.CENTER, GridBagConstraints.BOTH,
 				new Insets(0, 0, 0, 5), 0, 0));
-		
-		scroll.getViewport().add(miPanel);
+		panelscroll.add(miPanel);
+		//scroll.getViewport().add(miPanel);
 		//scroll.add(miPanel);
 
 	}
