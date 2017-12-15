@@ -51,15 +51,7 @@ public class Accion {
 	 * @param fechaInicio
 	 * @param fotoInicio
 	 */
-	public Accion(int id, Pair<Integer, Integer> coordenadas2,
-			String fechaInicio, String fotoInicio) {
-		super();		
-		this.id=id;
-		this.coordenadas = coordenadas2;
-		FechaInicio = fechaInicio;
-		FotoInicio = fotoInicio;
-		this.Validada = false;
-	}
+
 
 	public void Validar() {
 		this.Validada = true;

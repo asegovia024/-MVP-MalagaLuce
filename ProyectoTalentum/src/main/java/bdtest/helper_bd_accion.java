@@ -38,10 +38,26 @@ public class helper_bd_accion {
         	bd.closeConnection();
         }
     }
+
+
 	
 	
 	
-	
+	public static void validarAccion(int id) {
+		String sql = "UPDATE accion SET validado = 1 WHERE aID = ?";
+		BaseDatos bd = new BaseDatos(); 
+		try (Connection conn = bd.getConnection();
+		         PreparedStatement pstmt = conn.prepareStatement(sql)) {
+		            pstmt.setInt(1, id);
+		            pstmt.executeUpdate();
+	        } catch (SQLException e) {
+	            System.out.println(e.getMessage());
+	        } finally {
+	        	bd.closeConnection();
+	        }
+	}
+
+
 public static ArrayList<Accion> getAccion() {
 	BaseDatos bd      = new BaseDatos();
 	String sql        = "SELECT * FROM accion";
@@ -51,8 +67,7 @@ public static ArrayList<Accion> getAccion() {
     String FotoInicio = "";
 	String FotoFin    = "";		
 	int Validada  = 0;
-    Pair<Integer, Integer> coordenadas = new Pair<>(null, null);	
-	Accion accion = null;
+    Accion accion = null;
 	 ArrayList <Accion> listaacciones = new ArrayList<>();
 	 try (Connection conn = bd.getConnection();
              Statement stmt  = conn.createStatement();
@@ -65,9 +80,16 @@ public static ArrayList<Accion> getAccion() {
                FotoInicio  = rs.getString("foto_inicio");
                FotoFin     = rs.getString("foto_fin");
                Validada    = rs.getInt("validado");
-               coordenadas.setAt0(rs.getInt("coordenadasX"));
-               coordenadas.setAt1(rs.getInt("coordenadasY"));
-               accion = new Accion(id, coordenadas,  FechaInicio,
+               
+               //coordenadas.setAt0(rs.getInt("coordenadasX"));
+               //coordenadas.setAt1(rs.getInt("coordenadasY"));
+               
+               double la =(double)  rs.getInt("coordenadasX");
+            	double lo =(double)  rs.getInt("coordenadasY");
+            	
+               GeoLocation geo =new GeoLocation(la, lo); 
+               
+               accion = new Accion(id, geo,  FechaInicio,
            			FotoInicio);
                if(Validada == 1)
             	   accion.setValidada(true);
