@@ -48,30 +48,7 @@ public class Acciones extends Framebase {
 		scroll.setVerticalScrollBarPolicy(JScrollPane.VERTICAL_SCROLLBAR_ALWAYS);
 		
 		panelp = new JPanel(new GridBagLayout());
-
 		
-		
-		Acc=helper_bd_accion.getAccion();
-	
-		   Iterator<Accion> it = Acc.iterator();
-		
-		//for (int i=0;i<Acc.size();i++){
-			while (it.hasNext()){
-			//if(!Acc.get(i).isValidada())
-				a=(Accion) it.next();
-				if(!a.isValidada())
-				
-				  aux = CrearPanel(a);	
-			
-			scroll .setViewportView(aux);
-			scroll .getViewport().setView(aux);
-			
-			
-			//scroll.getViewport().add(aux);
-
-		}
-		
-
 		Dimension dimensionscroll = new Dimension();
 		dimensionscroll.setSize(this.getSize().getHeight()/2, this.getSize().getWidth()/2);
 		scroll.setPreferredSize(dimensionscroll);
@@ -98,12 +75,19 @@ public class Acciones extends Framebase {
 			if(!Acc.get(i).isValidada())
 				contvalidadas++;	
 		}
-
-		panelscroll = new JPanel(new GridLayout(contvalidadas, 1));
-		for (int i=0;i<Acc.size();i++){
-			if(!Acc.get(i).isValidada())
-				CrearPanel(Acc.get(i));	
+		if(contvalidadas > 0) {
+			panelscroll = new JPanel(new GridLayout(contvalidadas, 1));
+			for (int i=0;i<Acc.size();i++){
+				if(!Acc.get(i).isValidada())
+					panelscroll.add(CrearPanel(Acc.get(i)));	
+			}
 		}
+		else
+		{
+			panelscroll = new JPanel();
+			panelscroll.add(new JLabel("No hay acciones sin validar"));
+		}
+		
 		scroll.getViewport().add(panelscroll);
 	}
 	
