@@ -60,10 +60,12 @@ public class panelMap extends JPanel implements MouseListener{
 		   	f=subirFoto.subirFoto();
 			    Graphics g = getGraphics();
 				g.drawImage(iconoMapa.getImage(), x, y, null);
+				ControladorAccion.addAccion(f);
+				System.out.println("5");
 		   }catch(Exception e1){
 			   System.out.println("No se ha podido subir el fichero");
 		   }
-		   ControladorAccion.addAccion(f);
+		   
 			
 		
 		}

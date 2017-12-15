@@ -17,7 +17,7 @@ import ProyectoTalentum.ProyectoTalentum.Usuario;
 
 public class helper_bd_accion {
 	public static void insert(Accion accion) {
-        String sql   = "INSERT INTO accion(coordenadasX, coordenadasY, foto_inicio, foto_fin, fecha_inicio, fecha_fin, validado) VALUES(?,?,?,?,?,?)";
+        String sql   = "INSERT INTO accion(coordenadasX, coordenadasY, foto_inicio, foto_fin, fecha_inicio, fecha_fin, validado) VALUES(?,?,?,?,?,?,?)";
         BaseDatos bd = new BaseDatos();     
         try (Connection conn = bd.getConnection();
 	         PreparedStatement pstmt = conn.prepareStatement(sql)) {
@@ -30,7 +30,9 @@ public class helper_bd_accion {
 	            pstmt.setString(4, accion.getFotoInicio()); //TODO: Cambiar for foto inicio
 	            pstmt.setString(5, accion.getFechaInicio());
 	            pstmt.setString(6, accion.getFechaInicio()); //TODO: Cambiar for fecha fin
-	            pstmt.setBoolean(7, accion.isValidada());
+	            pstmt.setInt(7, 0);
+	    //        pstmt.setBoolean(7, accion.isValidada());
+
 	            pstmt.executeUpdate(); 	         
         } catch (SQLException e) {
             System.out.println(e.getMessage());
