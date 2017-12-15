@@ -2,6 +2,8 @@ package ProyectoTalentum.ProyectoTalentum;
 
 import org.javatuples.Pair;
 
+import com.drew.lang.GeoLocation;
+
 import java.util.Date;
 
 import ProyectoTalentum.ProyectoTalentum.Usuario;
@@ -12,7 +14,8 @@ public class Accion {
 
 	private int id;
 	//private Pair<Double, Double> coordenadas = new Pair<Double, Double>(null, null);
-	private Pair<Integer,Integer> coordenadas = new Pair<>(null, null);
+	//private Pair<Integer,Integer> coordenadas = new Pair<>(null, null);
+	private GeoLocation coordenadas;
 	//private Date FechaInicio;//Cambiar a string si dan por saco
 	//private Date FechaFin;
 	private String FechaInicio;
@@ -29,10 +32,9 @@ public class Accion {
 	 * @param coordenadas
 	 * @param fechaInicio
 	 * @param fotoInicio
-	 * @param grupo
 	 */
-	public Accion(int id, Pair<Integer,Integer> coordenadas, String fechaInicio,
-			String fotoInicio, Usuario[] grupo) {
+	public Accion(int id, GeoLocation coordenadas, String fechaInicio,
+			String fotoInicio) {
 		super();
 		
 		this.id=id;
@@ -45,15 +47,15 @@ public class Accion {
 	
 	/**
 	 * @param id
-	 * @param coordenadas
+	 * @param coordenadas2
 	 * @param fechaInicio
 	 * @param fotoInicio
 	 */
-	public Accion(int id, Pair<Integer,Integer> coordenadas,
+	public Accion(int id, Pair<Integer, Integer> coordenadas2,
 			String fechaInicio, String fotoInicio) {
 		super();		
 		this.id=id;
-		this.coordenadas = coordenadas;
+		this.coordenadas = coordenadas2;
 		FechaInicio = fechaInicio;
 		FotoInicio = fotoInicio;
 		this.Validada = false;
@@ -71,11 +73,11 @@ public class Accion {
 		this.id = id;
 	}
 
-	public Pair<Integer,Integer> getCoordenadas() {
+	public GeoLocation getCoordenadas() {
 		return coordenadas;
 	}
 
-	public void setCoordenadas(Pair<Integer,Integer> coordenadas) {
+	public void setCoordenadas(GeoLocation coordenadas) {
 		this.coordenadas = coordenadas;
 	}
 

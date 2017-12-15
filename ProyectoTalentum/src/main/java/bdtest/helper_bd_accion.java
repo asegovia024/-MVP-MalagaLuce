@@ -10,6 +10,8 @@ import java.util.Iterator;
 
 import org.javatuples.Pair;
 
+import com.drew.lang.GeoLocation;
+
 import ProyectoTalentum.ProyectoTalentum.Accion;
 import ProyectoTalentum.ProyectoTalentum.Usuario;
 
@@ -20,8 +22,10 @@ public class helper_bd_accion {
         try (Connection conn = bd.getConnection();
 	         PreparedStatement pstmt = conn.prepareStatement(sql)) {
         		//se prepara el statment
-	            pstmt.setInt(1, accion.getCoordenadas().getValue0());
-	            pstmt.setInt(2, accion.getCoordenadas().getValue1());
+	
+            pstmt.setInt(1, (int)accion.getCoordenadas().getLatitude());
+            
+            pstmt.setInt(2, (int)accion.getCoordenadas().getLongitude());
 	            pstmt.setString(3, accion.getFotoInicio());
 	            pstmt.setString(4, accion.getFotoInicio()); //TODO: Cambiar for foto inicio
 	            pstmt.setString(5, accion.getFechaInicio());
@@ -35,6 +39,9 @@ public class helper_bd_accion {
         }
     }
 	
+	
+	
+	
 public static ArrayList<Accion> getAccion() {
 	BaseDatos bd      = new BaseDatos();
 	String sql        = "SELECT * FROM accion";
@@ -43,7 +50,7 @@ public static ArrayList<Accion> getAccion() {
 	String FechaFin     = "";
     String FotoInicio = "";
 	String FotoFin    = "";		
-	boolean Validada  = false;
+	int Validada  = 0;
     Pair<Integer, Integer> coordenadas = new Pair<>(null, null);	
 	Accion accion = null;
 	 ArrayList <Accion> listaacciones = new ArrayList<>();
@@ -57,11 +64,15 @@ public static ArrayList<Accion> getAccion() {
                FechaFin    = rs.getString("fecha_fin");
                FotoInicio  = rs.getString("foto_inicio");
                FotoFin     = rs.getString("foto_fin");
-               Validada    = rs.getBoolean("validado");
+               Validada    = rs.getInt("validado");
                coordenadas.setAt0(rs.getInt("coordenadasX"));
                coordenadas.setAt1(rs.getInt("coordenadasY"));
                accion = new Accion(id, coordenadas,  FechaInicio,
            			FotoInicio);
+               if(Validada == 1)
+            	   accion.setValidada(true);
+               accion.setFechaFin(FechaFin);
+               accion.setFotoFin(FotoFin);
                listaacciones.add(accion);
             }
         } catch (SQLException e) {
@@ -71,6 +82,10 @@ public static ArrayList<Accion> getAccion() {
         }
 	 return listaacciones;
  }
+
+
+
+
 	public static Accion getAccionFromList(int id, ArrayList<Accion> lista) {
 		 Iterator<Accion> iterator = lista.iterator();
 		 boolean noencontrado = true;

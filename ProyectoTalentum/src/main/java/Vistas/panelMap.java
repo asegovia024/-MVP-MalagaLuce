@@ -57,6 +57,9 @@ public class panelMap extends JPanel implements MouseListener{
 		   	if (subirFoto.subirFoto()) { 
 			    Graphics g = getGraphics();
 				g.drawImage(iconoMapa.getImage(), x, y, null);
+				
+				
+				//TODO: Recojer los metadatos de la foto y crear la accion
 			}
 		
 		}

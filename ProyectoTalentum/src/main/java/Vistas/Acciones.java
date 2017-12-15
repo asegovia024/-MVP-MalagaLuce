@@ -14,6 +14,7 @@ import java.awt.Toolkit;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.util.ArrayList;
+import java.util.Iterator;
 
 import javax.swing.ImageIcon;
 import javax.swing.JButton;
@@ -38,7 +39,7 @@ public class Acciones extends Framebase {
 	 * 
 	 */
 	private static final long serialVersionUID = 1L;
-	JPanel miPanel, fotoAcc;
+	JPanel miPanel, fotoAcc, aux;
 	 ArrayList <Accion> Acc;
 	 Accion a;
 	 JButton BValidar,BCancelar, Bvolver;
@@ -62,9 +63,22 @@ public class Acciones extends Framebase {
 		
 		Acc=helper_bd_accion.getAccion();
 	
-		for (int i=0;i<Acc.size();i++){
-			if(!Acc.get(i).isValidada())
-				CrearPanel(Acc.get(i));	
+		   Iterator it = Acc.iterator();
+		
+		//for (int i=0;i<Acc.size();i++){
+			while (it.hasNext()){
+			//if(!Acc.get(i).isValidada())
+				a=(Accion) it.next();
+				if(!a.isValidada())
+				
+				  aux = CrearPanel(a);	
+			
+			scroll .setViewportView(aux);
+			scroll .getViewport().setView(aux);
+			
+			
+			//scroll.getViewport().add(aux);
+
 		}
 		
 		panelp.add(scroll);
@@ -82,27 +96,18 @@ public class Acciones extends Framebase {
 	}
 
 	
-	private void CrearPanel(Accion a ){
+	private JPanel CrearPanel(Accion a ){
 
 		miPanel = new JPanel(new GridBagLayout());
 		miPanel.setBorder(new TitledBorder("Accion "+ a.getID()));
-		//miPanel.setBackground(Color.LIGHT_GRAY);
 		
 		//Fecha
 		JLabel fechalabel =new JLabel("Fecha: " + a.getFechaInicio());
-		//GridBagConstraints constraints = Generaconstraints(0, 0, 1, 1, GridBagConstraints.NONE);
 		miPanel.add(fechalabel, new GridBagConstraints(0, 0, 1, 1, 0.0, 0.0,
 				GridBagConstraints.CENTER, GridBagConstraints.BOTH,
 				new Insets(0, 0, 5, 5), 0, 0));
 		
-		
-		/*JLabel fechalabel2 =new JLabel(a.getFechaInicio());
-	//	GridBagConstraints constraintsf = Generaconstraints(1, 0, 1, 1, GridBagConstraints.NONE);
-		miPanel.add(fechalabel2, new GridBagConstraints(1, 0, 1, 1, 0.0, 0.0,
-				GridBagConstraints.CENTER, GridBagConstraints.BOTH,
-				new Insets(0, 0, 5, 5), 0, 0));
-		*/
-		//Foto
+		//Foto  "src/resources/prueba.jpg"
 		Image imagen = new Image("src/resources/Penguins.jpg"); //a.getFotoInicio()
 		imagen.resize(120, 120, true);
 		
@@ -111,8 +116,6 @@ public class Acciones extends Framebase {
 		this.fotoAcc.add(etiqueta);
 		
 		fotoAcc.setBackground(Color.LIGHT_GRAY);
-		//GridBagConstraints constraints2 = Generaconstraints(0, 1, 1, 2, GridBagConstraints.BOTH);
-		//constraints2.anchor = GridBagConstraints.CENTER;
 		miPanel.add(fotoAcc,new GridBagConstraints(0, 2, 1, 1, 0.0, 0.0,
 				GridBagConstraints.CENTER, GridBagConstraints.BOTH,
 				new Insets(0, 0, 0, 5), 0, 0));
@@ -139,8 +142,8 @@ public class Acciones extends Framebase {
 				GridBagConstraints.CENTER, GridBagConstraints.BOTH,
 				new Insets(0, 0, 0, 5), 0, 0));
 		
-		scroll.getViewport().add(miPanel);
-		//scroll.add(miPanel);
+		return miPanel;
+		//scroll.getViewport().add(miPanel);
 
 	}
 	
