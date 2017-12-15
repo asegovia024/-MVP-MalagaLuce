@@ -7,11 +7,13 @@ import java.awt.Point;
 import java.awt.PointerInfo;
 import java.awt.event.MouseEvent;
 import java.awt.event.MouseListener;
+import java.io.File;
 
 import javax.swing.ImageIcon;
 import javax.swing.JLabel;
 import javax.swing.JPanel;
 
+import ProyectoTalentum.ProyectoTalentum.ControladorAccion;
 import ProyectoTalentum.ProyectoTalentum.SelectorArchivos;
 
 public class panelMap extends JPanel implements MouseListener{
@@ -50,17 +52,19 @@ public class panelMap extends JPanel implements MouseListener{
 			int y = e.getY();
 			System.out.print(y + " y ");
 			System.out.print(x + " x ");
-			
+			File f=null;
 
 		   SelectorArchivos subirFoto =  new ProyectoTalentum.ProyectoTalentum.SelectorArchivos();//Abre el selector de foto al pincahr en el mapa
 		    
-		   	if (subirFoto.subirFoto()) { 
+		   try{
+		   	f=subirFoto.subirFoto();
 			    Graphics g = getGraphics();
 				g.drawImage(iconoMapa.getImage(), x, y, null);
-				
-				
-				//TODO: Recojer los metadatos de la foto y crear la accion
-			}
+		   }catch(Exception e1){
+			   System.out.println("No se ha podido subir el fichero");
+		   }
+		   ControladorAccion.addAccion(f);
+			
 		
 		}
 	}

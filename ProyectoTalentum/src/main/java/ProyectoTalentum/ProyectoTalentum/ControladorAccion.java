@@ -8,6 +8,7 @@ public class ControladorAccion {
 
 	
 	public static void addAccion(File f){
+		
 		//TODO: Recojer los metadatos de la foto y crear la accion
 		
 	
