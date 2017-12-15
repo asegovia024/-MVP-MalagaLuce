@@ -24,6 +24,7 @@ public class MpPanel extends Framebase
 	JButton validar;
 	JButton ranking;
 	Usuario usuario;
+	JButton bSalir;
 	public MpPanel()
 
 	{
@@ -136,10 +137,11 @@ public class MpPanel extends Framebase
 		this.botonessuperior = new JPanel(new GridLayout(0,3));
 		JButton opciones = new JButton("Configuración");
 		JButton boton1 = new JButton("boton 1");
-		JButton boton2 = new JButton("boton 2");
+		bSalir = new JButton("Salir");
+		llamadabotonsalir();
 		botonessuperior.add(opciones);
-		botonessuperior.add(boton2);
 		botonessuperior.add(boton1);
+		botonessuperior.add(bSalir);
 	}
 	
 	private void llamadabotonranking(){
@@ -165,5 +167,15 @@ private void llamadabotonvalidar() {
 		}
 	});
 }
-
+private void llamadabotonsalir() {
+	bSalir.addActionListener(new ActionListener() {
+		
+		@Override
+		public void actionPerformed(ActionEvent e) {
+			new Vistas.Login().setVisible(true);
+			dispose();
+			
+		}
+	});
+}
 }
