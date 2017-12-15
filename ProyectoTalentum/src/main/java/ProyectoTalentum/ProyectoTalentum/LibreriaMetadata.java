@@ -111,18 +111,23 @@ public class LibreriaMetadata
     
     public Date getDate()
     {
-    	
+    	Date date=null;
     	// obtain the Exif directory
+    	
     	ExifSubIFDDirectory directory
     	    = metadata.getFirstDirectoryOfType(ExifSubIFDDirectory.class);
 
+    	
     	// query the tag's value
-    	Date date = directory.getDate(ExifSubIFDDirectory.TAG_DATETIME_ORIGINAL);
+    	 date = directory.getDate(ExifSubIFDDirectory.TAG_DATETIME_ORIGINAL);
+      	
+    	
+		return date;
     	
     //	LocalDateTime date2 = date.toInstant().atZone(ZoneId.systemDefault()).toLocalDateTime();
       //  System.out.println(date2.format(DateTimeFormatter.ISO_WEEK_DATE ));
 
-    	return date;
+  
     }
     
     
