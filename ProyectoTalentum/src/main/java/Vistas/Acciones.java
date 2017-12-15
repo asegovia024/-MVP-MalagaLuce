@@ -48,22 +48,10 @@ public class Acciones extends Framebase {
 		scroll.setVerticalScrollBarPolicy(JScrollPane.VERTICAL_SCROLLBAR_ALWAYS);
 		
 		panelp = new JPanel(new GridBagLayout());
-		Acc=helper_bd_accion.getAccion();
 		Dimension dimensionscroll = new Dimension();
 		dimensionscroll.setSize(this.getSize().getHeight()/2, this.getSize().getWidth()/2);
 		scroll.setPreferredSize(dimensionscroll);
-		int contvalidadas = 0;
-		for (int i=0;i<Acc.size();i++){
-			if(!Acc.get(i).isValidada())
-				contvalidadas++;	
-		}
-
-		panelscroll = new JPanel(new GridLayout(contvalidadas, 1));
-		for (int i=0;i<Acc.size();i++){
-			if(!Acc.get(i).isValidada())
-				CrearPanel(Acc.get(i));	
-		}
-		scroll.getViewport().add(panelscroll);
+		generarPanelScroll();
 		panelp.add(scroll);
 		Bvolver = new JButton("Volver");
 		botonvolver();
@@ -78,6 +66,21 @@ public class Acciones extends Framebase {
 
 	}
 
+	private void generarPanelScroll() {
+		Acc=helper_bd_accion.getAccion();
+		int contvalidadas = 0;
+		for (int i=0;i<Acc.size();i++){
+			if(!Acc.get(i).isValidada())
+				contvalidadas++;	
+		}
+
+		panelscroll = new JPanel(new GridLayout(contvalidadas, 1));
+		for (int i=0;i<Acc.size();i++){
+			if(!Acc.get(i).isValidada())
+				CrearPanel(Acc.get(i));	
+		}
+		scroll.getViewport().add(panelscroll);
+	}
 	
 	private void CrearPanel(Accion a ){
 
@@ -126,6 +129,9 @@ public class Acciones extends Framebase {
 				String accion = e.getActionCommand();
 				int aID = Integer.parseInt(accion);
 				helper_bd_accion.validarAccion(aID);
+				panelscroll.removeAll();				
+				generarPanelScroll();
+				panelscroll.updateUI();
 			}
 		});
 		BCancelar = new JButton();
