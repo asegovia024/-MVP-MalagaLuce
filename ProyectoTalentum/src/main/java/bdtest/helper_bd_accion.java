@@ -34,7 +34,19 @@ public class helper_bd_accion {
         	bd.closeConnection();
         }
     }
-	
+	public static void validarAccion(int id) {
+		String sql = "UPDATE accion SET validado = 1 WHERE aID = ?";
+		BaseDatos bd = new BaseDatos(); 
+		try (Connection conn = bd.getConnection();
+		         PreparedStatement pstmt = conn.prepareStatement(sql)) {
+		            pstmt.setInt(1, id);
+		            pstmt.executeUpdate();
+	        } catch (SQLException e) {
+	            System.out.println(e.getMessage());
+	        } finally {
+	        	bd.closeConnection();
+	        }
+	}
 public static ArrayList<Accion> getAccion() {
 	BaseDatos bd      = new BaseDatos();
 	String sql        = "SELECT * FROM accion";

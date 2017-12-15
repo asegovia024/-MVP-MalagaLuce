@@ -84,7 +84,6 @@ public class Acciones extends Framebase {
 		miPanel = new JPanel(new GridBagLayout());
 		miPanel.setBorder(new TitledBorder("Accion "+ a.getID()));
 		//miPanel.setBackground(Color.LIGHT_GRAY);
-		
 		//Fecha
 		JLabel fechalabel =new JLabel("Fecha: " + a.getFechaInicio());
 		//GridBagConstraints constraints = Generaconstraints(0, 0, 1, 1, GridBagConstraints.NONE);
@@ -117,11 +116,20 @@ public class Acciones extends Framebase {
 		
 		JPanel panelbotones = new JPanel(new GridBagLayout());
 		
-		BValidar = new JButton();
-		BValidar.setText("Validar");
-		
+		BValidar = new JButton("Validar");
+		BValidar.setActionCommand(Integer.toString(a.getID()));
+		BValidar.setName(Integer.toString(a.getID()));
+		BValidar.addActionListener(new ActionListener() {
+			
+			@Override
+			public void actionPerformed(ActionEvent e) {
+				String accion = e.getActionCommand();
+				int aID = Integer.parseInt(accion);
+				helper_bd_accion.validarAccion(aID);
+			}
+		});
 		BCancelar = new JButton();
-		BCancelar.setText("Cancelar");
+		BCancelar.setText("Rechazar");
 
 		
 		panelbotones.add(BValidar, new GridBagConstraints(0, 0, 1, 1, 0.0, 0.0,
