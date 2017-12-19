@@ -16,6 +16,7 @@ public class ControladorAccion {
 	
 		String s =m.getDate().toString();
 		String rutaImagenes = "src\\resources/" + f.getName() ;
+		System.out.println(f.getName());
 		Accion a = new Accion(0 , m.getGPS(),s , rutaImagenes);
 		
 		
