@@ -103,7 +103,10 @@ public class Acciones extends Framebase {
 				new Insets(0, 0, 5, 5), 0, 0));
 		
 		//Foto  "src/resources/prueba.jpg"
-		Image imagen = new Image("src/resources/Penguins.jpg"); //a.getFotoInicio()
+		Image imagen = new Image(a.getFotoInicio()); //a.getFotoInicio()
+		System.out.print(a.getFotoInicio());
+		System.out.print(a.getFotoInicio());
+
 		imagen.resize(120, 120, true);
 		
 		this.fotoAcc = new JPanel();
