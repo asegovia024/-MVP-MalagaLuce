@@ -7,6 +7,9 @@ import java.sql.SQLException;
 import java.sql.Statement;
 import java.util.ArrayList;
 import java.util.Iterator;
+
+import org.javatuples.Pair;
+
 import ProyectoTalentum.ProyectoTalentum.Usuario;
 
 public class helper_bd_usuario {
@@ -127,6 +130,47 @@ public class helper_bd_usuario {
 	        }
 		 return listausuarios;
 	 }
+	
+	
+	
+	
+	public static ArrayList<Pair<String,Integer>> getRankingG() {
+		
+		 BaseDatos bd = new BaseDatos(); 
+		 String sql      = "SELECT equipo.nombre, SUM(usuario.puntos) FROM usuario INNER JOIN equipo ON usuario.eID = equipo.eID GROUP BY equipo.nombre  ORDER BY usuario.puntos DESC; ";
+		 String nombre   = "";
+		 int puntos      = 0;
+
+		 ArrayList <Pair<String,Integer>> lista = new ArrayList<Pair<String,Integer>>();
+		 
+		 Pair<String,Integer> eq = new Pair<>(null, null);
+		 
+		 
+		 try (Connection conn = bd.getConnection();
+	             Statement stmt  = conn.createStatement();
+				 ResultSet rs = bd.Query(sql);){
+	            
+	            while (rs.next()) {
+	            	
+	               puntos   = rs.getInt("puntos");
+	               nombre   = rs.getString("nombre");
+	               
+	               eq.add(nombre,puntos);
+	               lista.add(eq);
+	      
+	               
+	            }
+	        } catch (SQLException e) {
+	            System.out.println(e.getMessage());
+	        } finally {
+	        	bd.closeConnection();
+	        }
+		 return lista;
+	 }
+	
+	
+	
+	
 	public static Usuario getUsuarioByCorreo(String correo) {
 		 BaseDatos bd = new BaseDatos(); 
 		 String sql      = "SELECT * FROM usuario WHERE correo = ?";

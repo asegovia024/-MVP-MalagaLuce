@@ -37,7 +37,7 @@ public class App {
             public void run() {
             	new Vistas.Login().setVisible(true);
             	//new Vistas.Ranking().setVisible(true);
-            	//new Vistas.MpPanel().setVisible(false);
+            	//new Vistas.MpPanel().setVisible(true);
             }
         });
         
