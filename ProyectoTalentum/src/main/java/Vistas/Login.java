@@ -43,7 +43,12 @@ public class Login extends Framebase  {
        imagen.resize(height,width, true);
         //create a new panel with GridBagLayout manager
        JPanel newPanel = new JPanel(new GridBagLayout()) {
-    	   @Override
+    	   /**
+		 * 
+		 */
+		private static final long serialVersionUID = 1L;
+
+		@Override
     		  protected void paintComponent(Graphics g) {
 
     		    super.paintComponent(g);
@@ -54,13 +59,21 @@ public class Login extends Framebase  {
        // lFondo = new JLabel();
        // lFondo.setIcon(new ImageIcon(fondo.getImage()));
        GridBagConstraints constraints = new GridBagConstraints();
-       constraints.anchor = GridBagConstraints.WEST;
-       constraints.insets = new Insets(10, 10, 10, 10);
+       Insets ins = new Insets(60, 0, 10, 0);
+       constraints.insets = ins;
+       
+    // add components to the panel
+       constraints.gridx = 0;
+       constraints.gridy = 0;     
+      newPanel.add(Box.createHorizontalGlue(), constraints);
+
+       constraints.gridx = 1;
+       newPanel.add(Box.createHorizontalGlue(), constraints);
        
        // add components to the panel
        constraints.gridx = 0;
-       constraints.gridy = 0;     
-       newPanel.add(labelUsername, constraints);
+       constraints.gridy = 1;     
+      newPanel.add(Box.createHorizontalGlue(), constraints);
 
        constraints.gridx = 1;
        newPanel.add(textUsername, constraints);
@@ -68,7 +81,7 @@ public class Login extends Framebase  {
       
        
        constraints.gridx = 0;
-       constraints.gridy = 1;     
+       constraints.gridy = 2;     
        newPanel.add(labelPassword, constraints);
         
        
@@ -77,7 +90,7 @@ public class Login extends Framebase  {
         
        
        constraints.gridx = 0;
-       constraints.gridy = 2;
+       constraints.gridy = 3;
        constraints.gridwidth = 2;
        constraints.anchor = GridBagConstraints.CENTER;
        newPanel.add(buttonLogin, constraints);
