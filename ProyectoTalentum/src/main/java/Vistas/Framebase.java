@@ -33,7 +33,7 @@ public abstract class Framebase  extends JFrame {
 	    
 		 
 	    try {
-	    	lookAndFeel.load(Login.class.getResourceAsStream("loginSkin.xml"),
+	    	lookAndFeel.load(Login.class.getResourceAsStream("frameSkin.xml"),
 	        				  Login.class);
 	        UIManager.setLookAndFeel(lookAndFeel);
 	        System.out.println(UIManager.getSystemLookAndFeelClassName());
