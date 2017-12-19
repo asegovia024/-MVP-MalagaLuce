@@ -17,6 +17,7 @@ import java.awt.event.ActionListener;
 import java.security.NoSuchAlgorithmException;
 
 import javax.swing.*;
+import javax.swing.plaf.synth.SynthLookAndFeel;
 import javax.xml.bind.Marshaller.Listener;
 import javax.xml.bind.annotation.XmlElementDecl.GLOBAL;
 import ProyectoTalentum.ProyectoTalentum.Usuario;
@@ -31,23 +32,27 @@ public class Login extends Framebase  {
    private JTextField textUsername = new JTextField(20);
    private JPasswordField fieldPassword = new JPasswordField(20);
    private JButton buttonLogin = new JButton("Login");
-    
+    private JPanel background;
+   // private ImageIcon fondo = new ImageIcon("src/resources/CapasVistas/Megafondo.png");
+    private JLabel lFondo;
    public Login() {
        super("JPanel Demo Program");
        
    
-       
+    
        
        
        
        // create a new panel with GridBagLayout manager
        JPanel newPanel = new JPanel(new GridBagLayout());
-        
+      //  background = new JPanel();
+       // lFondo = new JLabel(new ImageIcon(fondo.getImage()));
+       // background.add(lFondo);
        
        GridBagConstraints constraints = new GridBagConstraints();
        constraints.anchor = GridBagConstraints.WEST;
        constraints.insets = new Insets(10, 10, 10, 10);
-        
+       
        // add components to the panel
        constraints.gridx = 0;
        constraints.gridy = 0;     
@@ -129,6 +134,8 @@ public class Login extends Framebase  {
                BorderFactory.createEtchedBorder(), "Login Panel"));
         
        // add the panel to this frame
+      // background.add(newPanel);
+      // add(background);
        add(newPanel);
         
        
