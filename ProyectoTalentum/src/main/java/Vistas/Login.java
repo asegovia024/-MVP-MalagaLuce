@@ -4,50 +4,59 @@ import java.awt.GridBagConstraints;
 import ProyectoTalentum.ProyectoTalentum.ControladorUser;
 import ProyectoTalentum.ProyectoTalentum.Usuario;
 import bdtest.helper_bd_usuario;
+import javaxt.io.Image;
 
 import java.awt.Dimension;
+import java.awt.Graphics;
 import java.awt.GridBagLayout;
 import java.awt.Insets;
-import java.awt.MouseInfo;
-import java.awt.Point;
-import java.awt.PointerInfo;
 import java.awt.Toolkit;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.security.NoSuchAlgorithmException;
-
 import javax.swing.*;
-import javax.xml.bind.Marshaller.Listener;
-import javax.xml.bind.annotation.XmlElementDecl.GLOBAL;
-import ProyectoTalentum.ProyectoTalentum.Usuario;
 
 
 public class Login extends Framebase  {
 	
-	
+	//
 	private static final long serialVersionUID = 1L;
 	private JLabel labelUsername = new JLabel("Usuario: ");
    private JLabel labelPassword = new JLabel("Contraseña: ");
    private JTextField textUsername = new JTextField(20);
    private JPasswordField fieldPassword = new JPasswordField(20);
    private JButton buttonLogin = new JButton("Login");
-    
+    private JPanel background;
+    private ImageIcon fondo;
+    private JLabel lFondo;
    public Login() {
        super("JPanel Demo Program");
        
-   
+   //
+    
+       Toolkit pantalla = Toolkit.getDefaultToolkit(); //Coge los datos de la pantalla
+       Dimension pantallaD = pantalla.getScreenSize(); //Coge la resolución y la divide en 2 variables
+       int width = pantallaD.width/2;
+       int height = pantallaD.height/2;
        
-       
-       
-       
-       // create a new panel with GridBagLayout manager
-       JPanel newPanel = new JPanel(new GridBagLayout());
-        
-       
+       final Image imagen = new Image("src/resources/Registro.jpg");
+       imagen.resize(height,width, true);
+        //create a new panel with GridBagLayout manager
+       JPanel newPanel = new JPanel(new GridBagLayout()) {
+    	   @Override
+    		  protected void paintComponent(Graphics g) {
+
+    		    super.paintComponent(g);
+    		    g.drawImage(imagen.getImage(), 0, 0, null);
+    		}
+       };
+       // background = new JPanel();
+       // lFondo = new JLabel();
+       // lFondo.setIcon(new ImageIcon(fondo.getImage()));
        GridBagConstraints constraints = new GridBagConstraints();
        constraints.anchor = GridBagConstraints.WEST;
        constraints.insets = new Insets(10, 10, 10, 10);
-        
+       
        // add components to the panel
        constraints.gridx = 0;
        constraints.gridy = 0;     
@@ -125,14 +134,14 @@ public class Login extends Framebase  {
       
        // set border for the panel
        
-       newPanel.setBorder(BorderFactory.createTitledBorder(
-               BorderFactory.createEtchedBorder(), "Login Panel"));
+      // newPanel.setBorder(BorderFactory.createTitledBorder(
+        //       BorderFactory.createEtchedBorder(), "Login Panel"));
         
        // add the panel to this frame
+      // lFondo.add(newPanel);
        add(newPanel);
-        
-       
-
+       //background.add(lFondo);
+      // setContentPane(background);
        
        pack();
        setLocationRelativeTo(null);

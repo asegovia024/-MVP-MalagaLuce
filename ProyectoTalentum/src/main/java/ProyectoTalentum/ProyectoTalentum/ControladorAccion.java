@@ -15,8 +15,9 @@ public class ControladorAccion {
 		LibreriaMetadata m =new LibreriaMetadata(f);//recojemos los metadatos de f
 	
 		String s =m.getDate().toString();
-		
-		Accion a = new Accion(0 , m.getGPS(),s , f.getPath());
+		String rutaImagenes = "src\\resources/" + f.getName() ;
+		System.out.println(f.getName());
+		Accion a = new Accion(0 , m.getGPS(),s , rutaImagenes);
 		
 		
 		helper_bd_accion.insert(a);

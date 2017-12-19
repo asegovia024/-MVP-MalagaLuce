@@ -90,6 +90,7 @@ private void mostrarDatosUsandoLogica(){
              "Usuario",
              "Puntos"};
 	 
+	 
 
 		String info[][] = obtieneMariz();// obtenemos la informacion de
 	

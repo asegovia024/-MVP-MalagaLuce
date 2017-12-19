@@ -115,7 +115,9 @@ public class MpPanel extends Framebase
 			this.botonesizq = new JPanel(new GridLayout(0,1));
 			this.validar = new JButton("");
 			validar.setSize(30,30);
-			validar.setBorder(null);
+			//validar.setBorder(null);
+			validar.setBorder(BorderFactory.createEmptyBorder());
+			validar.setOpaque(true);
 			validar.setMargin(new Insets(0, 0, 0, 0));
 			this.validar.setIcon(new ImageIcon("src\\resources\\avatar.png"));
 			llamadabotonvalidar();
