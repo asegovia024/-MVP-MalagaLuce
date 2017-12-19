@@ -43,7 +43,12 @@ public class Login extends Framebase  {
        imagen.resize(height,width, true);
         //create a new panel with GridBagLayout manager
        JPanel newPanel = new JPanel(new GridBagLayout()) {
-    	   @Override
+    	   /**
+		 * 
+		 */
+		private static final long serialVersionUID = 1L;
+
+		@Override
     		  protected void paintComponent(Graphics g) {
 
     		    super.paintComponent(g);
@@ -54,7 +59,6 @@ public class Login extends Framebase  {
        // lFondo = new JLabel();
        // lFondo.setIcon(new ImageIcon(fondo.getImage()));
        GridBagConstraints constraints = new GridBagConstraints();
-       constraints.anchor = GridBagConstraints.WEST;
        constraints.insets = new Insets(10, 10, 10, 10);
        
        // add components to the panel
