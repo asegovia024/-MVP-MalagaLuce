@@ -6,6 +6,7 @@ import ProyectoTalentum.ProyectoTalentum.Usuario;
 import bdtest.helper_bd_usuario;
 import javaxt.io.Image;
 
+import java.awt.Cursor;
 import java.awt.Dimension;
 import java.awt.Graphics;
 import java.awt.GridBagLayout;
@@ -24,9 +25,6 @@ public class Login extends Framebase  {
    private JTextField textUsername = new JTextField(20);
    private JPasswordField fieldPassword = new JPasswordField(20);
    private JButton buttonLogin = new JButton();
-    private JPanel background;
-    private ImageIcon fondo;
-    private JLabel lFondo;
    public Login() {
        super("JPanel Demo Program");
        
@@ -93,6 +91,7 @@ public class Login extends Framebase  {
        constraints.gridwidth = 2;
        constraints.anchor = GridBagConstraints.CENTER;
        buttonLogin.setPreferredSize(new Dimension((int)pantallaD.getWidth()/14, (int)pantallaD.getHeight()/23));
+       buttonLogin.setCursor(new Cursor(Cursor.HAND_CURSOR));
        newPanel.add(buttonLogin, constraints);
        
         buttonLogin.addActionListener(new ActionListener() {
@@ -104,12 +103,9 @@ public class Login extends Framebase  {
 				//Bucle
 			
 				try {
-					JLabel jlabel = null;
 					char[] arrayC = fieldPassword.getPassword();
 					String pass = new String(arrayC);
 					
-
-
 					String correo = textUsername.getText();
 					String password = ControladorUser.encripta(pass);
 					
