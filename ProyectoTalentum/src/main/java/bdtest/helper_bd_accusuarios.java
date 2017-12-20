@@ -7,13 +7,14 @@ import java.sql.SQLException;
 import java.sql.Statement;
 
 public class helper_bd_accusuarios {
-	public static void insert(int uID, int aID) {
-        String sql   = "INSERT INTO accusuarios(uID, aID) VALUES (?,?)";
+	
+	public static void insert(int uID) {
+        String sql   = "INSERT INTO accusuarios (uID,aID )  SELECT ?, aID FROM accion ORDER BY  aID DESC LIMIT 0,1";
+//"+ uID +"
         BaseDatos bd = new BaseDatos();    
         try (Connection conn = bd.getConnection();
 	         PreparedStatement pstmt = conn.prepareStatement(sql)) {
 	            pstmt.setInt(1, uID);
-	            pstmt.setInt(2, aID);
 	            pstmt.executeUpdate();
         } catch (SQLException e) {
             System.out.println(e.getMessage());
@@ -21,6 +22,7 @@ public class helper_bd_accusuarios {
         	bd.closeConnection();
         }
     }
+	
 	/**
 	 * @return Devuelve el número de acciones realizadas por usuario hay en la BBDD
 	 */

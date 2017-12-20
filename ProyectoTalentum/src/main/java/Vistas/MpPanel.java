@@ -68,7 +68,7 @@ public class MpPanel extends Framebase
 	}*/
 	private void colocarMapa() {
 		//JLabel mapal = new JLabel("mapa aqui");
-		this.mapa = new panelMap();
+		this.mapa = new panelMap(usuario);
 		GridBagConstraints constraints = new GridBagConstraints();
 		constraints.gridx = 1;
 		constraints.gridy = 1;
