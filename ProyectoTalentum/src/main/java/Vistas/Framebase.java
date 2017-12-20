@@ -13,7 +13,7 @@ public abstract class Framebase  extends JFrame {
 
 	public Framebase(String s) {
 	       super(s);
-	     //  initLaF();
+	       initLaF();
 		 //tamaño movil
 	       Toolkit pantalla = Toolkit.getDefaultToolkit(); //Coge los datos de la pantalla
 	       Dimension pantallaD = pantalla.getScreenSize(); //Coge la resolución y la divide en 2 variables
