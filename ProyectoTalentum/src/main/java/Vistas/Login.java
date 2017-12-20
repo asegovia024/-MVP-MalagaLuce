@@ -114,7 +114,8 @@ public class Login extends Framebase  {
 						 System.out.print("si se ha podido loggear ");
 						 
 						 	Usuario usuarioLogeado = helper_bd_usuario.getUsuarioByCorreo(correo);
-							new Vistas.MpPanel(usuarioLogeado).setVisible(true);
+							//new Vistas.MpPanel(usuarioLogeado).setVisible(true);
+						 	new Vistas.MapaFrame(usuarioLogeado).setVisible(true);
 							setVisible(false);
 						 
 						 
