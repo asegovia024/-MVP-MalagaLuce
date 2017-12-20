@@ -137,7 +137,7 @@ public class helper_bd_usuario {
 	public static ArrayList<Pair<String,Integer>> getRankingG() {
 		
 		 BaseDatos bd = new BaseDatos(); 
-		 String sql      = "SELECT equipo.nombre, SUM(usuario.puntos) FROM usuario INNER JOIN equipo ON usuario.eID = equipo.eID GROUP BY equipo.nombre  ORDER BY usuario.puntos DESC; ";
+		 String sql      = "SELECT equipo.nombre, SUM(usuario.puntos) FROM usuario INNER JOIN equipo ON usuario.eID = equipo.eID GROUP BY equipo.nombre  ORDER BY usuario.puntos DESC LIMIT 0,5; ";
 		 String nombre   = "";
 		 int puntos      = 0;
 
@@ -152,10 +152,15 @@ public class helper_bd_usuario {
 	            
 	            while (rs.next()) {
 	            	
-	               puntos   = rs.getInt("puntos");
+	               puntos   = rs.getInt("SUM(usuario.puntos)");
 	               nombre   = rs.getString("nombre");
 	               
-	               eq.add(nombre,puntos);
+	               
+	              // System.out.println(nombre +" "+ puntos+" bd"); 
+
+	             eq=  eq.setAt0(nombre);
+	            eq=   eq.setAt1(puntos);
+	                 	               
 	               lista.add(eq);
 	      
 	               
