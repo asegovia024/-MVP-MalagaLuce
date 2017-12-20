@@ -21,11 +21,9 @@ public class Login extends Framebase  {
 	
 	//
 	private static final long serialVersionUID = 1L;
-	private JLabel labelUsername = new JLabel("Usuario: ");
-   private JLabel labelPassword = new JLabel("Contraseña: ");
    private JTextField textUsername = new JTextField(20);
    private JPasswordField fieldPassword = new JPasswordField(20);
-   private JButton buttonLogin = new JButton("Login");
+   private JButton buttonLogin = new JButton();
     private JPanel background;
     private ImageIcon fondo;
     private JLabel lFondo;
@@ -38,7 +36,7 @@ public class Login extends Framebase  {
        Dimension pantallaD = pantalla.getScreenSize(); //Coge la resolución y la divide en 2 variables
        int width = pantallaD.width/2;
        int height = pantallaD.height/2;
-       
+       System.out.println(pantallaD.height + " "+ " "+pantallaD.width);
        final Image imagen = new Image("src/resources/Registro.jpg");
        imagen.resize(height,width, true);
         //create a new panel with GridBagLayout manager
@@ -59,7 +57,7 @@ public class Login extends Framebase  {
        // lFondo = new JLabel();
        // lFondo.setIcon(new ImageIcon(fondo.getImage()));
        GridBagConstraints constraints = new GridBagConstraints();
-       Insets ins = new Insets(60, 0, 10, 0);
+       Insets ins = new Insets(pantallaD.height/12, pantallaD.width/136, -pantallaD.height/75, 0);
        constraints.insets = ins;
        
     // add components to the panel
@@ -69,6 +67,7 @@ public class Login extends Framebase  {
 
        constraints.gridx = 1;
        newPanel.add(Box.createHorizontalGlue(), constraints);
+     //  constraints.insets = new Insets(10, 10, 10, 10);
        
        // add components to the panel
        constraints.gridx = 0;
@@ -82,7 +81,7 @@ public class Login extends Framebase  {
        
        constraints.gridx = 0;
        constraints.gridy = 2;     
-       newPanel.add(labelPassword, constraints);
+       newPanel.add(Box.createHorizontalGlue(), constraints);
         
        
        constraints.gridx = 1;
@@ -93,6 +92,7 @@ public class Login extends Framebase  {
        constraints.gridy = 3;
        constraints.gridwidth = 2;
        constraints.anchor = GridBagConstraints.CENTER;
+       buttonLogin.setPreferredSize(new Dimension((int)pantallaD.getWidth()/14, (int)pantallaD.getHeight()/23));
        newPanel.add(buttonLogin, constraints);
        
         buttonLogin.addActionListener(new ActionListener() {
