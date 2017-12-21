@@ -4,6 +4,8 @@ import java.io.UnsupportedEncodingException;
 import java.security.MessageDigest;
 import java.security.NoSuchAlgorithmException;
 
+import bdtest.helper_bd_usuario;
+
 
 public class ControladorUser {
 	
@@ -34,6 +36,10 @@ public class ControladorUser {
 		
 		
 	}
+	
+
+	
+	 
 	public static boolean esAdmin(Usuario usuario) {
 		if(usuario.getSuper()){
 			return true;

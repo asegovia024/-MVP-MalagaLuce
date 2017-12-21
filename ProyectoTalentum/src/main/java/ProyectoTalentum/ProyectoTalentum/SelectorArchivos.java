@@ -56,6 +56,10 @@ public class SelectorArchivos {
 		
 	}
 	
+	
+	
+	
+	
 	public boolean subirFotoPerfil(){
 		
 		JFileChooser jFileChooser = new JFileChooser();
