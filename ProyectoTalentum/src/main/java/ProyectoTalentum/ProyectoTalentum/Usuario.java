@@ -141,6 +141,11 @@ public class Usuario {
 		this.Puntos = Puntos;
 	}
 	
+	
+	public void PuntosAdd() {
+		Puntos ++;
+	}
+	
 	/**
 	 * 
 	 * @return Devuelve la fecha de nacimiento del usuario

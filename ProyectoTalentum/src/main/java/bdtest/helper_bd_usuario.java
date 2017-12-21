@@ -174,7 +174,30 @@ public class helper_bd_usuario {
 	 }
 	
 	
+
 	
+	
+	public static void AddPuntos(int p,int id){
+		String sql = " UPDATE usuario SET puntos= '?' WHERE uID=?";
+        BaseDatos bd = new BaseDatos();
+        try (Connection conn = bd.getConnection();
+	         PreparedStatement pstmt = conn.prepareStatement(sql)) {
+	            pstmt.setInt(1, p);
+	            pstmt.setInt(2, id);
+	            pstmt.executeUpdate(); 
+        } catch (SQLException e) {
+            System.out.println(e.getMessage()); 
+        } finally {
+        	bd.closeConnection();
+        }
+	}
+	
+	
+	
+	
+	
+	
+	// UPDATE usuario SET puntos= '2' WHERE uID=0
 	
 	public static Usuario getUsuarioByCorreo(String correo) {
 		 BaseDatos bd = new BaseDatos(); 

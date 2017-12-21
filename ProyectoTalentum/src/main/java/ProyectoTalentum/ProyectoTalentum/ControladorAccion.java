@@ -3,11 +3,12 @@ package ProyectoTalentum.ProyectoTalentum;
 import java.io.File;
 
 import bdtest.helper_bd_accion;
+import bdtest.helper_bd_accusuarios;
 
 public class ControladorAccion {
 
 	
-	public static void addAccion(File f){
+	public static void addAccion(File f,int n){
 		
 		//TODO: Recojer los metadatos de la foto y crear la accion
 		
@@ -21,6 +22,11 @@ public class ControladorAccion {
 		
 		
 		helper_bd_accion.insert(a);
+		
+		helper_bd_accusuarios.insert(n);
+		
+		///usuario add puntos
+		
 		
 		
 	}
