@@ -18,7 +18,7 @@ public abstract class Framebase  extends JFrame {
 	public Framebase(String s) {
 	       super(s);
 	       try {
-			initLaF(true);
+			initLaF(false);
 		} catch (ClassNotFoundException e) {
 			e.printStackTrace();
 		} catch (InstantiationException e) {

@@ -1,17 +1,16 @@
 package Vistas;
 
+import java.awt.BorderLayout;
 import java.awt.Component;
 import java.awt.Cursor;
 import java.awt.Dimension;
+import java.awt.FlowLayout;
 import java.awt.Graphics;
-import java.awt.GridBagLayout;
 import java.awt.Toolkit;
 
-import javax.swing.Box;
-import javax.swing.JButton;
-import javax.swing.JComponent;
-import javax.swing.JPanel;
-import javax.swing.SpringLayout;
+import javax.swing.*;
+import javax.swing.border.Border;
+import javax.swing.border.EmptyBorder;
 
 import ProyectoTalentum.ProyectoTalentum.Usuario;
 import javaxt.io.Image;
@@ -40,7 +39,7 @@ public class MapaFrame extends Framebase {
 			colocarBotonesAbajo();
 			add(mapaPanel);
 	        pack();
-	        setVisible(false);
+	        setVisible(true);
 	        
 	        
 		}
@@ -51,7 +50,7 @@ public class MapaFrame extends Framebase {
 	    height = pantallaD.height;
 		final Image imagen = new Image("src/resources/mapa.jpg");
 	    imagen.resize(height/2,width/2, true);
-		mapaPanel = new JPanel() {
+		mapaPanel = new JPanel(new BorderLayout()) {
 	 	   /**
 			 * 
 			 */
@@ -67,26 +66,30 @@ public class MapaFrame extends Framebase {
 	    
 	}
 	private void colocarBotonesAbajo() {
-		SpringLayout layout = new SpringLayout();		
+		int ancho = width/25;
+		int alto = height/15;
+		Dimension dimension = new Dimension(ancho,alto);
+		FlowLayout layout = new FlowLayout(FlowLayout.LEFT,width/90, height/40);	
 		botonesabajo = new JPanel(layout);
 		validar = new JButton();
 		ranking = new JButton();
 		vacio = new JButton();
-		int ancho = width/20;
-		int alto = height/23;
-		validar.setPreferredSize(new Dimension(ancho, alto));
-	    validar.setCursor(new Cursor(Cursor.HAND_CURSOR));
-	    ranking.setPreferredSize(new Dimension(ancho, alto));
-	    ranking.setCursor(new Cursor(Cursor.HAND_CURSOR));
-	    vacio.setPreferredSize(new Dimension(ancho, alto));
-	    vacio.setCursor(new Cursor(Cursor.HAND_CURSOR));
-		botonesabajo.add(validar);
+		Box box = Box.createHorizontalBox();
+		
+		Cursor cursor = new Cursor(Cursor.HAND_CURSOR);
+		validar.setPreferredSize(dimension);
+	    validar.setCursor(cursor);
+	    ranking.setPreferredSize(dimension);
+	    ranking.setCursor(cursor);
+	    vacio.setPreferredSize(dimension);
+	    box.setPreferredSize(new Dimension((width/28)*3, (int)dimension.getHeight()));
+	    vacio.setCursor(cursor);
+		botonesabajo.add(validar);	
 		botonesabajo.add(ranking);
 		botonesabajo.add(vacio);
-		layout.putConstraint(SpringLayout.WEST, vacio, 5, SpringLayout.WEST, botonesabajo);
-		layout.putConstraint(SpringLayout.WEST, ranking,ancho +  5, SpringLayout.WEST, vacio);
-		layout.putConstraint(SpringLayout.WEST, validar,ancho +  5, SpringLayout.WEST, ranking);
-		mapaPanel.add(botonesabajo);
+		botonesabajo.add(box);
+		botonesabajo.setVisible(true);
+		mapaPanel.add(botonesabajo, BorderLayout.SOUTH);
 	}
 	
 }
