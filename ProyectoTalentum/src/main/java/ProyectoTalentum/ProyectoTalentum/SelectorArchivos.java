@@ -5,9 +5,11 @@ import java.io.FileInputStream;
 import java.io.FileOutputStream;
 import java.io.InputStream;
 import java.io.OutputStream;
+import java.text.ParseException;
 import java.io.*;
 import javax.swing.JFileChooser;
 import javax.swing.JFrame;
+import javax.swing.UnsupportedLookAndFeelException;
 
 import javaxt.io.Directory;
 
@@ -17,7 +19,13 @@ public class SelectorArchivos {
 
 	
 	public File subirFoto(){
-		
+		try {
+			Vistas.Login.initLaF(true);
+		} catch (ClassNotFoundException | InstantiationException | IllegalAccessException
+				| UnsupportedLookAndFeelException | ParseException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		};
 		JFileChooser jFileChooser = new JFileChooser();
 		jFileChooser.setCurrentDirectory(new File("/User"));
 		
@@ -35,7 +43,13 @@ public class SelectorArchivos {
 		    
 		    System.out.println("Selected file: " + selectedFile.getAbsolutePath());
 		}
-		
+		try {
+			Vistas.Login.initLaF(false);
+		} catch (ClassNotFoundException | InstantiationException | IllegalAccessException
+				| UnsupportedLookAndFeelException | ParseException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		};
 		
 		    return selectedFile;
 	

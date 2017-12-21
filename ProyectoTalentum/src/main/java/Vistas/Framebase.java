@@ -4,16 +4,36 @@ import java.awt.Dimension;
 import java.awt.Graphics;
 import java.awt.Toolkit;
 import java.net.URL;
+import java.text.ParseException;
 
 import javax.swing.JFrame;
 import javax.swing.UIManager;
+import javax.swing.UnsupportedLookAndFeelException;
 import javax.swing.plaf.synth.SynthLookAndFeel;
 
 public abstract class Framebase  extends JFrame {
 
+	private static final long serialVersionUID = 1L;
+
 	public Framebase(String s) {
 	       super(s);
-	       initLaF();
+	       try {
+			initLaF(true);
+		} catch (ClassNotFoundException e) {
+			e.printStackTrace();
+		} catch (InstantiationException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		} catch (IllegalAccessException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		} catch (UnsupportedLookAndFeelException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		} catch (ParseException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
 		 //tamaño movil
 	       Toolkit pantalla = Toolkit.getDefaultToolkit(); //Coge los datos de la pantalla
 	       Dimension pantallaD = pantalla.getScreenSize(); //Coge la resolución y la divide en 2 variables
@@ -26,25 +46,25 @@ public abstract class Framebase  extends JFrame {
 	       setLocationRelativeTo(null); //Pone la ventana en el centro
 	       setResizable(false); //No cambiar el tamaño de la ventana
 	       setDefaultCloseOperation(EXIT_ON_CLOSE);
-	      }
+	     }
 	
-	private void initLaF() {
+	public static void initLaF(Boolean Default) throws ClassNotFoundException, InstantiationException, IllegalAccessException, UnsupportedLookAndFeelException, ParseException {
+		Boolean opcion = Default!=null ? Default : true;
+		
+		
 		SynthLookAndFeel lookAndFeel = new SynthLookAndFeel();
-	    
-		 
-	    try {
-	    	lookAndFeel.load(Login.class.getResourceAsStream("frameSkin.xml"),
-	        				  Login.class);
-	        UIManager.setLookAndFeel(lookAndFeel);
-	        System.out.println(UIManager.getSystemLookAndFeelClassName());
-	    } 
-	    
-	    catch (Exception e) {
-	        System.err.println("Couldn't get specified look and feel ("
-	                           + lookAndFeel
-	                           + "), for some reason.");
-	        System.err.println("Using the default look and feel.");
-	        e.printStackTrace();
-	    }
-	}
+		System.out.println(UIManager.getSystemLookAndFeelClassName());
+		
+    	if(opcion) {
+    		UIManager.setLookAndFeel(UIManager.getSystemLookAndFeelClassName());
+			
+		}
+    	else {
+    		lookAndFeel.load(Login.class.getResourceAsStream("frameSkin.xml"),
+  				  Login.class);
+    		UIManager.setLookAndFeel(lookAndFeel);
+    	}
+	    	
+	} 
+
 }
