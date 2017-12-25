@@ -198,7 +198,8 @@ private void botonvolver () {
 		
 		@Override
 		public void actionPerformed(ActionEvent e) {
-			new Vistas.MpPanel(usuario).setVisible(true);
+			//new Vistas.MpPanel(usuario).setVisible(true);
+			new Vistas.MapaFrame(usuario);
 			dispose();
 			
 		}

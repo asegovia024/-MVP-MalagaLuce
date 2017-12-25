@@ -55,7 +55,7 @@ public class Login extends Framebase  {
        // lFondo = new JLabel();
        // lFondo.setIcon(new ImageIcon(fondo.getImage()));
        GridBagConstraints constraints = new GridBagConstraints();
-       Insets ins = new Insets(pantallaD.height/12, pantallaD.width/136, -pantallaD.height/75, 0);
+       Insets ins = new Insets(pantallaD.height/11, 0, -pantallaD.height/80, 0);
        constraints.insets = ins;
        
     // add components to the panel

@@ -7,6 +7,8 @@ import java.awt.Dimension;
 import java.awt.FlowLayout;
 import java.awt.Graphics;
 import java.awt.Toolkit;
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
 
 import javax.swing.*;
 import javax.swing.border.Border;
@@ -20,12 +22,13 @@ public class MapaFrame extends Framebase {
 	JPanel mapaPanel;
 	panelMap mapa;
 	JPanel botonesabajo;
-	JPanel botonessuperior;
+	JPanel botonesarriba;
 	JButton validar;
 	JButton ranking;
 	Usuario usuario;
 	JButton bSalir;
 	JButton vacio;
+	JButton salir;
 	int width;
 	int height;
 	public MapaFrame(Usuario usuario) {
@@ -37,6 +40,7 @@ public class MapaFrame extends Framebase {
 	    
 			colocarMapa();
 			colocarBotonesAbajo();
+			colocarBotonesArriba();
 			add(mapaPanel);
 	        pack();
 	        setVisible(true);
@@ -79,8 +83,12 @@ public class MapaFrame extends Framebase {
 		Cursor cursor = new Cursor(Cursor.HAND_CURSOR);
 		validar.setPreferredSize(dimension);
 	    validar.setCursor(cursor);
+	    llamadabotonvalidar();
+	    
 	    ranking.setPreferredSize(dimension);
 	    ranking.setCursor(cursor);
+	    llamadabotonranking();
+	    
 	    vacio.setPreferredSize(dimension);
 	    box.setPreferredSize(new Dimension((width/28)*3, (int)dimension.getHeight()));
 	    vacio.setCursor(cursor);
@@ -91,5 +99,57 @@ public class MapaFrame extends Framebase {
 		botonesabajo.setVisible(true);
 		mapaPanel.add(botonesabajo, BorderLayout.SOUTH);
 	}
-	
+	private void colocarBotonesArriba() {
+		int ancho = width/25;
+		int alto = height/15;
+		Dimension dimension = new Dimension(ancho,alto);
+		FlowLayout layout = new FlowLayout(FlowLayout.LEFT,width/120, height/80);	
+		botonesarriba = new JPanel(layout);
+		salir = new JButton();
+		Box box = Box.createHorizontalBox();
+		
+		Cursor cursor = new Cursor(Cursor.HAND_CURSOR);
+		salir.setPreferredSize(dimension);
+		salir.setCursor(cursor);
+		llamadabotonsalir();
+	    box.setPreferredSize(new Dimension((width/25)*5, (int)dimension.getHeight()));
+	    botonesarriba.add(box);
+	    botonesarriba.add(salir);		    
+	    botonesarriba.setVisible(true);
+		mapaPanel.add(botonesarriba, BorderLayout.NORTH);
+	}
+	private void llamadabotonranking(){
+		ranking.addActionListener(new ActionListener() {
+			
+			@Override
+			public void actionPerformed(ActionEvent arg0) {
+				// TODO Auto-generated method stub
+				new Vistas.Ranking(usuario).setVisible(true);
+				setVisible(false);
+				
+			}
+		});
+	}
+private void llamadabotonvalidar() {
+	validar.addActionListener(new ActionListener() {
+		
+		@Override
+		public void actionPerformed(ActionEvent e) {
+			new Vistas.Acciones(usuario).setVisible(true);
+			setVisible(false);
+			
+		}
+	});
+}
+private void llamadabotonsalir() {
+	salir.addActionListener(new ActionListener() {
+		
+		@Override
+		public void actionPerformed(ActionEvent e) {
+			new Vistas.Login().setVisible(true);
+			dispose();
+			
+		}
+	});
+}
 }
