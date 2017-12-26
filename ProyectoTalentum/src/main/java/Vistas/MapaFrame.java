@@ -52,7 +52,7 @@ public class MapaFrame extends Framebase {
 	    Dimension pantallaD = pantalla.getScreenSize(); //Coge la resolución y la divide en 2 variables
 	    width = pantallaD.width;
 	    height = pantallaD.height;
-		final Image imagen = new Image("src/resources/mapa.jpg");
+		final Image imagen = new Image("src/resources/mapaBueno.png");
 	    imagen.resize(height/2,width/2, true);
 		mapaPanel = new JPanel(new BorderLayout()) {
 	 	   /**
