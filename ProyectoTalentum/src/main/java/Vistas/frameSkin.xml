@@ -1,0 +1,16 @@
+<synth>
+	<style id="basicStyle">
+		<state>
+		     <color value="BLACK" type="BACKGROUND"/>
+		     <color value="WHITE" type="FOREGROUND"/>
+    	</state>
+	</style>
+	<bind style="basicStyle" type="region" key="textfield"/>
+	<style id="basicStyle2">
+		<state>
+		     <color value="BLACK" type="BACKGROUND"/>
+		     <color value="WHITE" type="FOREGROUND"/>
+    	</state>
+	</style>
+	<bind style="basicStyle2" type="region" key="passwordfield"/>
+</synth	>

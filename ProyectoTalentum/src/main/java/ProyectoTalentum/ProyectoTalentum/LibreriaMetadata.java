@@ -58,31 +58,23 @@ import java.time.format.DateTimeFormatter ;
  */
 public class LibreriaMetadata
 {
-    public static void main(String[] args)
-    {
-        File file = new File("src/resources/prueba.jpg");
-        //
-        // UNKNOWN FILE TYPE
-        //
-        try {
-            Metadata metadata = ImageMetadataReader.readMetadata(file);
+	File file;
+	 Metadata metadata;
+	
+	LibreriaMetadata(File f){
+        
+		file=f;
+		 try {
+			metadata = ImageMetadataReader.readMetadata(file);
+		} catch (ImageProcessingException | IOException e) {
+			// TODO Auto-generated catch block
+			System.out.println("imposible cobtener los metadatos de este archivo");
+		}
+	}
+	
+	
 
-         //   print(metadata, "Using ImageMetadataReader");
-            printDate(metadata);
-            printGPS(metadata);
-        } catch (ImageProcessingException e) {
-            print(e);
-        } catch (IOException e) {
-            print(e);
-        }
-
-    }
-
-    /**
-     * Write all extracted values to stdout.
-     */
-    
-    
+  
     
     private static void print(Metadata metadata, String method)
     {
@@ -114,32 +106,45 @@ public class LibreriaMetadata
         }
     }
     
-    private static void printDate(Metadata metadata)
+ 
+    
+    
+    public Date getDate()
     {
-    	
+    	Date date=null;
     	// obtain the Exif directory
+    	
     	ExifSubIFDDirectory directory
     	    = metadata.getFirstDirectoryOfType(ExifSubIFDDirectory.class);
 
+    	
     	// query the tag's value
-    	Date date = directory.getDate(ExifSubIFDDirectory.TAG_DATETIME_ORIGINAL);
+    	 date = directory.getDate(ExifSubIFDDirectory.TAG_DATETIME_ORIGINAL);
+      	
     	
-    	LocalDateTime date2 = date.toInstant().atZone(ZoneId.systemDefault()).toLocalDateTime();
-        System.out.println(date2.format(DateTimeFormatter.ISO_WEEK_DATE ));
+		return date;
+    	
+    //	LocalDateTime date2 = date.toInstant().atZone(ZoneId.systemDefault()).toLocalDateTime();
+      //  System.out.println(date2.format(DateTimeFormatter.ISO_WEEK_DATE ));
 
-    	
+  
     }
     
-    private static void printGPS(Metadata metadata)
+    
+    
+   public GeoLocation getGPS()
     {
     	
     	// obtain the Exif directory
+    	
     	
     	GpsDirectory directory = metadata.getFirstDirectoryOfType(GpsDirectory.class);
     	
     	GeoLocation gpsPrueba = directory.getGeoLocation();
+    	
+    	return gpsPrueba;
     	// query the tag's value
-        System.out.println(gpsPrueba);
+      //  System.out.println(gpsPrueba);
 
     	
     }

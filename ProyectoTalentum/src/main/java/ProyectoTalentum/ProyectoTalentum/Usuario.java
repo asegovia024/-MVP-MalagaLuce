@@ -10,7 +10,7 @@ public class Usuario {
 	private String Correo;
 	private String Pass;
 	private Equipo team;
-	protected Boolean Super;
+	protected boolean Super;
 	private int Puntos;
 	private String Fecha;
 	private String Nick;
@@ -141,6 +141,11 @@ public class Usuario {
 		this.Puntos = Puntos;
 	}
 	
+	
+	public void PuntosAdd() {
+		Puntos ++;
+	}
+	
 	/**
 	 * 
 	 * @return Devuelve la fecha de nacimiento del usuario
@@ -169,6 +174,10 @@ public class Usuario {
 	 */
 	public void setNick(String nick) {
 		Nick = nick;
+	}
+
+	public void setSuper(boolean super1) {
+		Super = super1;
 	}
 
 

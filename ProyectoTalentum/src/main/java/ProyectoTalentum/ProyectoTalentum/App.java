@@ -30,12 +30,14 @@ public class App {
         } catch (Exception ex) {
             ex.printStackTrace();
         }
+       
          
         SwingUtilities.invokeLater(new Runnable() {
             @Override
             public void run() {
             	new Vistas.Login().setVisible(true);
-            	//new Vistas.MpPanel().setVisible(false);
+            	//new Vistas.Ranking().setVisible(true);
+            	//new Vistas.MpPanel().setVisible(true);
             }
         });
         
