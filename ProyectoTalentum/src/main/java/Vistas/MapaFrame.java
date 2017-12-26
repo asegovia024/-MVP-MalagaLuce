@@ -9,12 +9,18 @@ import java.awt.Graphics;
 import java.awt.Toolkit;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.awt.event.MouseEvent;
+import java.awt.event.MouseListener;
+import java.io.File;
 
 import javax.swing.*;
 import javax.swing.border.Border;
 import javax.swing.border.EmptyBorder;
 
+import ProyectoTalentum.ProyectoTalentum.ControladorAccion;
+import ProyectoTalentum.ProyectoTalentum.SelectorArchivos;
 import ProyectoTalentum.ProyectoTalentum.Usuario;
+import bdtest.helper_bd_usuario;
 import javaxt.io.Image;
 
 public class MapaFrame extends Framebase {
@@ -29,6 +35,7 @@ public class MapaFrame extends Framebase {
 	JButton bSalir;
 	JButton vacio;
 	JButton salir;
+	private ImageIcon iconoMapa = new ImageIcon("src/resources/icono_mapa.png");//soporta al menos .jpg y .png
 	int width;
 	int height;
 	public MapaFrame(Usuario usuario) {
@@ -67,6 +74,63 @@ public class MapaFrame extends Framebase {
 	 		    g.drawImage(imagen.getImage(), 0, 0, null);
 	 		}
 	    };
+	    mapaPanel.addMouseListener(new MouseListener() {
+			
+			@Override
+			public void mouseReleased(MouseEvent e) {
+				if(e.getButton() == e.BUTTON1) {
+					int x = e.getX();
+					int y = e.getY();
+					System.out.print(y + " y ");
+					System.out.print(x + " x ");
+					File f=null;
+
+				   SelectorArchivos subirFoto =  new ProyectoTalentum.ProyectoTalentum.SelectorArchivos();//Abre el selector de foto al pincahr en el mapa
+				    
+				   try{
+				   	f=subirFoto.subirFoto();
+					    Graphics g = getGraphics();
+						g.drawImage(iconoMapa.getImage(), x, y, null);
+						ControladorAccion.addAccion(f,usuario.getID()); //enlaza usuario y accion realizada
+						usuario.PuntosAdd(); //añade puntos al usuaior
+						int p=usuario.getPuntos();//Guarda los puntos acutales del usuario
+						helper_bd_usuario.AddPuntos(p, usuario.getID()); //modificador de puntos del usuario sen la bd
+						
+						System.out.println("5");
+				   }catch(Exception e1){
+					   System.out.println("No se ha podido subir el fichero");
+				   }
+				   
+					
+				
+				}
+				
+			}
+			
+			@Override
+			public void mousePressed(MouseEvent e) {
+				// TODO Auto-generated method stub
+				
+			}
+			
+			@Override
+			public void mouseExited(MouseEvent e) {
+				// TODO Auto-generated method stub
+				
+			}
+			
+			@Override
+			public void mouseEntered(MouseEvent e) {
+				// TODO Auto-generated method stub
+				
+			}
+			
+			@Override
+			public void mouseClicked(MouseEvent e) {
+				// TODO Auto-generated method stub
+				
+			}
+		});
 	    
 	}
 	private void colocarBotonesAbajo() {
@@ -92,9 +156,9 @@ public class MapaFrame extends Framebase {
 	    vacio.setPreferredSize(dimension);
 	    box.setPreferredSize(new Dimension((width/28)*3, (int)dimension.getHeight()));
 	    vacio.setCursor(cursor);
-		botonesabajo.add(validar);	
+		botonesabajo.add(vacio);	
 		botonesabajo.add(ranking);
-		botonesabajo.add(vacio);
+		botonesabajo.add(validar);
 		botonesabajo.add(box);
 		botonesabajo.setVisible(true);
 		mapaPanel.add(botonesabajo, BorderLayout.SOUTH);
