@@ -60,7 +60,9 @@ public class MapaFrame extends Framebase {
 	    width = pantallaD.width;
 	    height = pantallaD.height;
 		final Image imagen = new Image("src/resources/mapaBueno.png");
+		final Image imagenAdmin = new Image("src/resources/mapaValidar.png");
 	    imagen.resize(height/2,width/2, true);
+	    imagenAdmin.resize(height/2, width/2, true);
 		mapaPanel = new JPanel(new BorderLayout()) {
 	 	   /**
 			 * 
@@ -69,9 +71,15 @@ public class MapaFrame extends Framebase {
 	
 			@Override
 	 		  protected void paintComponent(Graphics g) {
-	
+
 	 		    super.paintComponent(g);
-	 		    g.drawImage(imagen.getImage(), 0, 0, null);
+				if(usuario.getSuper()) {
+					g.drawImage(imagenAdmin.getImage(), 0, 0, null);
+				}
+				else {
+					g.drawImage(imagen.getImage(), 0, 0, null);
+				}
+	 		    
 	 		}
 	    };
 	    mapaPanel.addMouseListener(new MouseListener() {
