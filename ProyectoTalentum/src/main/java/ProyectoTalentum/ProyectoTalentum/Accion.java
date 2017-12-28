@@ -29,9 +29,9 @@ public class Accion {
 
 	/**
 	 * 
-	 * @param coordenadas
-	 * @param fechaInicio
-	 * @param fotoInicio
+	 * @param coordenadas Se introduce las coordenadas de la geo
+	 * @param fechaInicio Se introduce la fecha en la que se inicio la accion
+	 * @param fotoInicio Se introduce la fecha en la que se finalizo la accion
 	 */
 	public Accion(int id, GeoLocation coordenadas, String fechaInicio,
 			String fotoInicio) {
