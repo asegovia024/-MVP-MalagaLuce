@@ -18,6 +18,9 @@ import javaxt.io.Directory;
 public class SelectorArchivos {
 
 	
+	/**
+	 * @return Al clicar abre un desplegable desde el que subir fotos al programa
+	 */
 	public File subirFoto(){
 		try {
 			Vistas.Login.initLaF(true);
@@ -60,6 +63,9 @@ public class SelectorArchivos {
 	
 	
 	
+	/**
+	 * @return Al clicar añade una foto de usuario a la carpeta /User
+	 */
 	public boolean subirFotoPerfil(){
 		
 		JFileChooser jFileChooser = new JFileChooser();

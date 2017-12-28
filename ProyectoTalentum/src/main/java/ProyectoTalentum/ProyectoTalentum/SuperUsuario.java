@@ -2,6 +2,14 @@ package ProyectoTalentum.ProyectoTalentum;
 import ProyectoTalentum.ProyectoTalentum.Usuario;
 import ProyectoTalentum.ProyectoTalentum.Accion;
 
+/**
+ * @author Deserter
+ *
+ */
+/**
+ * @author Deserter
+ *
+ */
 public class SuperUsuario extends Usuario{
 
 	
@@ -39,7 +47,13 @@ public class SuperUsuario extends Usuario{
 		return true;
 	}
 	
+
 	
+	/**
+	 * @param usuario Usuario a añadir
+	 * @param equipo Equipo donde añadir el usuario
+	 * @return Devuelve true en caso de que se añada un usuario correctamente al al equipo designado 
+	 */
 	public  boolean AddUsuario(Usuario usuario, Equipo equipo){
 		
 		if(usuario.getTeam() == null){

@@ -142,8 +142,11 @@ public class Usuario {
 	}
 	
 	
+	/**
+	 * @see Incrementa los puntos de usuario en 5
+	 */
 	public void PuntosAdd() {
-		Puntos ++;
+		Puntos = Puntos+5;
 	}
 	
 	/**

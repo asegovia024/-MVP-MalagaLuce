@@ -61,6 +61,10 @@ public class LibreriaMetadata
 	File file;
 	 Metadata metadata;
 	
+	/**
+	 * @param f archivo a introducir
+	 * @see extrae los metadatos de la foto
+	 */
 	LibreriaMetadata(File f){
         
 		file=f;
@@ -109,6 +113,9 @@ public class LibreriaMetadata
  
     
     
+    /**
+     * @return Devuelve la fecha de creacion de la foto en tipo date
+     */
     public Date getDate()
     {
     	Date date=null;
@@ -132,7 +139,10 @@ public class LibreriaMetadata
     
     
     
-   public GeoLocation getGPS()
+   /**
+ * @return devuele las coordenadas GPS extraidas de la foto como objeto GeoLocation, siendo este un pair de datos
+ */
+public GeoLocation getGPS()
     {
     	
     	// obtain the Exif directory
