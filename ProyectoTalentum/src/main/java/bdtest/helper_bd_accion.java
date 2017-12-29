@@ -16,6 +16,12 @@ import ProyectoTalentum.ProyectoTalentum.Accion;
 import ProyectoTalentum.ProyectoTalentum.Usuario;
 
 public class helper_bd_accion {
+	
+	
+	/**
+	 * 
+	 * @param accion Introduce una Accion para introducirla en la base de datos
+	 */
 	public static void insert(Accion accion) {
         String sql   = "INSERT INTO accion(coordenadasX, coordenadasY, foto_inicio, foto_fin, fecha_inicio, fecha_fin, validado) VALUES(?,?,?,?,?,?,?)";
         BaseDatos bd = new BaseDatos();     
@@ -44,7 +50,10 @@ public class helper_bd_accion {
 
 	
 	
-	
+	/**
+	 * 
+	 * @param id Introduce el identificado de la accion a validar
+	 */
 	public static void validarAccion(int id) {
 		String sql = "UPDATE accion SET validado = 1 WHERE aID = ?";
 		BaseDatos bd = new BaseDatos(); 
@@ -59,7 +68,10 @@ public class helper_bd_accion {
 	        }
 	}
 
-
+/**
+ * 
+ * @return Devuelve una Lista de las acciones del sistema
+ */
 public static ArrayList<Accion> getAccion() {
 	BaseDatos bd      = new BaseDatos();
 	String sql        = "SELECT * FROM accion";
@@ -109,7 +121,12 @@ public static ArrayList<Accion> getAccion() {
 
 
 
-
+/**
+ * 
+ * @param id Introduce el identificador de la accion a buscar
+ * @param lista Introduce la lista donde hay que buscar
+ * @return  Devuelve la accion del resultado de la busqueda
+ */
 	public static Accion getAccionFromList(int id, ArrayList<Accion> lista) {
 		 Iterator<Accion> iterator = lista.iterator();
 		 boolean noencontrado = true;
@@ -122,6 +139,14 @@ public static ArrayList<Accion> getAccion() {
 		}
 		return accion;
 	}
+	
+	
+	/**
+	 * 
+	 * @param accion Introduce la accion a buscar
+	 * @param lista Introduce la lista donde hay que buscar
+	 * @return Devuelve la accion del resultado de la busqueda
+	 */
 	public static Accion getAccionFromList(Accion accion, ArrayList<Accion> lista) {
 		Accion res = null;
 			if(lista.contains(accion)) {

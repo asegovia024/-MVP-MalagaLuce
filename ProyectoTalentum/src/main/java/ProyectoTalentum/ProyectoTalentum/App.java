@@ -36,27 +36,10 @@ public class App {
             @Override
             public void run() {
             	new Vistas.Login().setVisible(true);
-            	//new Vistas.Ranking().setVisible(true);
-            	//new Vistas.MpPanel().setVisible(true);
+            	
             }
         });
         
-		//COLOCAMOS EL CODIGO QUE PERMITE CERRAR LA VENTANA
-		/*MpPanel p = new MpPanel();
-
-		p.show();
-		p.addWindowListener(new WindowAdapter()
-
-		{
-
-			public void windowClosing(WindowEvent evt)
-
-			{
-
-				System.exit(0);
-
-			}
-
-		});*/
+	
     }
 }

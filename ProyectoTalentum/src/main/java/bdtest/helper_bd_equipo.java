@@ -11,7 +11,8 @@ import java.util.Iterator;
 import ProyectoTalentum.ProyectoTalentum.Equipo;
 
 public class helper_bd_equipo {
-	 /**
+	
+	/**
 	  * Inserta un equipo en la base de datos
 	 * @param equipo a insertar
 	 */
@@ -32,6 +33,7 @@ public class helper_bd_equipo {
 	        	bd.closeConnection();
 	        }
 	    }
+	
 	 /**
 	  * Obtiene una lista de Equipos de la base de datos
 	 * @return ArrayList<Equipo>

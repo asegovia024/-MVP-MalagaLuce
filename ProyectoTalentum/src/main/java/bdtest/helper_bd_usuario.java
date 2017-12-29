@@ -13,6 +13,13 @@ import org.javatuples.Pair;
 import ProyectoTalentum.ProyectoTalentum.Usuario;
 
 public class helper_bd_usuario {
+	
+	
+	
+	/**
+	 * 
+	 * @param usuario  Introducir un usuario para introducirlo en la base de datos
+	 */
 	public static void insert(Usuario usuario){
 		String sql = "INSERT INTO usuario(nombre, password, correo, puntos, eID) VALUES(?,?,?,?,?)";
         BaseDatos bd = new BaseDatos();
@@ -31,6 +38,12 @@ public class helper_bd_usuario {
         	bd.closeConnection();
         }
 	}
+	
+	
+	/**
+	 * 
+	 * @return Devuelve un volcado de usuarios en una Lista de usuarios
+	 */
 	public static ArrayList<Usuario> getUsuario() {
 		 BaseDatos bd = new BaseDatos(); 
 		 String sql      = "SELECT * FROM usuario";
@@ -81,6 +94,11 @@ public class helper_bd_usuario {
 	        } 
 		 return listausuarios;
 	 }
+	
+	/**
+	 * 
+	 * @return Devuelve un volcado de los cinco usuarios con mas puntos en una Lista de usuarios
+	 */
 	public static ArrayList<Usuario> getRanking() {
 		 BaseDatos bd = new BaseDatos(); 
 		 String sql      = "SELECT * FROM usuario ORDER BY puntos DESC LIMIT 0,5";
@@ -133,7 +151,10 @@ public class helper_bd_usuario {
 	
 	
 	
-	
+	/**
+	 * 
+	 * @return Devuelve un volcado de los cinco mejores tuplas grupos y puntos ordenadas por puntos de los usuarios de dicho grupo
+	 */
 	public static ArrayList<Pair<String,Integer>> getRankingG() {
 		
 		 BaseDatos bd = new BaseDatos(); 
@@ -176,7 +197,11 @@ public class helper_bd_usuario {
 	
 
 	
-	
+	/**
+	 * 
+	 * @param p cantidad de puntos a introducir en la base de datos
+	 * @param id Identificador del usuario que realiza la accion
+	 */
 	public static void AddPuntos(int p,int id){
 		String sql = " UPDATE usuario SET puntos= '?' WHERE uID=?";
         BaseDatos bd = new BaseDatos();
@@ -196,9 +221,12 @@ public class helper_bd_usuario {
 	
 	
 	
-	
-	// UPDATE usuario SET puntos= '2' WHERE uID=0
-	
+
+	/**
+	 * 
+	 * @param correo Introducimos un correo para poder buscarlo
+	 * @return Devuelve un usuario como resultado de la busqueda
+	 */
 	public static Usuario getUsuarioByCorreo(String correo) {
 		 BaseDatos bd = new BaseDatos(); 
 		 String sql      = "SELECT * FROM usuario WHERE correo = ?";
@@ -234,6 +262,13 @@ public class helper_bd_usuario {
 	        }
 		 return usuario;
 	 }
+	
+	/**
+	 * 
+	 * @param id Introducimos el identificador del usuario a buscar
+	 * @param lista Introducimos la lista de usuarios
+	 * @return Devuelve el usuario buscado
+	 */
 	public static Usuario getUsuariofromList(int id, ArrayList<Usuario> lista) {
 		 Iterator<Usuario> iterator = lista.iterator();
 		 boolean noencontrado = true;
@@ -247,7 +282,12 @@ public class helper_bd_usuario {
 		return usuario;
 	 }
 	
-	
+	/**
+	 * 
+	 * @param correo Introduce el correo para el login
+	 * @param pass Introduce la contraseña para el login
+	 * @return Devuelve verdadero o falso si el login es correcto o no
+	 */
 	public static boolean login(String correo, String pass){
 		String sql = "SELECT password FROM usuario WHERE correo = ?";
 		BaseDatos bd = new BaseDatos(); 

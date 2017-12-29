@@ -8,6 +8,11 @@ import java.sql.Statement;
 
 public class helper_bd_accusuarios {
 	
+	/**
+	 * 
+	 * @param uID Identificador de usuario
+	 * @category Inserta un usuario extra a la ultima accion realizada
+	 */
 	public static void insert(int uID) {
         String sql   = "INSERT INTO accusuarios (uID,aID )  SELECT ?, aID FROM accion ORDER BY  aID DESC LIMIT 0,1";
 //"+ uID +"
@@ -42,6 +47,13 @@ public class helper_bd_accusuarios {
         }
 		return count;
 	}
+	
+	
+	/**
+	 * 
+	 * @param id Identificador de usuario
+	 * @return Devuelve el numero de acciones que dicho usuario ha participado
+	 */
 	public static int CountbyID(int id){
 		BaseDatos bd = new BaseDatos();
 		String sql   = "SELECT count(*) FROM accusuarios where aID ="+ id;
@@ -58,8 +70,10 @@ public class helper_bd_accusuarios {
         }
 		return count;
 	}
+	
+	
 	/**
-	 * @param id
+	 * @param id Identificador de Usuario
 	 * @return Devuelve la lista de usuarios que ha realizado una acción
 	 */
 	public static int[] getAccionesbyID(int id){
