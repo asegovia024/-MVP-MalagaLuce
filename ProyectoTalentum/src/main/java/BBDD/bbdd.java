@@ -10,11 +10,11 @@ import java.sql.Statement;
 
 abstract class bbdd {
 
-    public  String sDriver = ""; 
-    public  String sUrl = null;
-    public  int iTimeout = 30;
-    public  Connection conn = null;
-    public  Statement statement = null;
+    protected  String sDriver = ""; 
+    protected  String sUrl = null;
+    protected  int iTimeout = 30;
+    protected  Connection conn = null;
+    protected  Statement statement = null;
 
 
     /* Stub constructor for quick instantiation o/t fly for using some of the ancillary stuff */

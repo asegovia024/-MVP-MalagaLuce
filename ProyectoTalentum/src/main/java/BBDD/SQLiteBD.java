@@ -1,10 +1,11 @@
 package BBDD;
 
 public class SQLiteBD extends bbdd{
-	 String sDriverForClass = "org.sqlite.JDBC";
-	 public SQLiteBD(String sUrlKey) {
+	 String sDriverForClass = config.DRIVER;
+	 String URL = config.URL;
+	 public SQLiteBD() {
 		 try {
-			init(sDriverForClass, sUrlKey);
+			init(sDriverForClass, URL);
 		} catch (Exception e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
