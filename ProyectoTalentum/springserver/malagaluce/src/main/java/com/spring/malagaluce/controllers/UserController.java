@@ -10,7 +10,6 @@ import org.springframework.web.bind.annotation.RestController;
 import com.spring.malagaluce.models.User;
 import com.spring.malagaluce.repositories.UserRepository;
 
-
 @RestController
 public class UserController {
 
