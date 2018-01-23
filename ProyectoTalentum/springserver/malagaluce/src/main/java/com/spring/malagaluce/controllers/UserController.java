@@ -11,29 +11,30 @@ import com.spring.malagaluce.models.User;
 import com.spring.malagaluce.repositories.UserRepository;
 
 @RestController
+@RequestMapping("api/user")
 public class UserController {
 
 	@Autowired
 	UserRepository userRepository;
 	
 	
-	@RequestMapping(method=RequestMethod.GET, value="/users")
+	@RequestMapping(method=RequestMethod.GET)
 	public Iterable<User> user() {
 		
 		 return userRepository.findAll();
 	}
 
-	@RequestMapping(method=RequestMethod.POST, value="/users")
+	@RequestMapping(method=RequestMethod.POST)
 	public String save(@RequestBody User user) {
 		userRepository.save(user);
 		return user.getId();
 	}
 	
-	@RequestMapping(method=RequestMethod.GET, value="/users/{id}")
+	@RequestMapping(method=RequestMethod.GET, value="/{id}")
 	public User show(@PathVariable String id) {
 		return userRepository.findOne(id);		
 	}
-	 @RequestMapping(method=RequestMethod.PUT, value="/users/{id}")
+	 @RequestMapping(method=RequestMethod.PUT, value="/{id}")
 	 public User update(@PathVariable String id, @RequestBody User user) {
 		 User us= userRepository.findOne(id);
 		 if(user.getMail() != null)
@@ -52,7 +53,7 @@ public class UserController {
 			 us.setSuperuser(user.isSuperuser());
 		 return us;
 	 }
-	 @RequestMapping(method=RequestMethod.DELETE, value="/users/{id}")
+	 @RequestMapping(method=RequestMethod.DELETE, value="/{id}")
 	    public String delete(@PathVariable String id) {
 	        User user= userRepository.findOne(id);
 	        userRepository.delete(user);

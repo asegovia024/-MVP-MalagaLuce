@@ -11,28 +11,29 @@ import com.spring.malagaluce.models.Team;
 import com.spring.malagaluce.repositories.TeamRepository;
 
 @RestController
+@RequestMapping("api/teams")
 public class TeamController {
 
 	@Autowired
 	TeamRepository teamRepository;
 	
-	@RequestMapping(method=RequestMethod.GET, value="/teams")
+	@RequestMapping(method=RequestMethod.GET)
 	public Iterable<Team> team() {
 		return teamRepository.findAll();
 	}
 	 
-	 @RequestMapping(method=RequestMethod.POST, value="/teams")
+	 @RequestMapping(method=RequestMethod.POST)
 	 public String save(@RequestBody Team team) {
 		 teamRepository.save(team);
 		 return team.getId();
 	 }
 	 
-	 @RequestMapping(method=RequestMethod.GET, value="/teams/{id}")
+	 @RequestMapping(method=RequestMethod.GET, value="/{id}")
 	public Team show(@PathVariable String id) {
 		 return teamRepository.findOne(id);		
 	 }
 	 
-	 @RequestMapping(method=RequestMethod.PUT, value="/teams/{id}")
+	 @RequestMapping(method=RequestMethod.PUT, value="/{id}")
 	 public Team update(@PathVariable String id, @RequestBody Team team) {
 		 Team te = teamRepository.findOne(id);
 		 if(team.getName() != null)
@@ -43,7 +44,7 @@ public class TeamController {
 			 te.setEmblem(team.getEmblem());
 		 return te;
 	 }
-	 @RequestMapping(method=RequestMethod.DELETE, value="/teams/{id}")
+	 @RequestMapping(method=RequestMethod.DELETE, value="/{id}")
 	    public String delete(@PathVariable String id) {
 	        Team team = teamRepository.findOne(id);
 	        teamRepository.delete(team);
