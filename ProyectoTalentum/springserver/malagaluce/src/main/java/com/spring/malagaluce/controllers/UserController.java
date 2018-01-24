@@ -33,7 +33,7 @@ public class UserController {
 	@RequestMapping(method=RequestMethod.GET)
 	public ResponseEntity<Iterable<User>> user() {
 	        Iterable<User> users = userRepository.findAll();	        
-	        if (users.iterator().hasNext()) {
+	        if (!users.iterator().hasNext()) {
 	            return new ResponseEntity(HttpStatus.NO_CONTENT);
 	            // You many decide to return HttpStatus.NOT_FOUND
 	        }
@@ -47,7 +47,7 @@ public class UserController {
 		logger.info("Creating User : {}", user);
 		
 		if(userRepository.exists(user.getId())) {
-			logger.error("Unable to create. A User with name {} already exist", user.getName());
+			logger.error("Unable to create. A User with name {} already exist", user.getName()); //hacer archivo de configuración con textos
             return new ResponseEntity<CustomErrorType>(new CustomErrorType("Unable to create. A User with name " + 
             user.getName() + " already exist."),HttpStatus.CONFLICT);
 		}

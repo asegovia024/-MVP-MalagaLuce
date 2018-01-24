@@ -86,6 +86,12 @@
             <artifactId>bootstrap</artifactId>
             <version>3.3.7</version>
         </dependency>
+        <dependency>
+			<groupId>javax.servlet</groupId>
+			<artifactId>servlet-api</artifactId>
+			<version>2.5</version>
+			<scope>provided</scope>
+ 		</dependency>
 	</dependencies>
 	
 

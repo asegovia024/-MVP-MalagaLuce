@@ -19,10 +19,12 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
 	    // custom 403 access denied handler
 	    @Override
 	    protected void configure(HttpSecurity http) throws Exception {
-
-	        http.csrf().disable()
+	    	http.csrf().disable()
+	    		.authorizeRequests()
+	    			.antMatchers("/", "/home", "/about", "/api/user").permitAll();
+	       /* http.csrf().disable()
 	                .authorizeRequests()
-						.antMatchers("/", "/home", "/about").permitAll()
+						.antMatchers("/", "/home", "/about", "/api").permitAll()
 						.antMatchers("/admin/**").hasAnyRole("ADMIN")
 						.antMatchers("/user/**").hasAnyRole("USER")
 						.anyRequest().authenticated()
@@ -34,7 +36,7 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
 	                .logout()
 						.permitAll()
 						.and()
-	                .exceptionHandling().accessDeniedHandler(accessDeniedHandler);
+	                .exceptionHandling().accessDeniedHandler(accessDeniedHandler);*/
 	    }
 
 	    // create two users, admin and user
