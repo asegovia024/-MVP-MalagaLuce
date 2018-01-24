@@ -54,7 +54,7 @@ public class ActionController {
 	// -------------------Retrieve Single Action------------------------------------------	 
 	 @RequestMapping(method=RequestMethod.GET, value="/{id}") ///{city}/{id}
 	public ResponseEntity<?> show(@PathVariable String id) {
-		 logger.info("Fetching User with id {}", id);
+		 logger.info("Fetching Action with id {}", id);
 		 Action action = actionRepository.findOne(id);
 		 if(action == null) {
 			 logger.error("Action with id {} not found.", id);
@@ -64,9 +64,18 @@ public class ActionController {
 		 return new ResponseEntity<Action>(action, HttpStatus.OK);	
 	 }
 	 
+	// ------------------- Update a Action ------------------------------------------------
 	 @RequestMapping(method=RequestMethod.PUT, value="/{id}")
-	 public Action update(@PathVariable String id, @RequestBody Action action) {
+	 public ResponseEntity<?> update(@PathVariable String id, @RequestBody Action action) {
+		 logger.info("Updating Action with id {}", id);
 		 Action ac = actionRepository.findOne(id);
+		 if(ac == null) {
+			 logger.error("Unable to update. Action with id {} not found.", id);
+	            return new ResponseEntity<CustomErrorType>(new CustomErrorType("Unable to upate. Action with id " + id + " not found."),
+	                    HttpStatus.NOT_FOUND);
+		 }
+		 if(action.getId() != null)
+			 ac.setId(action.getId());
 		 if(action.getCoords() != null)
 			 ac.setCoords(action.getCoords());
 		 if(action.getFirstDate() != null)
@@ -77,13 +86,23 @@ public class ActionController {
 			 ac.setLastDate(action.getLastDate());
 		 if(action.getLastPic() != null)
 			 ac.setLastPic(action.getLastPic());
-		return ac;
+		 actionRepository.save(ac);
+			return new ResponseEntity<Action>(ac, HttpStatus.OK);
 	 }
+	 
+	// ------------------- Delete a Action-----------------------------------------
+	 
 	 @RequestMapping(method=RequestMethod.DELETE, value="/{id}")
-	    public String delete(@PathVariable String id) {
+	    public ResponseEntity<?> delete(@PathVariable String id) {
+		 logger.info("Fetching & Deleting Action with id {}", id);
 	        Action action = actionRepository.findOne(id);
+	        if(action == null) {
+	        	logger.error("Unable to delete. Action with id {} not found.", id);
+	            return new ResponseEntity<CustomErrorType>(new CustomErrorType("Unable to delete. Action with id " + id + " not found."),
+	                    HttpStatus.NOT_FOUND);
+	        }
 	        actionRepository.delete(action);
 
-	        return "Action deleted";
+	        return new ResponseEntity<Action>(HttpStatus.NO_CONTENT);
 	    }
 }
