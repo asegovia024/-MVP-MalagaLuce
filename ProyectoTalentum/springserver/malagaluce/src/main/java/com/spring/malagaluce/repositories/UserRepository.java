@@ -11,6 +11,7 @@ public interface UserRepository extends CrudRepository<User, String> {
 	@Override
 	void delete(User user);
 	
+	User findByMail(String mail);
 	//We only add `findOne` and `delete` method to the interface 
 	//because the rest method already handled by `CrudRepository` of Spring Data MongoDB.
 
