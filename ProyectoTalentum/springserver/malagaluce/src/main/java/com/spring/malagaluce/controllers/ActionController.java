@@ -32,7 +32,7 @@ public class ActionController {
 		Iterable<Action> action = actionRepository.findAll();	
 		if(!action.iterator().hasNext()) {
 			return new ResponseEntity(HttpStatus.NO_CONTENT);
-		}		
+		}
 		return new ResponseEntity<Iterable<Action>>(action, HttpStatus.OK);
 	}
 	
