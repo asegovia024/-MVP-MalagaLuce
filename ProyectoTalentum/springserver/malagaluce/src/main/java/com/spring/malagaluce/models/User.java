@@ -1,10 +1,15 @@
 package com.spring.malagaluce.models;
 
+import java.util.Collection;
+import java.util.List;
+
 import org.springframework.data.annotation.Id;
 import org.springframework.data.mongodb.core.mapping.Document;
+import org.springframework.security.core.GrantedAuthority;
+import org.springframework.security.core.userdetails.UserDetails;
 
 @Document(collection = "user")
-public class User {
+public class User implements UserDetails{
 	
 	@Id
 	private String id;
@@ -16,6 +21,11 @@ public class User {
 	private String joindate;
 	private String username;
 	
+	//UserDetails
+	private List<GrantedAuthority> grantedAuthorities;
+	private boolean nonLocked =true;
+	private boolean nonExpired =true;//TODO:Cambiar esto
+
 	public User() {
 		
 	}
@@ -92,6 +102,32 @@ public class User {
 
 	public void setUsername(String username) {
 		this.username = username;
+	}
+	//------------UserDetails--------
+	@Override
+	public Collection<? extends GrantedAuthority> getAuthorities() {
+		// TODO Auto-generated method stub
+		return grantedAuthorities;
+	}
+
+	@Override
+	public boolean isAccountNonExpired() {
+		return nonExpired;
+	}
+
+	@Override
+	public boolean isAccountNonLocked() {
+		return nonLocked;
+	}
+
+	@Override
+	public boolean isCredentialsNonExpired() {
+		return false;
+	}
+
+	@Override
+	public boolean isEnabled() {
+		return false;
 	}
 	
 

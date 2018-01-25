@@ -1,4 +1,4 @@
-package com.spring.malagaluce.controllers;
+package com.spring.malagaluce.controllers.api;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.PathVariable;

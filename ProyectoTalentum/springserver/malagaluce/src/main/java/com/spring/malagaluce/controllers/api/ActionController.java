@@ -1,4 +1,4 @@
-package com.spring.malagaluce.controllers;
+package com.spring.malagaluce.controllers.api;
 
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;

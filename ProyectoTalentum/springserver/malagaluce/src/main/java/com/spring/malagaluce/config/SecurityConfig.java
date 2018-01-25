@@ -1,14 +1,17 @@
 package com.spring.malagaluce.config;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.security.config.annotation.authentication.builders.AuthenticationManagerBuilder;
 import org.springframework.security.config.annotation.web.builders.HttpSecurity;
 import org.springframework.security.config.annotation.web.configuration.EnableWebSecurity;
 import org.springframework.security.config.annotation.web.configuration.WebSecurityConfigurerAdapter;
+import org.springframework.security.core.userdetails.UserDetailsService;
 import org.springframework.security.web.access.AccessDeniedHandler;
 
 import com.spring.malagaluce.error.AccessDeniedHandlerImpl;
+import com.spring.malagaluce.services.UserDetailsServiceImplem;
 
 @EnableWebSecurity
 @Configuration
@@ -16,6 +19,11 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
 	 @Autowired
 	    private AccessDeniedHandlerImpl accessDeniedHandler;
 
+	 
+	 @Bean
+	    public UserDetailsService mongoUserDetails() {
+	        return new UserDetailsServiceImplem();
+	    }
 	    // roles admin allow to access /admin/**
 	    // roles user allow to access /user/**
 	    // custom 403 access denied handler
@@ -44,7 +52,8 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
 	    // create two users, admin and user
 	    @Autowired
 	    public void configureGlobal(AuthenticationManagerBuilder auth) throws Exception {
-
+	    	UserDetailsService userDetailsService = mongoUserDetails();
+	        auth.userDetailsService(userDetailsService);
 	        auth.inMemoryAuthentication()
 	                .withUser("user").password("password").roles("USER")
 	                .and()
